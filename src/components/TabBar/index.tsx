@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, ImageSourcePropType, Pressable } from 'react-native';
 
-type TabItem = {
+export type TabItem = {
   icon: ImageSourcePropType;
   selectedIcon: ImageSourcePropType;
   text: string;
