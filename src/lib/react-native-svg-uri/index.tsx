@@ -76,15 +76,15 @@ export default class SvgUri extends React.Component<Props, State> {
     }
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.isComponentMounted = true;
   }
 
-  componentWillUnmount() {
+  UNSAFE_componentWillUnmount() {
     this.isComponentMounted = false;
   }
 
-  componentWillReceiveProps(nextProps: Props) {
+  UNSAFE_componentWillReceiveProps(nextProps: Props) {
     if (nextProps.source) {
       const source: ImageResolvedAssetSource = resolveAssetSource(nextProps.source) || ({} as ImageResolvedAssetSource);
       const oldSource: ImageResolvedAssetSource =

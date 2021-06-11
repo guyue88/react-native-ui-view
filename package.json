@@ -1,9 +1,12 @@
 {
-  "name": "sea-view",
-  "version": "1.0.0",
-  "description": "",
-  "keywords": [],
-  "author": "",
+  "name": "react-native-ui-kit",
+  "version": "0.0.1",
+  "description": "react native ui components kit",
+  "keywords": [
+    "react native",
+    "react native ui"
+  ],
+  "author": "lq9328@126.com",
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,5 +24,6 @@
     "react-native-svg": "^12.1.1",
     "typescript": "^3.8.3"
   },
-  "license": "ISC"
+  "license": "MIT",
+  "homepage": "https://github.com/AspenLuoQiang/react-native-ui-kit"
 }
