@@ -9,7 +9,7 @@
   "author": "lq9328@126.com",
   "main": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:svg": "node scripts/svg/index.js"
   },
   "peerDependencies": {
     "react": "17.0.1",
