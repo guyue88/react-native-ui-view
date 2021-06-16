@@ -1,83 +1,85 @@
-import React from 'react';
-import { StyleSheet, View, Text, Image, ImageSourcePropType, Pressable } from 'react-native';
-
-export type TabItem = {
-  icon: ImageSourcePropType;
-  selectedIcon: ImageSourcePropType;
-  text: string;
-};
+import React, { Children, cloneElement } from 'react';
+import { StyleSheet, View, SafeAreaView } from 'react-native';
+import TabItem from './item';
 
 type Props = {
-  list: TabItem[];
-  show?: boolean;
   height?: number;
   iconSize?: number;
-  activeIndex?: number;
   activeColor?: string;
   inactiveColor?: string;
   backgroundColor?: string;
   showBorderTop?: boolean;
-  onChange?: (index: number, tabItem: TabItem) => void;
 };
 
 const TabBar: React.FC<Props> = props => {
   const {
-    list,
-    show = true,
     height = 50,
     iconSize = 20,
-    activeIndex = 0,
     activeColor = '#5098FF',
     inactiveColor = '#606266',
     showBorderTop = true,
     backgroundColor = '#FFFFFF',
-    onChange = () => 1,
+    children,
   } = props;
 
-  if (!show) return null;
+  const getPanes = (showContent: boolean) => {
+    let selectedIndex = 0;
+    [].concat(children as any).forEach((child: any, idx: number) => {
+      if (child.props.selected) {
+        selectedIndex = idx;
+      }
+    });
+
+    const newChildren: any[] = [];
+    Children.map(children, (child: any, idx) => {
+      if (showContent && selectedIndex === idx) {
+        newChildren.push(<View key={idx}>{child.props.children}</View>);
+      } else {
+        newChildren.push(
+          cloneElement(child, {
+            key: idx,
+            activeColor,
+            inactiveColor,
+            iconSize,
+          }),
+        );
+      }
+    });
+
+    if (showContent) {
+      return newChildren.filter((_, i) => i === selectedIndex);
+    }
+
+    return newChildren;
+  };
 
   return (
-    <View style={[styles.container, { backgroundColor, height }, showBorderTop ? styles.borderTop : {}]}>
-      {list.map((item, index) => {
-        const active = activeIndex === index;
-        const currentIcon = active ? item.selectedIcon : item.icon;
-        const currentColor = active ? activeColor : inactiveColor;
-
-        return (
-          <Pressable key={index} style={styles.tabItem} onPress={() => onChange(index, item)}>
-            <Image source={currentIcon} style={[styles.icon, { width: iconSize, height: iconSize }]} />
-            <Text style={[styles.text, { color: currentColor }]}>{item.text}</Text>
-          </Pressable>
-        );
-      })}
-    </View>
+    <SafeAreaView style={styles.page}>
+      {getPanes(true)}
+      <View style={[styles.tabBar, { backgroundColor, height }, showBorderTop ? styles.borderTop : {}]}>
+        {getPanes(false)}
+      </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  page: {
+    position: 'relative',
+    flex: 1,
+  },
+  tabBar: {
     position: 'absolute',
     bottom: 0,
     left: 0,
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
+    backgroundColor: '#333',
   },
   borderTop: {
     borderTopColor: '#E4E7ED',
     borderTopWidth: 1,
-  },
-
-  tabItem: {
-    flex: 1,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  icon: {},
-  text: {
-    fontSize: 13,
-    marginTop: 4,
   },
 });
 

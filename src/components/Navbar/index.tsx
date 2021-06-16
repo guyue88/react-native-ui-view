@@ -11,7 +11,7 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import Icon from '../Icon';
-import { COLORS, FONT_WEIGHT } from '../style/theme';
+import { COLORS, FONT_WEIGHT } from '../Styles/theme';
 
 type Props = {
   height?: number;
@@ -70,7 +70,8 @@ const Navbar: React.FC<Props> = props => {
             style={styles.backIconWrap}
             activeOpacity={0.6}
             underlayColor={COLORS.backgroundColor}
-            onPress={() => onBack && onBack()}>
+            onPress={() => onBack && onBack()}
+          >
             <>
               <Icon name={backIconName} color={backIconColor} size={backIconSize} />
               {backText && <Text style={{ ...styles.backText, ...backTextStyle }}>{backText}</Text>}
@@ -83,7 +84,8 @@ const Navbar: React.FC<Props> = props => {
             color: titleColor,
             fontSize: titleSize,
             fontWeight: titleBold ? FONT_WEIGHT.BOLD : FONT_WEIGHT.NORMAL,
-          }}>
+          }}
+        >
           {title}
         </Text>
       </View>

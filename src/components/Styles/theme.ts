@@ -1,4 +1,5 @@
 export const COLORS = {
+  white: '#ffffff',
   // 主色
   primary: '#2979ff',
   primaryLight: '#ecf5ff',
