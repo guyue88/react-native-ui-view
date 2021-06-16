@@ -53,7 +53,7 @@ const TabItem: React.FC<Props> = props => {
           )}
 
           <Text style={[styles.title, { color: currentColor }]}>{title}</Text>
-          {badge && <Badge text={badge} />}
+          {badge && <Badge corner text={badge} size="small" dot={dot} />}
         </View>
       </View>
     </TouchableWithoutFeedback>
