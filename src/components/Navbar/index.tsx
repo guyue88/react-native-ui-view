@@ -10,6 +10,7 @@ import {
   TextStyle,
   TouchableHighlight,
 } from 'react-native';
+
 import Icon from '../Icon';
 import { COLORS, FONT_WEIGHT } from '../Styles/theme';
 
@@ -41,7 +42,7 @@ const Navbar: React.FC<Props> = props => {
     showBack = false,
     backIconSize = 24,
     backIconColor = COLORS.textMainColor,
-    backIconName = 'arrow-left-bold',
+    backIconName = 'arrow-left',
     backText = '返回',
     backTextStyle = {},
     backgroundColor,

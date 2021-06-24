@@ -1,4 +1,4 @@
-import React, { ReactNode, isValidElement } from 'react';
+import React, { ReactNode, isValidElement, useEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -7,7 +7,9 @@ import {
   ImageURISource,
   ImageRequireSource,
   TouchableWithoutFeedback,
+  ImageResolvedAssetSource,
 } from 'react-native';
+
 import Badge from '../Badge';
 
 export type TabBarIcon = ImageURISource | ImageURISource[] | ImageRequireSource | ReactNode;
@@ -41,6 +43,16 @@ const TabItem: React.FC<Props> = props => {
   } = props;
   const renderIcon = selected ? selectedIcon : icon;
   const currentColor = selected ? activeColor : inactiveColor;
+
+  // 提前加载图片，防止切换时导致闪动
+  useEffect(() => {
+    [selectedIcon, icon].forEach(image => {
+      if (!isValidElement(image)) {
+        Image.resolveAssetSource(image as ImageResolvedAssetSource);
+      }
+    });
+    return () => {};
+  }, [selectedIcon, icon]);
 
   return (
     <TouchableWithoutFeedback onPress={onPress}>
