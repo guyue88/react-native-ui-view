@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 import Icon from '../Icon';
-import { COLORS, FONT_WEIGHT } from '../Styles/theme';
+import { Theme, FontWeight } from '../Styles/theme';
 
 type Props = {
   height?: number;
@@ -37,12 +37,12 @@ const Navbar: React.FC<Props> = props => {
     height = 44,
     title,
     titleSize = 20,
-    titleColor = COLORS.textMainColor,
+    titleColor = Theme.colorTextBase,
     titleBold = false,
     showBack = false,
     backIconSize = 24,
-    backIconColor = COLORS.textMainColor,
-    backIconName = 'arrow-left',
+    backIconColor = Theme.colorTextBase,
+    backIconName = 'left',
     backText = '返回',
     backTextStyle = {},
     backgroundColor,
@@ -57,7 +57,7 @@ const Navbar: React.FC<Props> = props => {
     statusBarStyle.backgroundColor = backgroundColor;
   }
   if (showBorderBottom) {
-    statusBarStyle.borderBottomColor = COLORS.borderColor;
+    statusBarStyle.borderBottomColor = Theme.borderColor;
     statusBarStyle.borderBottomWidth = 0.5;
   }
 
@@ -70,7 +70,7 @@ const Navbar: React.FC<Props> = props => {
           <TouchableHighlight
             style={styles.backIconWrap}
             activeOpacity={0.6}
-            underlayColor={COLORS.backgroundColor}
+            underlayColor={Theme.fillBody}
             onPress={() => onBack && onBack()}
           >
             <>
@@ -84,7 +84,7 @@ const Navbar: React.FC<Props> = props => {
             ...styles.title,
             color: titleColor,
             fontSize: titleSize,
-            fontWeight: titleBold ? FONT_WEIGHT.BOLD : FONT_WEIGHT.NORMAL,
+            fontWeight: titleBold ? FontWeight.BOLD : FontWeight.NORMAL,
           }}
         >
           {title}
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   backText: {
     fontSize: 18,
     marginLeft: 6,
-    color: COLORS.textMainColor,
+    color: Theme.colorTextBase,
   },
   title: {
     flex: 1,

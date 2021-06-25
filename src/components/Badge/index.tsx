@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { COLORS } from '../Styles/theme';
+import { Theme } from '../Styles/theme';
 
 export type Props = {
   text: string | number;
@@ -38,13 +38,13 @@ const Badge: React.FC<Props> = props => {
 
 const styles = StyleSheet.create({
   text: {
-    color: COLORS.white,
+    color: Theme.colorTextBaseInverse,
   },
   badge: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: COLORS.error,
+    backgroundColor: Theme.fillRed,
   },
   corner: {
     position: 'absolute',
