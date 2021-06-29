@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Theme } from '../Styles/theme';
 
-type Props = {
+export type Props = {
   title: string;
   content: string;
   align?: 'center' | 'left' | 'right';
