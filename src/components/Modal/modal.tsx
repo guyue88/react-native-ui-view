@@ -19,7 +19,7 @@ export type Props = {
   onClose?: () => void;
 };
 
-const ModalLayer: React.FC<Props> = props => {
+const ModalHost: React.FC<Props> = props => {
   const {
     title,
     content,
@@ -134,4 +134,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ModalLayer;
+export default ModalHost;

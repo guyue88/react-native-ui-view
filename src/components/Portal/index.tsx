@@ -19,7 +19,7 @@ class PortalGuard {
 }
 
 type PortalItem = { elem: React.ReactNode; key: number };
-const PortalHost: React.FC = props => {
+const PortalHost: React.FC = () => {
   const [portalList, setPortalList] = useState<PortalItem[]>([]);
 
   useEffect(() => {
@@ -40,20 +40,15 @@ const PortalHost: React.FC = props => {
   };
 
   return (
-    <View style={styles.container}>
-      {props.children}
-      {portalList.map((item, index) => {
-        return <View key={item.key}>{item.elem}</View>;
-      })}
-    </View>
+    <>
+      {portalList.map(item => (
+        <View style={styles.portal} key={item.key}>
+          {item.elem}
+        </View>
+      ))}
+    </>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export const portal = new PortalGuard();
 
@@ -62,6 +57,21 @@ export default class Portal extends React.Component {
   static remove = portal.remove;
 
   render() {
-    return <PortalHost>{this.props.children}</PortalHost>;
+    return (
+      <>
+        {this.props.children}
+        <PortalHost />
+      </>
+    );
   }
 }
+
+const styles = StyleSheet.create({
+  portal: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    right: 0,
+    bottom: 0,
+  },
+});

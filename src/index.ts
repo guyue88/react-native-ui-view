@@ -6,3 +6,4 @@ export { default as Icon } from './components/Icon';
 export { default as Portal } from './components/Portal';
 export { default as TabBar } from './components/TabBar';
 export { default as TabItem } from './components/TabBar/item';
+export { default as Toast } from './components/Toast';

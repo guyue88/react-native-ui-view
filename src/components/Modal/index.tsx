@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import ModalLayer, { Props } from './modal';
+import ModalHost, { Props } from './modal';
 import { portal } from '../Portal';
 
 export default class Modal extends Component<Props> {
   static show(title: string, content: string, options: Omit<Props, 'title' | 'content' | 'visible'>) {
     const key = portal.add(
-      <ModalLayer
+      <ModalHost
         {...options}
         title={title}
         content={content}
@@ -23,6 +23,6 @@ export default class Modal extends Component<Props> {
   }
 
   render() {
-    return <ModalLayer {...this.props} />;
+    return <ModalHost {...this.props} />;
   }
 }

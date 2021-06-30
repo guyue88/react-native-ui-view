@@ -39,7 +39,7 @@ export const Theme = {
   fontSizeIconText: 10,
   fontSizeCaptionSm: 12,
   fontSizeBase: 14,
-  fontSizeSubhead: 15,
+  fontSizeSubHead: 15,
   fontSizeCaption: 16,
   fontSizeHeading: 17,
   // 圆角
@@ -121,7 +121,7 @@ export const Theme = {
   tabBarFill: '#ebeeef',
   tabBarHeight: 50,
   // toast
-  toastFill: 'rgba(0, 0, 0, .8)',
+  toastFill: 'rgba(0, 0, 0, .7)',
   // searchBar
   searchBarFill: '#efeff4',
   searchBarHeight: 44,
