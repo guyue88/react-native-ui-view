@@ -3,11 +3,11 @@ import { StyleSheet, View, Text } from 'react-native';
 import { Theme } from '../Styles/theme';
 
 export type BadgeProps = {
-  // 显示文字
+  // 显示的文字
   text: string | number;
   // 显示大小
   size?: 'large' | 'small';
-  // 是否显示在角落，绝对定位
+  // 是否显示在右上角，绝对定位
   corner?: boolean;
   // 是否显示为一个红点
   dot?: boolean;

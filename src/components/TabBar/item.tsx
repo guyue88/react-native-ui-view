@@ -15,16 +15,27 @@ import Badge from '../Badge';
 export type TabBarIcon = ImageURISource | ImageURISource[] | ImageRequireSource | ReactNode;
 
 export type TabItemProps = {
+  // 文字
   title: string;
+  // 是否被选中
   selected: boolean;
+  // Icon 元素，图片或者一个ReactNode
   icon: TabBarIcon;
+  // Icon 元素，图片或者一个ReactNode
   selectedIcon: TabBarIcon;
+  // 显示角标，为0时不显示
   badge?: number;
+  // 角标是否显示为一个红点
   dot?: boolean;
+  // 被点击时的回调
   onPress?: () => void;
 
+  // 以下部分由TabBar组件传入
+  // Icon的大小
   iconSize?: number;
+  // 选中时的颜色
   activeColor?: string;
+  // 未选中时的颜色
   inactiveColor?: string;
 };
 

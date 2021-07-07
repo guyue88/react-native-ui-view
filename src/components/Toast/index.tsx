@@ -7,8 +7,11 @@ import Icon from '../Icon';
 
 type ToastType = 'loading' | 'success' | 'fail' | 'info';
 export type ToastProps = {
+  // 内容
   content: string;
+  // 类型
   type: ToastType;
+  // 是否显示蒙层
   mask?: boolean;
 };
 
@@ -80,18 +83,46 @@ export default class Toast {
     return key;
   }
 
+  /**
+   *
+   * @param content {string} 内容
+   * @param mask {boolean} 是否显示蒙层
+   * @returns
+   */
   public static loading(content: string, mask = true) {
     return this.show('loading', content, 0, mask);
   }
+  /**
+   *
+   * @param key {number} Toast.loading的返回值
+   */
   public static hideLoading(key: number) {
     portal.remove(key);
   }
+  /**
+   *
+   * @param content {string} 内容
+   * @param duration {number} 展示时间，默认3000ms
+   * @param mask {boolean} 是否显示蒙层
+   */
   public static success(content: string, duration = 3000, mask = false) {
     this.show('success', content, duration, mask);
   }
+  /**
+   *
+   * @param content {string} 内容
+   * @param duration {number} 展示时间，默认3000ms
+   * @param mask {boolean} 是否显示蒙层
+   */
   public static fail(content: string, duration = 3000, mask = false) {
     this.show('fail', content, duration, mask);
   }
+  /**
+   *
+   * @param content {string} 内容
+   * @param duration {number} 展示时间，默认3000ms
+   * @param mask {boolean} 是否显示蒙层
+   */
   public static info(content: string, duration = 3000, mask = false) {
     this.show('info', content, duration, mask);
   }

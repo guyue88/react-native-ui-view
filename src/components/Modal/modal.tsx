@@ -3,20 +3,33 @@ import { Modal, Pressable, StyleSheet, Text, TouchableHighlight, View } from 're
 import { Theme } from '../Styles/theme';
 
 export type ModalProps = {
+  // 标题
   title: string;
+  // 内容
   content: string;
+  // 对齐方式
   align?: 'center' | 'left' | 'right';
-  cancelText?: string;
-  cancelColor?: string;
-  confirmText?: string;
-  confirmColor?: string;
+  // 是否显示取消按钮
   showCancel?: boolean;
+  // 取消按钮的文案
+  cancelText?: string;
+  // 取消按钮的颜色
+  cancelColor?: string;
+  // 确定按钮的文案
+  confirmText?: string;
+  // 确定按钮的颜色
+  confirmColor?: string;
+  // 是否显示蒙层
   mask?: boolean;
+  // 点击蒙层是否可以关闭
   maskClosable?: boolean;
-
+  // 浮窗是否可见
   visible: boolean;
+  // 浮窗呈现动画
   animationType?: 'fade' | 'none' | 'slide';
+  // 用户点击确认的回调
   onConfirm?: () => void;
+  // 用户点击关闭的回调
   onClose?: () => void;
 };
 

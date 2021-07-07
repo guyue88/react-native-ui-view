@@ -15,20 +15,35 @@ import Icon from '../Icon';
 import { Theme, FontWeight } from '../Styles/theme';
 
 export type NavbarProps = {
-  height?: number;
+  // 标题
   title: string;
+  // 标题文字大小
   titleSize?: number;
+  // 标题是否加粗
   titleBold?: boolean;
+  // 标题文字颜色
   titleColor?: string;
+  // 导航栏高度，默认44
+  height?: number;
+  // 是否显示返回按钮
   showBack?: boolean;
+  // 返回按钮Icon的大小
   backIconSize?: number;
+  // 返回按钮Icon的颜色
   backIconColor?: string;
+  // 返回按钮Icon的名字
   backIconName?: string;
+  // 返回按钮的文字，默认“返回”
   backText?: string;
+  // 返回按钮文字的样式
   backTextStyle?: TextStyle;
+  // 背景颜色
   backgroundColor?: string;
+  // StatusBar 的 barStyle
   barStyle?: StatusBarStyle;
+  // 是否展示底部Border
   showBorderBottom?: boolean;
+  // 返回按钮被点击的回调
   onBack?: () => void;
 };
 

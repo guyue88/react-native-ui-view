@@ -2,11 +2,17 @@ import React, { Children, cloneElement } from 'react';
 import { StyleSheet, View, SafeAreaView } from 'react-native';
 
 export type TabBarProps = {
+  // 高度
   height?: number;
+  // Icon大小
   iconSize?: number;
+  // 文字选中时的颜色
   activeColor?: string;
+  // 文字未选中时的颜色
   inactiveColor?: string;
+  // 背景颜色
   backgroundColor?: string;
+  // 是否显示顶部Border
   showBorderTop?: boolean;
 };
 

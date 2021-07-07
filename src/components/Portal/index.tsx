@@ -13,6 +13,7 @@ class PortalGuard {
     EventEmitter.emit(addEventKey, { elem, key });
     return key;
   }
+
   remove(key: number) {
     EventEmitter.emit(removeEventKey, key);
   }

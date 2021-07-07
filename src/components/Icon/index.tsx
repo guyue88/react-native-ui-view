@@ -4,8 +4,11 @@ import SvgUri from '../../lib/react-native-svg-uri';
 import svgs from '../../assets/svg';
 
 export type IconProps = {
+  // icon名字
   name: string;
+  // 颜色
   color?: string;
+  // 大小
   size?: number;
 };
 
