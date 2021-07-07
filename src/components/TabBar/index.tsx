@@ -1,8 +1,7 @@
 import React, { Children, cloneElement } from 'react';
 import { StyleSheet, View, SafeAreaView } from 'react-native';
-import TabItem from './item';
 
-type Props = {
+export type TabBarProps = {
   height?: number;
   iconSize?: number;
   activeColor?: string;
@@ -11,7 +10,7 @@ type Props = {
   showBorderTop?: boolean;
 };
 
-const TabBar: React.FC<Props> = props => {
+const TabBar: React.FC<TabBarProps> = props => {
   const {
     height = 50,
     iconSize = 20,

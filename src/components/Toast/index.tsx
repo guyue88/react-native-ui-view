@@ -6,13 +6,13 @@ import { sleep } from '../../utils';
 import Icon from '../Icon';
 
 type ToastType = 'loading' | 'success' | 'fail' | 'info';
-type Props = {
+export type ToastProps = {
   content: string;
   type: ToastType;
   mask?: boolean;
 };
 
-const ToastHost: React.FC<Props> = props => {
+const ToastHost: React.FC<ToastProps> = props => {
   const { content, type, mask } = props;
 
   let icon = null;

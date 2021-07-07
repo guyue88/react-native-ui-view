@@ -2,15 +2,20 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Theme } from '../Styles/theme';
 
-export type Props = {
+export type BadgeProps = {
+  // 显示文字
   text: string | number;
+  // 显示大小
   size?: 'large' | 'small';
+  // 是否显示在角落，绝对定位
   corner?: boolean;
+  // 是否显示为一个红点
   dot?: boolean;
+  // 超出这个值显示为...
   overflowCount?: number;
 };
 
-const Badge: React.FC<Props> = props => {
+const Badge: React.FC<BadgeProps> = props => {
   const { text, size = 'small', corner = false, dot = false, overflowCount = 99 } = props;
 
   const isNumber = !Number.isNaN(text);
@@ -37,17 +42,16 @@ const Badge: React.FC<Props> = props => {
 };
 
 const styles = StyleSheet.create({
-  text: {
-    color: Theme.colorTextBaseInverse,
-  },
   badge: {
-    display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: Theme.fillRed,
   },
   corner: {
     position: 'absolute',
+  },
+  text: {
+    color: Theme.colorTextBaseInverse,
   },
   large: {
     top: -3,

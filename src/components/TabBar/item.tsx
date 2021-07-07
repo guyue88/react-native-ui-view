@@ -14,7 +14,7 @@ import Badge from '../Badge';
 
 export type TabBarIcon = ImageURISource | ImageURISource[] | ImageRequireSource | ReactNode;
 
-export type Props = {
+export type TabItemProps = {
   title: string;
   selected: boolean;
   icon: TabBarIcon;
@@ -28,7 +28,7 @@ export type Props = {
   inactiveColor?: string;
 };
 
-const TabItem: React.FC<Props> = props => {
+const TabItem: React.FC<TabItemProps> = props => {
   const {
     title,
     selected = false,

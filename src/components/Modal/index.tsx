@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import ModalHost, { Props } from './modal';
+import ModalHost, { ModalProps } from './modal';
 import { portal } from '../Portal';
 
-export default class Modal extends Component<Props> {
-  static show(title: string, content: string, options: Omit<Props, 'title' | 'content' | 'visible'>) {
+export default class Modal extends Component<ModalProps> {
+  static show(title: string, content: string, options: Omit<ModalProps, 'title' | 'content' | 'visible'> = {}) {
     const key = portal.add(
       <ModalHost
         {...options}
@@ -12,14 +12,18 @@ export default class Modal extends Component<Props> {
         visible={true}
         onConfirm={() => {
           options.onConfirm && options.onConfirm();
-          portal.remove(key);
         }}
         onClose={() => {
-          options.onClose && options.onConfirm();
+          options.onClose && options.onClose();
           portal.remove(key);
         }}
       />,
     );
+    return key;
+  }
+
+  static hide(key: number) {
+    portal.remove(key);
   }
 
   render() {

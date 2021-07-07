@@ -3,13 +3,13 @@ import { StyleSheet, View } from 'react-native';
 import SvgUri from '../../lib/react-native-svg-uri';
 import svgs from '../../assets/svg';
 
-type Props = {
+export type IconProps = {
   name: string;
   color?: string;
   size?: number;
 };
 
-const Navbar: React.FC<Props> = props => {
+const Navbar: React.FC<IconProps> = props => {
   const { name, color = '#666', size = 20 } = props;
   let svgXmlData = svgs[name];
 

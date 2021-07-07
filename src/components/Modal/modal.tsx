@@ -1,8 +1,8 @@
 import React from 'react';
-import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Modal, Pressable, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import { Theme } from '../Styles/theme';
 
-export type Props = {
+export type ModalProps = {
   title: string;
   content: string;
   align?: 'center' | 'left' | 'right';
@@ -12,6 +12,7 @@ export type Props = {
   confirmColor?: string;
   showCancel?: boolean;
   mask?: boolean;
+  maskClosable?: boolean;
 
   visible: boolean;
   animationType?: 'fade' | 'none' | 'slide';
@@ -19,7 +20,7 @@ export type Props = {
   onClose?: () => void;
 };
 
-const ModalHost: React.FC<Props> = props => {
+const ModalHost: React.FC<ModalProps> = props => {
   const {
     title,
     content,
@@ -30,6 +31,7 @@ const ModalHost: React.FC<Props> = props => {
     confirmText = '确定',
     showCancel = true,
     mask = true,
+    maskClosable = false,
 
     visible,
     animationType = 'fade',
@@ -39,36 +41,33 @@ const ModalHost: React.FC<Props> = props => {
 
   return (
     <Modal statusBarTranslucent transparent visible={visible} animationType={animationType} onRequestClose={onClose}>
-      <Pressable style={[styles.container, mask ? styles.mask : undefined]} onPress={onClose}>
-        <View style={styles.main}>
-          <View style={styles.title}>
-            <Text style={styles.titleText}>{title}</Text>
-          </View>
+      <Pressable style={[styles.container, mask ? styles.mask : undefined]} onPress={() => maskClosable && onClose()}>
+        <Pressable style={styles.main} onPress={e => e.stopPropagation()}>
+          {!!title && (
+            <View style={styles.title}>
+              <Text style={styles.titleText}>{title}</Text>
+            </View>
+          )}
           <View style={styles.content}>
             <Text style={[styles.contentText, { textAlign: align }]}>{content}</Text>
           </View>
           <View style={styles.operation}>
             {showCancel && (
-              <Text
-                style={[styles.button, styles.cancelText, cancelColor ? { color: cancelColor } : undefined]}
-                onPress={onClose}
-              >
-                {cancelText}
-              </Text>
+              <TouchableHighlight underlayColor="#ddd" style={styles.button} onPress={onClose}>
+                <Text style={[styles.cancelText, cancelColor ? { color: cancelColor } : undefined]}>{cancelText}</Text>
+              </TouchableHighlight>
             )}
-            <Text
-              style={[
-                styles.button,
-                styles.confirmText,
-                showCancel && styles.buttonBorder,
-                confirmColor ? { color: confirmColor } : undefined,
-              ]}
+            <TouchableHighlight
+              underlayColor="#ddd"
+              style={[styles.button, showCancel && styles.buttonBorder]}
               onPress={onConfirm}
             >
-              {confirmText}
-            </Text>
+              <Text style={[styles.confirmText, confirmColor ? { color: confirmColor } : undefined]}>
+                {confirmText}
+              </Text>
+            </TouchableHighlight>
           </View>
-        </View>
+        </Pressable>
       </Pressable>
     </Modal>
   );
@@ -117,19 +116,21 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
-    fontSize: Theme.modalButtonFontSize,
+    justifyContent: 'center',
+    alignItems: 'center',
     height: Theme.modalButtonHeight,
     lineHeight: Theme.modalButtonHeight,
-    textAlign: 'center',
   },
   buttonBorder: {
     borderLeftColor: Theme.borderColorBase,
     borderLeftWidth: Theme.borderWidthSm,
   },
   cancelText: {
+    fontSize: Theme.modalButtonFontSize,
     color: Theme.colorTextSecondary,
   },
   confirmText: {
+    fontSize: Theme.modalButtonFontSize,
     color: Theme.colorLink,
   },
 });

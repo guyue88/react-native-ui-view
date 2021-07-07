@@ -14,7 +14,7 @@ import {
 import Icon from '../Icon';
 import { Theme, FontWeight } from '../Styles/theme';
 
-type Props = {
+export type NavbarProps = {
   height?: number;
   title: string;
   titleSize?: number;
@@ -32,7 +32,7 @@ type Props = {
   onBack?: () => void;
 };
 
-const Navbar: React.FC<Props> = props => {
+const Navbar: React.FC<NavbarProps> = props => {
   const {
     height = 44,
     title,
