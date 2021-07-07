@@ -11,7 +11,7 @@ export type BadgeProps = {
   corner?: boolean;
   // 是否显示为一个红点
   dot?: boolean;
-  // 超出这个值显示为...
+  // 超出这个值显示为99+
   overflowCount?: number;
 };
 
@@ -26,13 +26,13 @@ const Badge: React.FC<BadgeProps> = props => {
   }
 
   return (
-    !!showText && (
+    (!!showText || corner) && (
       <View
         style={[
           styles.badge,
+          corner && styles.corner,
           size === 'large' ? styles.large : styles.small,
-          corner ? styles.corner : {},
-          dot ? styles.dot : {},
+          dot && styles.dot,
         ]}
       >
         {!dot && <Text style={[styles.text, size === 'large' ? styles.largeText : styles.smallText]}>{showText}</Text>}
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     color: Theme.colorTextBaseInverse,
   },
   large: {
-    top: -3,
+    top: -8,
     right: -18,
     borderRadius: 10,
     paddingHorizontal: 7,
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   small: {
-    top: -2,
+    top: -6,
     right: -12,
     borderRadius: 12,
     paddingHorizontal: 5,
