@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { NativeEventEmitter, View, StyleSheet } from 'react-native';
+import { DeviceEventEmitter, View, StyleSheet } from 'react-native';
 
 const addEventKey = 'REACT_NATIVE_UI_VIEW_ADD_PORTAL';
 const removeEventKey = 'REACT_NATIVE_UI_VIEW_REMOVE_PORTAL';
-const EventEmitter = new NativeEventEmitter();
+
+const eventEmitter = DeviceEventEmitter;
 
 class PortalGuard {
   private key = 100;
 
   add(elem: React.ReactNode) {
     const key = this.key++;
-    EventEmitter.emit(addEventKey, { elem, key });
+    eventEmitter.emit(addEventKey, { elem, key });
     return key;
   }
 
   remove(key: number) {
-    EventEmitter.emit(removeEventKey, key);
+    eventEmitter.emit(removeEventKey, key);
   }
 }
 
@@ -24,12 +25,12 @@ const PortalHost: React.FC = () => {
   const [portalList, setPortalList] = useState<PortalItem[]>([]);
 
   useEffect(() => {
-    const listenerAdd = EventEmitter.addListener(addEventKey, mount);
-    const listenerRemove = EventEmitter.addListener(removeEventKey, unmount);
+    const listenerAdd = eventEmitter.addListener(addEventKey, mount);
+    const listenerRemove = eventEmitter.addListener(removeEventKey, unmount);
 
     return () => {
-      EventEmitter.removeSubscription(listenerAdd);
-      EventEmitter.removeSubscription(listenerRemove);
+      listenerAdd.remove();
+      listenerRemove.remove();
     };
   }, []);
 
