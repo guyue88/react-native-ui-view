@@ -44,7 +44,7 @@ const PortalHost: React.FC = () => {
   return (
     <>
       {portalList.map(item => (
-        <View style={styles.portal} key={item.key}>
+        <View style={styles.portal} key={item.key} pointerEvents="box-none">
           {item.elem}
         </View>
       ))}

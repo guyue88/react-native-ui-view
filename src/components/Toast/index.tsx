@@ -11,7 +11,7 @@ export type ToastProps = {
   content: string;
   // 类型
   type: ToastType;
-  // 是否显示蒙层
+  // 是否显示蒙层，防止穿透
   mask?: boolean;
 };
 

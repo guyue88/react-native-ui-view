@@ -25,16 +25,29 @@ const Badge: React.FC<BadgeProps> = props => {
     showText = +text > overflowCount ? `${overflowCount}+` : text;
   }
 
+  const cls: any[] = [styles.badge];
+  if (size === 'large') {
+    cls.push(styles.large);
+  } else {
+    cls.push(styles.small);
+  }
+  if (dot) {
+    cls.push(styles.dot);
+  }
+  if (corner) {
+    cls.push(styles.corner);
+    if (dot) {
+      cls.push(styles.dotCorner);
+    } else if (size === 'large') {
+      cls.push(styles.largeCorner);
+    } else {
+      cls.push(styles.smallCorner);
+    }
+  }
+
   return (
     (!!showText || corner) && (
-      <View
-        style={[
-          styles.badge,
-          corner && styles.corner,
-          size === 'large' ? styles.large : styles.small,
-          dot && styles.dot,
-        ]}
-      >
+      <View style={cls}>
         {!dot && <Text style={[styles.text, size === 'large' ? styles.largeText : styles.smallText]}>{showText}</Text>}
       </View>
     )
@@ -43,6 +56,9 @@ const Badge: React.FC<BadgeProps> = props => {
 
 const styles = StyleSheet.create({
   badge: {
+    width: 'auto',
+    height: 'auto',
+    display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: Theme.fillRed,
@@ -52,21 +68,26 @@ const styles = StyleSheet.create({
   },
   text: {
     color: Theme.colorTextBaseInverse,
+    textAlignVertical: 'top',
   },
   large: {
-    top: -8,
-    right: -18,
     borderRadius: 10,
     paddingHorizontal: 7,
+  },
+  largeCorner: {
+    top: -8,
+    right: -18,
   },
   largeText: {
     fontSize: 12,
   },
   small: {
-    top: -6,
-    right: -12,
     borderRadius: 12,
     paddingHorizontal: 5,
+  },
+  smallCorner: {
+    top: -6,
+    right: -12,
   },
   smallText: {
     fontSize: 10,
@@ -76,6 +97,8 @@ const styles = StyleSheet.create({
     height: 6,
     borderRadius: 3,
     paddingHorizontal: 0,
+  },
+  dotCorner: {
     top: -3,
     right: -3,
   },

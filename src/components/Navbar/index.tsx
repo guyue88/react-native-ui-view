@@ -49,13 +49,13 @@ export type NavbarProps = {
 
 const Navbar: React.FC<NavbarProps> = props => {
   const {
-    height = 44,
     title,
-    titleSize = 20,
+    titleSize = 18,
+    height = 42,
     titleColor = Theme.colorTextBase,
     titleBold = false,
     showBack = false,
-    backIconSize = 24,
+    backIconSize = 22,
     backIconColor = Theme.colorTextBase,
     backIconName = 'left',
     backText = '返回',
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   },
   backText: {
     fontSize: 18,
-    marginLeft: 6,
+    marginLeft: 2,
     color: Theme.colorTextBase,
   },
   title: {
