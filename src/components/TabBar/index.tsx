@@ -2,7 +2,7 @@ import React, { Children, cloneElement } from 'react';
 import { StyleSheet, View, SafeAreaView } from 'react-native';
 
 export type TabBarProps = {
-  // 高度
+  // 高度，默认50
   height?: number;
   // Icon大小
   iconSize?: number;
@@ -38,7 +38,11 @@ const TabBar: React.FC<TabBarProps> = props => {
     const newChildren: any[] = [];
     Children.map(children, (child: any, idx) => {
       if (showContent && selectedIndex === idx) {
-        newChildren.push(<View key={idx}>{child.props.children}</View>);
+        newChildren.push(
+          <View key={idx} style={{ flex: 1 }}>
+            {child.props.children}
+          </View>,
+        );
       } else {
         newChildren.push(
           cloneElement(child, {
@@ -59,9 +63,9 @@ const TabBar: React.FC<TabBarProps> = props => {
   };
 
   return (
-    <SafeAreaView style={styles.page}>
+    <SafeAreaView style={[styles.page, { paddingBottom: height }]}>
       {getPanes(true)}
-      <View style={[styles.tabBar, { backgroundColor, height }, showBorderTop ? styles.borderTop : {}]}>
+      <View style={[styles.tabBar, { backgroundColor, height }, showBorderTop && styles.borderTop]}>
         {getPanes(false)}
       </View>
     </SafeAreaView>
@@ -80,7 +84,6 @@ const styles = StyleSheet.create({
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
-    backgroundColor: '#333',
   },
   borderTop: {
     borderTopColor: '#E4E7ED',

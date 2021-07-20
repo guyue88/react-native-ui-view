@@ -58,8 +58,8 @@ const TabItem: React.FC<TabItemProps> = props => {
   // 提前加载图片，防止切换时导致闪动
   useEffect(() => {
     [selectedIcon, icon].forEach(image => {
-      if (!isValidElement(image)) {
-        Image.resolveAssetSource(image as ImageResolvedAssetSource);
+      if (!isValidElement(image) && typeof image === 'string') {
+        Image.prefetch(image);
       }
     });
     return () => {};
@@ -86,12 +86,13 @@ const TabItem: React.FC<TabItemProps> = props => {
 const styles = StyleSheet.create({
   tabItem: {
     flex: 1,
-    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
   },
   wrap: {
     position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
     fontSize: 13,
