@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import SvgUri from '../../lib/react-native-svg-uri';
 import svgs from '../../assets/svg';
 
@@ -10,16 +10,22 @@ export type IconProps = {
   color?: string;
   // 大小
   size?: number;
+  // 点击回调
+  onPress?: () => void;
 };
 
 const Navbar: React.FC<IconProps> = props => {
-  const { name, color = '#666', size = 20 } = props;
+  const { name, color = '#666', size = 20, onPress } = props;
   let svgXmlData = svgs[name];
 
   if (!svgXmlData) {
     throw new Error(`No Icon Named ${name} Was Found!`);
   }
-  return <SvgUri width={size} height={size} svgXmlData={svgXmlData} fill={color} />;
+  return (
+    <Pressable onPress={onPress}>
+      <SvgUri width={size} height={size} svgXmlData={svgXmlData} fill={color} />
+    </Pressable>
+  );
 };
 
 const styles = StyleSheet.create({

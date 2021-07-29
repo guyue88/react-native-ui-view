@@ -5,6 +5,7 @@ export { ModalProps } from './components/Modal/modal';
 export { default as Navbar, NavbarProps } from './components/Navbar';
 export { default as Icon, IconProps } from './components/Icon';
 export { default as Portal } from './components/Portal';
+export { default as Search, SearchProps } from './components/Search';
 export { default as TabBar, TabBarProps } from './components/TabBar';
 export { default as TabItem, TabItemProps } from './components/TabBar/item';
 export { default as Toast, ToastProps } from './components/Toast';
