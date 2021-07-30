@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -9,6 +9,7 @@ import {
   StatusBarStyle,
   TextStyle,
   TouchableHighlight,
+  LayoutChangeEvent,
 } from 'react-native';
 
 import Icon from '../Icon';
@@ -43,29 +44,50 @@ export type NavbarProps = {
   barStyle?: StatusBarStyle;
   // 是否展示底部Border
   showBorderBottom?: boolean;
+  // 自定义左侧内容
+  renderLeft?: () => React.ReactNode;
+  // 自定义右侧内容
+  renderRight?: () => React.ReactNode;
   // 返回按钮被点击的回调
   onBack?: () => void;
 };
 
 const Navbar: React.FC<NavbarProps> = props => {
+  const [left, setLeft] = useState(0);
+  const [right, setRight] = useState(0);
+
   const {
-    title,
-    titleSize = 18,
     height = 42,
-    titleColor = Theme.colorTextBase,
+    title,
+    titleSize = 17,
+    titleColor = Theme.colorTextParagraph,
     titleBold = false,
     showBack = false,
     backIconSize = 22,
-    backIconColor = Theme.colorTextBase,
+    backIconColor = Theme.colorTextParagraph,
     backIconName = 'left',
     backText = '返回',
     backTextStyle = {},
     backgroundColor,
     barStyle = 'dark-content',
     showBorderBottom = true,
+    renderLeft,
+    renderRight,
     onBack,
   } = props;
+
+  const onLeftLayout = (event: LayoutChangeEvent) => {
+    const { width } = event.nativeEvent.layout;
+    setLeft(width);
+  };
+
+  const onRightLayout = (event: LayoutChangeEvent) => {
+    const { width } = event.nativeEvent.layout;
+    setRight(width);
+  };
+
   const statusBarHeight = StatusBar.currentHeight;
+  const offset = Math.max(left, right) + 20;
 
   const statusBarStyle: StyleProp<ViewStyle> = {};
   if (backgroundColor) {
@@ -79,31 +101,42 @@ const Navbar: React.FC<NavbarProps> = props => {
   return (
     <View style={statusBarStyle}>
       <StatusBar translucent barStyle={barStyle} backgroundColor="transparent" />
+      {/* 占位 */}
       <View style={{ height: statusBarHeight }} />
       <View style={{ ...styles.container, height }}>
-        {showBack && (
-          <TouchableHighlight
-            style={styles.backIconWrap}
-            activeOpacity={0.6}
-            underlayColor={Theme.fillBody}
-            onPress={() => onBack && onBack()}
-          >
-            <>
-              <Icon name={backIconName} color={backIconColor} size={backIconSize} />
-              {backText && <Text style={{ ...styles.backText, ...backTextStyle }}>{backText}</Text>}
-            </>
-          </TouchableHighlight>
+        {renderLeft ? (
+          <View onLayout={onLeftLayout}>{renderLeft()}</View>
+        ) : (
+          showBack && (
+            <TouchableHighlight
+              style={styles.backIconWrap}
+              activeOpacity={0.6}
+              underlayColor={Theme.fillBody}
+              onPress={() => onBack && onBack()}
+              onLayout={onLeftLayout}
+            >
+              <>
+                <Icon name={backIconName} color={backIconColor} size={backIconSize} />
+                {!!backText && <Text style={{ ...styles.backText, ...backTextStyle }}>{backText}</Text>}
+              </>
+            </TouchableHighlight>
+          )
         )}
         <Text
           style={{
             ...styles.title,
+            left: offset,
+            right: offset,
             color: titleColor,
             fontSize: titleSize,
             fontWeight: titleBold ? FontWeight.BOLD : FontWeight.NORMAL,
           }}
+          numberOfLines={1}
         >
           {title}
         </Text>
+
+        {renderRight && <View onLayout={onRightLayout}>{renderRight()}</View>}
       </View>
     </View>
   );
@@ -125,13 +158,14 @@ const styles = StyleSheet.create({
     borderRadius: 40,
   },
   backText: {
-    fontSize: 18,
+    fontSize: 16,
     marginLeft: 2,
     color: Theme.colorTextBase,
   },
   title: {
     flex: 1,
     textAlign: 'center',
+    position: 'absolute',
   },
 });
 
