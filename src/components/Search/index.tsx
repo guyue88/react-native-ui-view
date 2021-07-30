@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { LegacyRef, MutableRefObject, useRef, useState } from 'react';
 import { StyleSheet, View, Text, TextInput, TextInputProps } from 'react-native';
 import { Theme } from '../Styles/theme';
 import Icon from '../Icon';
@@ -26,7 +26,7 @@ export type SearchProps = {
 
 const Search: React.FC<SearchProps> = props => {
   const [value, setValue] = useState('');
-  const $input = useRef(null);
+  const $input = useRef<TextInput>(null);
   const {
     shape = 'round',
     textAlign = 'left',

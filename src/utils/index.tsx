@@ -32,6 +32,7 @@ export const typeOf = (
     '[object Date]': 'date',
     '[object Error]': 'error',
   };
+  // @ts-ignore
   return _type[typeof obj] || _type[_toString.call(obj)] || (obj ? 'object' : 'null');
 };
 

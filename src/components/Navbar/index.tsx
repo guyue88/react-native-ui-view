@@ -66,7 +66,7 @@ const Navbar: React.FC<NavbarProps> = props => {
     backIconSize = 22,
     backIconColor = Theme.colorTextParagraph,
     backIconName = 'left',
-    backText = '返回',
+    backText = '',
     backTextStyle = {},
     backgroundColor,
     barStyle = 'dark-content',

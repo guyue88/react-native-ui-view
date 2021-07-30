@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Pressable } from 'react-native';
 import SvgUri from '../../lib/react-native-svg-uri';
 import svgs from '../../assets/svg';
 
@@ -16,7 +16,7 @@ export type IconProps = {
 
 const Navbar: React.FC<IconProps> = props => {
   const { name, color = '#666', size = 20, onPress } = props;
-  let svgXmlData = svgs[name];
+  let svgXmlData = (svgs as any)[name];
 
   if (!svgXmlData) {
     throw new Error(`No Icon Named ${name} Was Found!`);
@@ -27,9 +27,5 @@ const Navbar: React.FC<IconProps> = props => {
     </Pressable>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {},
-});
 
 export default Navbar;

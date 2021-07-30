@@ -45,12 +45,13 @@ const Badge: React.FC<BadgeProps> = props => {
     }
   }
 
+  if (!showText && !corner) {
+    return null;
+  }
   return (
-    (!!showText || corner) && (
-      <View style={cls}>
-        {!dot && <Text style={[styles.text, size === 'large' ? styles.largeText : styles.smallText]}>{showText}</Text>}
-      </View>
-    )
+    <View style={cls}>
+      {!dot && <Text style={[styles.text, size === 'large' ? styles.largeText : styles.smallText]}>{showText}</Text>}
+    </View>
   );
 };
 

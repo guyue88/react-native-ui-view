@@ -65,7 +65,7 @@ export default class SvgUri extends React.Component<Props, State> {
     this.state = { svgXmlData: props.svgXmlData };
 
     this.createSVGElement = this.createSVGElement.bind(this);
-    this.obtainComponentAtts = this.obtainComponentAtts.bind(this);
+    this.obtainComponentAttrs = this.obtainComponentAttrs.bind(this);
     this.inspectNode = this.inspectNode.bind(this);
     this.fecthSVGData = this.fecthSVGData.bind(this);
 
@@ -88,14 +88,14 @@ export default class SvgUri extends React.Component<Props, State> {
     if (nextProps.source) {
       const source: ImageResolvedAssetSource = resolveAssetSource(nextProps.source) || ({} as ImageResolvedAssetSource);
       const oldSource: ImageResolvedAssetSource =
-        resolveAssetSource(this.props.source) || ({} as ImageResolvedAssetSource);
+        resolveAssetSource(this.props.source as any) || ({} as ImageResolvedAssetSource);
       if (source.uri !== oldSource.uri) {
         this.fecthSVGData(source.uri);
       }
     }
   }
 
-  async fecthSVGData(uri) {
+  async fecthSVGData(uri: string) {
     let responseXML = null;
     try {
       let response = await fetch(uri);
@@ -104,88 +104,88 @@ export default class SvgUri extends React.Component<Props, State> {
       console.error('ERROR SVG', e);
     } finally {
       if (this.isComponentMounted) {
-        this.setState({ svgXmlData: responseXML });
+        this.setState({ svgXmlData: responseXML || '' });
       }
     }
 
     return responseXML;
   }
 
-  createSVGElement(node, childs) {
-    let componentAtts: any = {};
+  createSVGElement(node: any, child: any) {
+    let componentAttrs: any = {};
     let i = ind++;
     switch (node.nodeName) {
       case 'svg':
-        componentAtts = this.obtainComponentAtts(node, SVG_ATTS);
-        if (this.props.width) componentAtts.width = this.props.width;
-        if (this.props.height) componentAtts.height = this.props.height;
+        componentAttrs = this.obtainComponentAttrs(node, SVG_ATTS);
+        if (this.props.width) componentAttrs.width = this.props.width;
+        if (this.props.height) componentAttrs.height = this.props.height;
 
         return (
-          <Svg key={i} {...componentAtts}>
-            {childs}
+          <Svg key={i} {...componentAttrs}>
+            {child}
           </Svg>
         );
       case 'g':
-        componentAtts = this.obtainComponentAtts(node, G_ATTS);
+        componentAttrs = this.obtainComponentAttrs(node, G_ATTS);
         return (
-          <G key={i} {...componentAtts}>
-            {childs}
+          <G key={i} {...componentAttrs}>
+            {child}
           </G>
         );
       case 'path':
-        componentAtts = this.obtainComponentAtts(node, PATH_ATTS);
+        componentAttrs = this.obtainComponentAttrs(node, PATH_ATTS);
         return (
-          <Path key={i} {...componentAtts}>
-            {childs}
+          <Path key={i} {...componentAttrs}>
+            {child}
           </Path>
         );
       case 'circle':
-        componentAtts = this.obtainComponentAtts(node, CIRCLE_ATTS);
+        componentAttrs = this.obtainComponentAttrs(node, CIRCLE_ATTS);
         return (
-          <Circle key={i} {...componentAtts}>
-            {childs}
+          <Circle key={i} {...componentAttrs}>
+            {child}
           </Circle>
         );
       case 'rect':
-        componentAtts = this.obtainComponentAtts(node, RECT_ATTS);
+        componentAttrs = this.obtainComponentAttrs(node, RECT_ATTS);
         return (
-          <Rect key={i} {...componentAtts}>
-            {childs}
+          <Rect key={i} {...componentAttrs}>
+            {child}
           </Rect>
         );
       case 'linearGradient':
-        componentAtts = this.obtainComponentAtts(node, LINEARG_ATTS);
+        componentAttrs = this.obtainComponentAttrs(node, LINEARG_ATTS);
         return (
           <Defs key={i}>
-            <LinearGradient {...componentAtts}>{childs}</LinearGradient>
+            <LinearGradient {...componentAttrs}>{child}</LinearGradient>
           </Defs>
         );
       case 'radialGradient':
-        componentAtts = this.obtainComponentAtts(node, RADIALG_ATTS);
+        componentAttrs = this.obtainComponentAttrs(node, RADIALG_ATTS);
         return (
           <Defs key={i}>
-            <RadialGradient {...componentAtts}>{childs}</RadialGradient>
+            <RadialGradient {...componentAttrs}>{child}</RadialGradient>
           </Defs>
         );
       case 'stop':
-        componentAtts = this.obtainComponentAtts(node, STOP_ATTS);
+        componentAttrs = this.obtainComponentAttrs(node, STOP_ATTS);
         return (
-          <Stop key={i} {...componentAtts}>
-            {childs}
+          <Stop key={i} {...componentAttrs}>
+            {child}
           </Stop>
         );
       case 'ellipse':
-        componentAtts = this.obtainComponentAtts(node, ELLIPSE_ATTS);
+        componentAttrs = this.obtainComponentAttrs(node, ELLIPSE_ATTS);
         return (
-          <Ellipse key={i} {...componentAtts}>
-            {childs}
+          <Ellipse key={i} {...componentAttrs}>
+            {child}
           </Ellipse>
         );
       case 'polygon':
-        componentAtts = this.obtainComponentAtts(node, POLYGON_ATTS);
+        componentAttrs = this.obtainComponentAttrs(node, POLYGON_ATTS);
         return (
-          <Polygon key={i} {...componentAtts}>
-            {childs}
+          <Polygon key={i} {...componentAttrs}>
+            {child}
           </Polygon>
         );
       default:
@@ -193,13 +193,13 @@ export default class SvgUri extends React.Component<Props, State> {
     }
   }
 
-  obtainComponentAtts({ attributes }, enabledAttributes) {
-    let styleAtts = {};
+  obtainComponentAttrs({ attributes }: any, enabledAttributes: any) {
+    let styleAttrs = {};
     Array.from(attributes).forEach(({ nodeName, nodeValue }: any) => {
-      Object.assign(styleAtts, transformStyle(nodeName, nodeValue, this.props.fill));
+      Object.assign(styleAttrs, transformStyle(nodeName, nodeValue, this.props.fill));
     });
 
-    let componentAtts = Array.from(attributes)
+    let componentAttrs = Array.from(attributes)
       // @ts-ignore
       .map(camelCaseNodeName)
       .map(removePixelsFromNodeValue)
@@ -211,12 +211,12 @@ export default class SvgUri extends React.Component<Props, State> {
         }),
         {},
       );
-    Object.assign(componentAtts, styleAtts);
+    Object.assign(componentAttrs, styleAttrs);
 
-    return componentAtts;
+    return componentAttrs;
   }
 
-  inspectNode(node) {
+  inspectNode(node: any) {
     //Process the xml node
     let arrayElements = [];
 
@@ -227,8 +227,8 @@ export default class SvgUri extends React.Component<Props, State> {
     // Recursive function.
     if (node.childNodes && node.childNodes.length > 0) {
       for (let i = 0; i < node.childNodes.length; i++) {
-        let nodo = this.inspectNode(node.childNodes[i]);
-        if (nodo != null) arrayElements.push(nodo);
+        let temp = this.inspectNode(node.childNodes[i]);
+        if (temp != null) arrayElements.push(temp);
       }
     }
     let element = this.createSVGElement(node, arrayElements);
