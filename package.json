@@ -1,16 +1,17 @@
 {
   "name": "react-native-ui-view",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "react native ui components kit",
   "keywords": [
     "react native",
-    "react native ui"
+    "react native ui kit"
   ],
   "author": "lq9328@126.com",
-  "main": "src/index.ts",
+  "main": "lib/index.js",
   "scripts": {
+    "tsc": "tsc",
     "build:svg": "node scripts/svg/index.js",
-    "tsc": "tsc"
+    "prepublish": "yarn build:svg && yarn tsc"
   },
   "peerDependencies": {
     "react": "17.0.1",
@@ -26,6 +27,9 @@
     "react-native-svg": "^12.1.1",
     "typescript": "^3.8.3"
   },
+  "files": [
+    "lib"
+  ],
   "license": "MIT",
   "homepage": "https://github.com/AspenLuoQiang/react-native-ui-kit"
 }
