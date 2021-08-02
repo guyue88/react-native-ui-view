@@ -1,6 +1,6 @@
 {
   "name": "react-native-ui-view",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "react native ui components kit",
   "keywords": [
     "react native",
@@ -11,7 +11,7 @@
   "scripts": {
     "tsc": "tsc",
     "build:svg": "node scripts/svg/index.js",
-    "prepublish": "yarn build:svg && yarn tsc"
+    "prepublishOnly": "yarn build:svg && yarn tsc"
   },
   "peerDependencies": {
     "react": "17.0.1",
