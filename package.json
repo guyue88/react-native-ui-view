@@ -1,17 +1,20 @@
 {
   "name": "react-native-ui-view",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "react native ui components kit",
   "keywords": [
     "react native",
     "react native ui kit"
   ],
   "author": "lq9328@126.com",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
+  "module": "ems/index.js",
   "scripts": {
     "tsc": "tsc",
+    "tsc:esm": "tsc --module es2015 --outDir esm",
+    "build": "rimraf dist && rimraf esm && yarn tsc && yarn tsc:esm",
     "build:svg": "node scripts/svg/index.js",
-    "prepublishOnly": "yarn build:svg && yarn tsc"
+    "prepublishOnly": "yarn build:svg && yarn build"
   },
   "peerDependencies": {
     "react": "17.0.1",
@@ -25,10 +28,12 @@
     "react": "17.0.1",
     "react-native": "0.64.1",
     "react-native-svg": "^12.1.1",
+    "rimraf": "^3.0.2",
     "typescript": "^3.8.3"
   },
   "files": [
-    "lib"
+    "dist",
+    "esm"
   ],
   "license": "MIT",
   "homepage": "https://github.com/AspenLuoQiang/react-native-ui-kit"
