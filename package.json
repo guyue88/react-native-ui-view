@@ -1,9 +1,10 @@
 {
   "name": "react-native-ui-view",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "react native ui components kit",
   "keywords": [
     "react native",
+    "react native components",
     "react native ui kit"
   ],
   "author": "lq9328@126.com",

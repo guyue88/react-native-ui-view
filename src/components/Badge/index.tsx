@@ -87,8 +87,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
   },
   smallCorner: {
-    top: -6,
-    right: -12,
+    top: -4,
+    right: -14,
   },
   smallText: {
     fontSize: 10,
