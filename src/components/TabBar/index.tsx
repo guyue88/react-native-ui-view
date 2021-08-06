@@ -39,7 +39,7 @@ const TabBar: React.FC<TabBarProps> = props => {
     Children.map(children, (child: any, idx) => {
       if (showContent && selectedIndex === idx) {
         newChildren.push(
-          <View key={idx} style={{ flex: 1 }}>
+          <View key={idx} style={{ flex: 1, paddingBottom: height }}>
             {child.props.children}
           </View>,
         );
@@ -63,9 +63,11 @@ const TabBar: React.FC<TabBarProps> = props => {
   };
 
   return (
-    <SafeAreaView style={[styles.page, { paddingBottom: height }]}>
+    <SafeAreaView style={[styles.page]}>
+      {/* 渲染的内容 */}
       {getPanes(true)}
       <View style={[styles.tabBar, { backgroundColor, height }, showBorderTop && styles.borderTop]}>
+        {/* tabbar item */}
         {getPanes(false)}
       </View>
     </SafeAreaView>
@@ -74,7 +76,6 @@ const TabBar: React.FC<TabBarProps> = props => {
 
 const styles = StyleSheet.create({
   page: {
-    position: 'relative',
     flex: 1,
   },
   tabBar: {
