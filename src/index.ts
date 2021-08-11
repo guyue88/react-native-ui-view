@@ -1,4 +1,4 @@
-export { Theme, FontWeight } from './components/Styles/theme';
+export { Theme, FONT_WEIGHT } from './components/Styles/theme';
 export { default as Badge } from './components/Badge';
 export type { BadgeProps } from './components/Badge';
 export { default as Modal } from './components/Modal';

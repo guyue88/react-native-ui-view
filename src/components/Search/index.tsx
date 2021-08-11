@@ -1,23 +1,39 @@
-import React, { LegacyRef, MutableRefObject, useRef, useState } from 'react';
-import { StyleSheet, View, Text, TextInput, TextInputProps } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { StyleSheet, View, Text, TextInput, TextInputProps, StyleProp, ViewStyle } from 'react-native';
 import { Theme } from '../Styles/theme';
 import Icon from '../Icon';
 
 export type SearchProps = {
+  // 搜索值
+  value: string;
   // 形状
   shape?: 'round' | 'square';
   // 文字对齐模式
   textAlign?: 'left' | 'center' | 'right';
+  // icon 以及文字颜色
+  color?: string;
+  // 背景色
+  backgroundColor?: string;
+  // border color
+  borderColor?: string;
   // placeholder
   placeholder?: string;
+  // placeholder color
+  placeholderColor?: string;
   // 显示清除按钮，默认显示
   showClear?: boolean;
   // 显示搜索文字，默认”搜素“
   searchText?: string;
+  // 搜索文字颜色
+  searchTextColor?: string;
   // 右侧搜索的文字，默认显示
   showSearchText?: boolean;
   // 输入框的其他参数
   textInputProps?: TextInputProps;
+  // style
+  style?: StyleProp<ViewStyle>;
+  // value 变更回调
+  onChange: (value: string) => void;
   // 搜索回调
   onSearch?: (value: string) => void;
   // 删除输入框文件的回调
@@ -25,47 +41,53 @@ export type SearchProps = {
 };
 
 const Search: React.FC<SearchProps> = props => {
-  const [value, setValue] = useState('');
   const $input = useRef<TextInput>(null);
   const {
+    value,
     shape = 'round',
     textAlign = 'left',
+    color = Theme.colorTextParagraph,
+    borderColor = Theme.colorIconBase,
     placeholder,
+    placeholderColor = Theme.colorTextPlaceholder,
+    backgroundColor = 'transparent',
     showClear = true,
     searchText = '搜索',
+    searchTextColor = Theme.colorLink,
     showSearchText = true,
     textInputProps = {},
+    style = {},
+    onChange,
     onSearch,
     onClear,
   } = props;
 
   const onSearchText = () => {
-    console.log(value);
     onSearch && onSearch(value);
   };
 
   const onClearText = () => {
-    setValue('');
+    onChange('');
     onClear && onClear();
   };
 
   return (
-    <View style={styles.searchContainer}>
-      <View style={[styles.search, shape === 'round' && styles.round]}>
-        <Icon name="search" size={22} color={Theme.colorTextPlaceholder} />
+    <View style={[styles.searchContainer, style]}>
+      <View style={[styles.search, shape === 'round' && styles.round, { backgroundColor, borderColor }]}>
+        <Icon name="search" size={22} color={placeholderColor} />
         <TextInput
           ref={$input}
-          style={styles.searchInput}
+          style={[styles.searchInput, { color }]}
           placeholder={placeholder}
           textAlign={textAlign}
-          placeholderTextColor={Theme.colorTextPlaceholder}
+          placeholderTextColor={placeholderColor}
           returnKeyType="search"
           blurOnSubmit={true}
           enablesReturnKeyAutomatically={true}
           multiline={false}
           {...textInputProps}
           value={value}
-          onChangeText={setValue}
+          onChangeText={onChange}
           onSubmitEditing={onSearchText}
         />
         {showClear && !!value && (
@@ -75,7 +97,7 @@ const Search: React.FC<SearchProps> = props => {
       {showSearchText && (
         <View style={styles.searchTextWrap}>
           <Text
-            style={styles.searchText}
+            style={[styles.searchText, { color: searchTextColor }]}
             onPress={() => {
               onSearchText();
               $input.current?.blur();
@@ -91,7 +113,7 @@ const Search: React.FC<SearchProps> = props => {
 
 const styles = StyleSheet.create({
   searchContainer: {
-    width: '100%',
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -99,7 +121,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: Theme.colorIconBase,
     borderWidth: 0.5,
     borderRadius: 4,
     paddingHorizontal: 6,
@@ -111,16 +132,14 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 0,
     marginLeft: 4,
-    height: 32,
+    height: 30,
     fontSize: 14,
-    color: Theme.colorTextParagraph,
   },
   searchTextWrap: {
     marginLeft: 8,
   },
   searchText: {
     fontSize: 18,
-    color: Theme.colorLink,
   },
 });
 

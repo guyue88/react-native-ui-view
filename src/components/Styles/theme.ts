@@ -144,12 +144,9 @@ export const Theme = {
   modalZIndex: 999,
 };
 
-export const FontWeight: Record<
-  string,
-  '100' | '400' | '500' | '700' | 'normal' | 'bold' | '200' | '300' | '600' | '800' | '900'
-> = {
-  LIGHTER: '100',
-  NORMAL: '400',
-  MEDIUM: '500',
-  BOLD: '700',
-};
+export enum FONT_WEIGHT {
+  LIGHTER = '100',
+  NORMAL = '400',
+  MEDIUM = '500',
+  BOLD = '700',
+}

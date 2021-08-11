@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 
 import Icon from '../Icon';
-import { Theme, FontWeight } from '../Styles/theme';
+import { Theme, FONT_WEIGHT } from '../Styles/theme';
 
 export type NavbarProps = {
   // 标题
@@ -129,7 +129,7 @@ const Navbar: React.FC<NavbarProps> = props => {
             right: offset,
             color: titleColor,
             fontSize: titleSize,
-            fontWeight: titleBold ? FontWeight.BOLD : FontWeight.NORMAL,
+            fontWeight: titleBold ? FONT_WEIGHT.BOLD : FONT_WEIGHT.NORMAL,
           }}
           numberOfLines={1}
         >
