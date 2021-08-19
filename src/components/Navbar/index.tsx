@@ -115,10 +115,10 @@ const Navbar: React.FC<NavbarProps> = props => {
               onPress={() => onBack && onBack()}
               onLayout={onLeftLayout}
             >
-              <>
+              <View>
                 <Icon name={backIconName} color={backIconColor} size={backIconSize} />
                 {!!backText && <Text style={{ ...styles.backText, ...backTextStyle }}>{backText}</Text>}
-              </>
+              </View>
             </TouchableHighlight>
           )
         )}
@@ -156,6 +156,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 6,
     borderRadius: 40,
+    backgroundColor: 'red',
   },
   backText: {
     fontSize: 16,

@@ -11,9 +11,9 @@
   "main": "dist/index.js",
   "module": "ems/index.js",
   "scripts": {
+    "dev": "tsc --watch",
     "tsc": "tsc",
     "tsc:esm": "tsc --module es2015 --outDir esm",
-    "tsc:watch": "tsc --watch",
     "build": "rimraf dist && rimraf esm && yarn tsc && yarn tsc:esm",
     "build:svg": "node scripts/svg/index.js",
     "prepublishOnly": "yarn build:svg && yarn build"
