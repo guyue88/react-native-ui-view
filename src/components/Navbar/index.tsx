@@ -87,7 +87,7 @@ const Navbar: React.FC<NavbarProps> = props => {
   };
 
   const statusBarHeight = StatusBar.currentHeight;
-  const offset = Math.max(left, right) + 20;
+  const offset = Math.max(left, right) + 15;
 
   const statusBarStyle: StyleProp<ViewStyle> = {};
   if (backgroundColor) {
@@ -97,31 +97,29 @@ const Navbar: React.FC<NavbarProps> = props => {
     statusBarStyle.borderBottomColor = Theme.borderColor;
     statusBarStyle.borderBottomWidth = 0.5;
   }
-
   return (
     <View style={statusBarStyle}>
       <StatusBar translucent barStyle={barStyle} backgroundColor="transparent" />
       {/* 占位 */}
       <View style={{ height: statusBarHeight }} />
       <View style={{ ...styles.container, height }}>
-        {renderLeft ? (
-          <View onLayout={onLeftLayout}>{renderLeft()}</View>
-        ) : (
-          showBack && (
-            <TouchableHighlight
-              style={styles.backIconWrap}
-              activeOpacity={0.6}
-              underlayColor={Theme.fillBody}
-              onPress={() => onBack && onBack()}
-              onLayout={onLeftLayout}
-            >
-              <View>
-                <Icon name={backIconName} color={backIconColor} size={backIconSize} />
-                {!!backText && <Text style={{ ...styles.backText, ...backTextStyle }}>{backText}</Text>}
-              </View>
-            </TouchableHighlight>
-          )
-        )}
+        <View onLayout={onLeftLayout}>
+          {renderLeft
+            ? renderLeft()
+            : showBack && (
+                <TouchableHighlight
+                  style={styles.backIconWrap}
+                  activeOpacity={0.6}
+                  underlayColor={Theme.fillBody}
+                  onPress={onBack}
+                >
+                  <>
+                    <Icon name={backIconName} color={backIconColor} size={backIconSize} />
+                    <Text style={{ ...styles.backText, ...backTextStyle }}>{backText}</Text>
+                  </>
+                </TouchableHighlight>
+              )}
+        </View>
         <Text
           style={{
             ...styles.title,
@@ -154,9 +152,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 6,
-    borderRadius: 40,
-    backgroundColor: 'red',
+    paddingVertical: 8,
+    paddingHorizontal: 10,
+    borderRadius: 10,
   },
   backText: {
     fontSize: 16,
