@@ -87,7 +87,8 @@ const Navbar: React.FC<NavbarProps> = props => {
   };
 
   const statusBarHeight = StatusBar.currentHeight;
-  const offset = Math.max(left, right) + 15;
+  // 取左右两边最大值，最小80
+  const offset = Math.max(Math.max(left, right), 80);
 
   const statusBarStyle: StyleProp<ViewStyle> = {};
   if (backgroundColor) {

@@ -6,7 +6,7 @@ import Icon from '../Icon';
 export type SearchProps = {
   // 搜索值
   value: string;
-  // 形状
+  // 形状，默认圆角
   shape?: 'round' | 'square';
   // 文字对齐模式
   textAlign?: 'left' | 'center' | 'right';
@@ -22,12 +22,12 @@ export type SearchProps = {
   placeholderColor?: string;
   // 显示清除按钮，默认显示
   showClear?: boolean;
+  // 右侧搜索的文字，默认显示
+  showSearchText?: boolean;
   // 显示搜索文字，默认”搜素“
   searchText?: string;
   // 搜索文字颜色
   searchTextColor?: string;
-  // 右侧搜索的文字，默认显示
-  showSearchText?: boolean;
   // 输入框的其他参数
   textInputProps?: TextInputProps;
   // style
@@ -113,7 +113,6 @@ const Search: React.FC<SearchProps> = props => {
 
 const styles = StyleSheet.create({
   searchContainer: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
   },
