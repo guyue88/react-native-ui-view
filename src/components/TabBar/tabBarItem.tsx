@@ -7,14 +7,13 @@ import {
   ImageURISource,
   ImageRequireSource,
   TouchableWithoutFeedback,
-  ImageResolvedAssetSource,
 } from 'react-native';
 
 import Badge from '../Badge';
 
 export type TabBarIcon = ImageURISource | ImageURISource[] | ImageRequireSource | ReactNode;
 
-export type TabItemProps = {
+export type TabBarItemProps = {
   // 文字
   title: string;
   // 是否被选中
@@ -39,7 +38,7 @@ export type TabItemProps = {
   inactiveColor?: string;
 };
 
-const TabItem: React.FC<TabItemProps> = props => {
+const TabBarItem: React.FC<TabBarItemProps> = props => {
   const {
     title,
     selected = false,
@@ -67,7 +66,7 @@ const TabItem: React.FC<TabItemProps> = props => {
 
   return (
     <TouchableWithoutFeedback onPress={onPress}>
-      <View style={styles.tabItem}>
+      <View style={styles.TabBarItem}>
         <View style={styles.wrap}>
           {isValidElement(renderIcon) ? (
             <View style={{ width: iconSize, height: iconSize }}>{renderIcon}</View>
@@ -84,7 +83,7 @@ const TabItem: React.FC<TabItemProps> = props => {
 };
 
 const styles = StyleSheet.create({
-  tabItem: {
+  TabBarItem: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -100,4 +99,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TabItem;
+export default TabBarItem;
