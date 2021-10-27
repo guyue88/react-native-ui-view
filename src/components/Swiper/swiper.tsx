@@ -1,4 +1,4 @@
-import React, { Children, cloneElement } from 'react';
+import React, { Children, cloneElement, useEffect, useRef } from 'react';
 import { StyleSheet, ScrollView, View, Text, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 import { Theme } from '../..';
 
@@ -18,7 +18,7 @@ export type SwiperProps = {
   // 播放持续时间
   duration?: number;
   // 是否衔接播放
-  circular?: boolean;
+  // circular?: boolean;
   // 圆角值
   borderRadius?: number;
   // 背景颜色
@@ -28,6 +28,7 @@ export type SwiperProps = {
 };
 
 let timer: NodeJS.Timeout | null = null;
+let autoplayTimer: NodeJS.Timeout | null = null;
 const Swiper: React.FC<SwiperProps> = props => {
   const {
     children,
@@ -37,13 +38,37 @@ const Swiper: React.FC<SwiperProps> = props => {
     indicatorPosition = 'bottomCenter',
     autoplay = false,
     interval = 2500,
-    duration = 500,
-    circular = true,
+    // duration = 500,
+    // circular = true,
     borderRadius = 8,
     backgroundColor,
     onChange,
   } = props;
   const swiperItemNumber = [].concat(children as any).length;
+  const $scroll = useRef<ScrollView | null>(null);
+
+  useEffect(() => {
+    if (!autoplay) {
+      autoplayTimer && clearInterval(autoplayTimer);
+    } else {
+      autoplayTimer = setInterval(() => {
+        let index = current + 1;
+        if (index >= swiperItemNumber) {
+          index = 0;
+        }
+        $scroll?.current &&
+          $scroll.current.scrollTo({
+            x: index * width,
+            animated: true,
+          });
+        onChange && onChange(index);
+      }, interval);
+    }
+
+    return () => {
+      autoplayTimer && clearInterval(autoplayTimer);
+    };
+  }, [autoplay, interval, current]);
 
   const getPanes = () => {
     const newChildren: any[] = [];
@@ -129,8 +154,8 @@ const Swiper: React.FC<SwiperProps> = props => {
         horizontal
         pagingEnabled
         alwaysBounceHorizontal
+        ref={$scroll}
         showsHorizontalScrollIndicator={false}
-        scrollEventThrottle={16}
         onMomentumScrollEnd={onScrollEnd}
         style={{
           width,
