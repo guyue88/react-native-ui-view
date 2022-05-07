@@ -1,6 +1,6 @@
 {
   "name": "react-native-ui-view",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "react native ui components kit",
   "keywords": [
     "react native",
@@ -29,6 +29,7 @@
   "devDependencies": {
     "@react-native-community/eslint-config": "^2.0.0",
     "@types/react-native": "^0.64.5",
+    "@types/react": "^16.9.16",
     "@types/xmldom": "^0.1.31",
     "eslint-plugin-react-hooks": "^4.3.0",
     "metro-react-native-babel-preset": "^0.64.0",

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { isValidElement } from 'react';
 import { Text, StyleSheet, StyleProp, ViewStyle, TouchableHighlight } from 'react-native';
 import { Theme } from '../../components/Styles/theme';
 
