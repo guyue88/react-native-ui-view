@@ -1,0 +1,50 @@
+{
+  "name": "react-native-ui-view",
+  "version": "0.0.9",
+  "description": "react native ui components kit",
+  "keywords": [
+    "react native",
+    "react native components",
+    "react native ui kit"
+  ],
+  "author": "lq9328@126.com",
+  "main": "dist/index.js",
+  "module": "ems/index.js",
+  "scripts": {
+    "dev": "tsc --watch",
+    "tsc": "tsc",
+    "tsc:esm": "tsc --module es2015 --outDir esm",
+    "build": "rimraf dist && rimraf esm && yarn tsc && yarn tsc:esm",
+    "build:svg": "node scripts/svg/index.js",
+    "prepublishOnly": "yarn build:svg && yarn build"
+  },
+  "dependencies": {
+    "xmldom": "^0.6.0"
+  },
+  "peerDependencies": {
+    "react": "17.0.1",
+    "react-native": "0.64.1",
+    "react-native-svg": "^12.1.1"
+  },
+  "devDependencies": {
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@types/react-native": "^0.64.5",
+    "@types/xmldom": "^0.1.31",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "metro-react-native-babel-preset": "^0.64.0",
+    "react": "17.0.1",
+    "react-native": "0.64.1",
+    "react-native-svg": "^12.1.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^3.8.3"
+  },
+  "files": [
+    "dist",
+    "esm"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "homepage": "https://github.com/guyue88/react-native-ui-view",
+  "license": "MIT"
+}
