@@ -18,6 +18,8 @@ export type { IndexListProps } from './components/IndexList';
 export { default as Portal } from './components/Portal';
 export { default as Search } from './components/Search';
 export type { SearchProps } from './components/Search';
+export { default as Spin } from './components/Spin';
+export type { SpinProps } from './components/Spin';
 export { default as Swiper } from './components/Swiper/swiper';
 export type { SwiperProps } from './components/Swiper/swiper';
 export { default as SwiperItem } from './components/Swiper/swiperItem';
