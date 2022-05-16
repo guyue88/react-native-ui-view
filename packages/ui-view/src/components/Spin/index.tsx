@@ -33,6 +33,7 @@ const Spin: React.FC<SpinProps> = props => {
 
   useEffect(() => {
     rotate(spinning);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [spinning]);
 
   const spin = rotateAnim.interpolate({
