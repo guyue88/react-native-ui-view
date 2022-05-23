@@ -11,16 +11,17 @@ type WrapProps = {
 
 export type CellProps = WrapProps & {
   title: string;
-  label?: string;
+  label?: string; // 副标题
   value?: string;
-  iconName?: string;
-  iconSize?: number;
-  iconColor?: string;
-  renderIcon?: () => ReactNode;
   border?: boolean;
   centerRightText?: boolean;
-  isLink?: boolean;
+
   rightIconName?: string;
+  rightIconSize?: number;
+  rightIconColor?: string;
+
+  isLink?: boolean;
+  renderLeftIcon?: () => ReactNode;
 };
 
 const WithWrap: React.FC<WrapProps> = props => {
@@ -41,28 +42,25 @@ const Cell: React.FC<CellProps> = props => {
     title,
     label,
     value,
-    iconName,
-    iconSize = 24,
-    iconColor = Theme.colorTextGray,
-    renderIcon,
     border = true,
-    centerRightText = true,
+
     isLink,
+    centerRightText = true,
+
     rightIconName = 'right',
+    rightIconSize = 24,
+    rightIconColor = Theme.colorTextSecondary,
     clickable,
     style,
     onPress,
+    renderLeftIcon,
   } = props;
 
   return (
     <WithWrap style={[styles.container, border && styles.border, style]} clickable={clickable} onPress={onPress}>
       <View style={styles.left}>
         <View style={styles.titleWrap}>
-          {renderIcon || iconName ? (
-            <View style={styles.iconWrap}>
-              {renderIcon ? renderIcon() : !!iconName && <Icon name={iconName} size={iconSize} color={iconColor} />}
-            </View>
-          ) : null}
+          {renderLeftIcon ? <View style={styles.iconWrap}>{renderLeftIcon()}</View> : null}
 
           <Text style={styles.titleText}>{title}</Text>
         </View>
@@ -74,9 +72,10 @@ const Cell: React.FC<CellProps> = props => {
           </View>
         )}
       </View>
+      {/* eslint-disable-next-line react-native/no-inline-styles */}
       <View style={{ alignSelf: centerRightText ? 'center' : 'flex-start' }}>
         {value && <Text>{title}</Text>}
-        {isLink && <Icon name={rightIconName} size={24} color={Theme.colorTextGray} />}
+        {isLink && <Icon name={rightIconName} size={rightIconSize} color={rightIconColor} />}
       </View>
     </WithWrap>
   );
@@ -90,8 +89,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   border: {
-    borderBottomColor: Theme.borderColor,
-    borderBottomWidth: 1,
+    borderBottomColor: Theme.borderLightColor,
+    borderBottomWidth: 0.5,
   },
   left: {
     flex: 1,
