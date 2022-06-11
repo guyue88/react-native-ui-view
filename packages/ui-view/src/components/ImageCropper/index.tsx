@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, View, Dimensions, Pressable, Text } from 'react-native';
-import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
-import { Gesture, GestureDetector, gestureHandlerRootHOC, PanGestureHandler } from 'react-native-gesture-handler';
+import Animated, { useSharedValue, useAnimatedStyle } from 'react-native-reanimated';
+import { Gesture, GestureDetector, gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import { Modal } from 'react-native';
 import { FONT_WEIGHT, Theme } from '../Styles/theme';
 import { useEffect } from 'react';
@@ -22,13 +22,14 @@ const ImageCropper: React.FC<ImageCropperProps> = props => {
     x: 0,
     y: 0,
   });
-  const [rectSize, setReactSize] = useState({ width: 0, height: 0 });
+  const [rectInfo, setReactInfo] = useState({ width: 0, height: 0, x: 0, y: 0 });
 
   const scale = useSharedValue(1);
   const savedScale = useSharedValue(1);
-  const onLeft = useSharedValue(true);
   const positionX = useSharedValue(0);
   const positionY = useSharedValue(0);
+  const savedPositionX = useSharedValue(0);
+  const savedPositionY = useSharedValue(0);
 
   useEffect(() => {
     Image.getSize(uri, (width: number, height: number) => {
@@ -54,37 +55,38 @@ const ImageCropper: React.FC<ImageCropperProps> = props => {
       });
 
       const size = Math.min(w, h);
-      setReactSize({
+      setReactInfo({
         width: size,
         height: size,
+        x: (WINDOW_WIDTH - size) / 2,
+        y: (WINDOW_HEIGHT - size) / 2,
       });
     });
   }, [uri]);
 
   const pinchGesture = Gesture.Pinch()
     .onUpdate(e => {
-      console.log(111, e);
+      console.log(11, savedScale.value, scale.value);
       scale.value = savedScale.value * e.scale;
     })
     .onEnd(() => {
-      savedScale.value = scale.value;
+      // 不能比原图小
+      if (scale.value <= 1) {
+        scale.value = 1;
+        savedScale.value = 1;
+      } else {
+        savedScale.value = scale.value;
+      }
     });
   const panGesture = Gesture.Pan()
+    .maxPointers(1)
     .onUpdate(e => {
-      console.log(111, onLeft.value, e);
-      if (e.numberOfPointers > 1) {
-        return;
-      }
-      positionX.value = e.translationX;
-      positionY.value = e.translationY;
+      positionX.value = savedPositionX.value + e.translationX;
+      positionY.value = savedPositionY.value + e.translationY;
     })
-    .onEnd(e => {
-      console.log(222, e);
-      // if (e.numberOfPointers > 1) {
-      //   return;
-      // }
-      positionX.value = withTiming(positionX.value, { duration: 100 });
-      positionY.value = withTiming(positionY.value, { duration: 100 });
+    .onEnd(() => {
+      savedPositionX.value = positionX.value;
+      savedPositionY.value = positionY.value;
     });
 
   const pinchAnimStyle = useAnimatedStyle(() => ({
@@ -101,7 +103,7 @@ const ImageCropper: React.FC<ImageCropperProps> = props => {
         <GestureDetector gesture={panGesture}>
           <View style={styles.gesture}>
             <View style={styles.content}>
-              <View style={[styles.rect, { width: rectSize.width, height: rectSize.height }]} />
+              <View style={[styles.rect, { width: rectInfo.width, height: rectInfo.height }]} />
             </View>
             <View style={styles.footer}>
               <Pressable hitSlop={10}>
