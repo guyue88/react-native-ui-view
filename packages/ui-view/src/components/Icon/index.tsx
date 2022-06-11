@@ -16,7 +16,7 @@ export type IconProps = {
   style?: StyleProp<ViewStyle>;
 };
 
-const Navbar: React.FC<IconProps> = props => {
+const Icon: React.FC<IconProps> = props => {
   const { name, color = '#666', size = 20, onPress, style = {} } = props;
   let svgXmlData = (svgs as any)[name];
 
@@ -30,4 +30,4 @@ const Navbar: React.FC<IconProps> = props => {
   );
 };
 
-export default Navbar;
+export default Icon;

@@ -22,19 +22,25 @@
     "xmldom": "^0.6.0"
   },
   "peerDependencies": {
+    "@react-native-community/image-editor": "^2.3.0",
     "react": "17.0.1",
     "react-native": "0.64.1",
+    "react-native-gesture-handler": "^2.4.2",
+    "react-native-reanimated": "^2.8.0",
     "react-native-svg": "^12.1.1"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "^2.0.0",
-    "@types/react-native": "^0.64.5",
+    "@react-native-community/image-editor": "^2.3.0",
     "@types/react": "16.9.16",
+    "@types/react-native": "^0.64.5",
     "@types/xmldom": "^0.1.31",
     "eslint-plugin-react-hooks": "^4.3.0",
     "metro-react-native-babel-preset": "^0.64.0",
     "react": "17.0.1",
     "react-native": "0.64.1",
+    "react-native-gesture-handler": "^2.4.2",
+    "react-native-reanimated": "^2.8.0",
     "react-native-svg": "^12.1.1",
     "rimraf": "^3.0.2",
     "typescript": "^3.8.3"
