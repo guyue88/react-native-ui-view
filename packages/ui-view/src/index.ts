@@ -1,4 +1,5 @@
-export { Theme, FONT_WEIGHT } from './components/Styles/theme';
+export { default as ActionSheet } from './components/ActionSheet';
+export type { ActionSheetProps } from './components/ActionSheet';
 export { default as Badge } from './components/Badge';
 export type { BadgeProps } from './components/Badge';
 export { default as Button } from './components/Button';
@@ -32,3 +33,4 @@ export { default as TabBarItem } from './components/TabBar/tabBarItem';
 export type { TabBarItemProps } from './components/TabBar/tabBarItem';
 export { default as Toast } from './components/Toast';
 export type { ToastProps } from './components/Toast';
+export { Theme, FONT_WEIGHT } from './components/Styles/theme';
