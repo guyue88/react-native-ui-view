@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { PropsWithChildren, useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -8,11 +8,11 @@ import {
   StatusBar,
   StatusBarStyle,
   TextStyle,
-  TouchableHighlight,
   LayoutChangeEvent,
 } from 'react-native';
 
 import Icon from '../Icon';
+import Touchable from '../Touchable';
 import { Theme, FONT_WEIGHT } from '../Styles/theme';
 
 export type NavbarProps = {
@@ -52,7 +52,7 @@ export type NavbarProps = {
   onBack?: () => void;
 };
 
-const Navbar: React.FC<NavbarProps> = props => {
+const Navbar: React.FC<PropsWithChildren<NavbarProps>> = props => {
   const [left, setLeft] = useState(0);
   const [right, setRight] = useState(0);
 
@@ -108,9 +108,8 @@ const Navbar: React.FC<NavbarProps> = props => {
           {renderLeft
             ? renderLeft()
             : showBack && (
-                <TouchableHighlight
+                <Touchable
                   style={styles.backIconWrap}
-                  activeOpacity={0.6}
                   underlayColor={Theme.fillBody}
                   onPress={() => {
                     onBack && onBack();
@@ -120,7 +119,7 @@ const Navbar: React.FC<NavbarProps> = props => {
                     <Icon name={backIconName} color={backIconColor} size={backIconSize} />
                     <Text style={{ ...styles.backText, ...backTextStyle }}>{backText}</Text>
                   </>
-                </TouchableHighlight>
+                </Touchable>
               )}
         </View>
         <Text

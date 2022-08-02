@@ -1,7 +1,8 @@
-import React, { ReactNode } from 'react';
-import { View, StyleSheet, Text, StyleProp, ViewStyle, TouchableHighlight } from 'react-native';
+import React, { PropsWithChildren, ReactNode } from 'react';
+import { View, StyleSheet, Text, StyleProp, ViewStyle } from 'react-native';
 import { Theme } from '../../components/Styles/theme';
 import Icon from '../Icon';
+import Touchable from '../Touchable';
 
 type WrapProps = {
   clickable?: boolean;
@@ -24,14 +25,14 @@ export type CellProps = WrapProps & {
   renderLeftIcon?: () => ReactNode;
 };
 
-const WithWrap: React.FC<WrapProps> = props => {
+const WithWrap: React.FC<PropsWithChildren<WrapProps>> = props => {
   const { children, clickable, style, onPress } = props;
 
   if (clickable) {
     return (
-      <TouchableHighlight style={style} activeOpacity={0.6} underlayColor={Theme.fillBody} onPress={onPress}>
+      <Touchable style={style} underlayColor={Theme.fillBody} onPress={onPress}>
         <>{children}</>
-      </TouchableHighlight>
+      </Touchable>
     );
   }
   return <View style={style}>{children}</View>;

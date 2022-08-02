@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TabBar, TabBarItem, Theme } from 'react-native-ui-view';
+import { TabBar, TabBarItem } from 'react-native-ui-view';
 
 import compIcon from '../../images/tabbar/comp.png';
 import compSelectedIcon from '../../images/tabbar/comp-selected.png';

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo } from 'react';
+import React, { useEffect, useRef, useState, useMemo, PropsWithChildren } from 'react';
 import { View, Text, StyleSheet, GestureResponderEvent, StatusBar, Platform } from 'react-native';
 import { Theme } from '../../components/Styles/theme';
 
@@ -10,7 +10,7 @@ export type AnchorProps = {
 
 const ANCHOR_SIZE = 50;
 
-const Anchor: React.FC<AnchorProps> = props => {
+const Anchor: React.FC<PropsWithChildren<AnchorProps>> = props => {
   const { indexList, keyIndex, onChangeIndex } = props;
   const [activeIndex, setActiveIndex] = useState(-1);
   const [isTouching, setIsTouching] = useState(false);
@@ -119,6 +119,7 @@ const Anchor: React.FC<AnchorProps> = props => {
         </View>
       </View>
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [indexList, activeIndex, showAnchor]);
 };
 

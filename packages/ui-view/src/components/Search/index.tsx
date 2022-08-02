@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { PropsWithChildren, useRef } from 'react';
 import { StyleSheet, View, Text, TextInput, TextInputProps, StyleProp, ViewStyle } from 'react-native';
 import { Theme } from '../Styles/theme';
 import Icon from '../Icon';
@@ -40,7 +40,7 @@ export type SearchProps = {
   onClear?: () => void;
 };
 
-const Search: React.FC<SearchProps> = props => {
+const Search: React.FC<PropsWithChildren<SearchProps>> = props => {
   const $input = useRef<TextInput>(null);
   const {
     value,

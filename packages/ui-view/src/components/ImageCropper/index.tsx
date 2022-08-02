@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { Image, StyleSheet, View, Dimensions, Pressable, Text, Modal } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle } from 'react-native-reanimated';
 import { Gesture, GestureDetector, gestureHandlerRootHOC } from 'react-native-gesture-handler';
@@ -21,7 +21,7 @@ export type ImageCropperProps = {
 
 const { width: WINDOW_WIDTH, height: WINDOW_HEIGHT } = Dimensions.get('window');
 
-const ImageCropper: React.FC<ImageCropperProps> = props => {
+const ImageCropper: React.FC<PropsWithChildren<ImageCropperProps>> = props => {
   const { uri, visible, destSize, cancelText = '取消', okText = '确定', onConfirm, onClose } = props;
   const [imageInfo, setImageInfo] = useState({
     originWidth: 0,

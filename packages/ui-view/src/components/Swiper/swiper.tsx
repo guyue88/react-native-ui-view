@@ -1,4 +1,4 @@
-import React, { Children, cloneElement, useEffect, useRef } from 'react';
+import React, { Children, cloneElement, PropsWithChildren, useEffect, useRef } from 'react';
 import { StyleSheet, ScrollView, View, Text, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 import { Theme } from '../../components/Styles/theme';
 
@@ -29,7 +29,7 @@ export type SwiperProps = {
 
 let timer: NodeJS.Timeout | null = null;
 let autoplayTimer: NodeJS.Timeout | null = null;
-const Swiper: React.FC<SwiperProps> = props => {
+const Swiper: React.FC<PropsWithChildren<SwiperProps>> = props => {
   const {
     children,
     width,
@@ -68,6 +68,7 @@ const Swiper: React.FC<SwiperProps> = props => {
     return () => {
       autoplayTimer && clearInterval(autoplayTimer);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoplay, interval, current]);
 
   const getPanes = () => {
@@ -96,7 +97,9 @@ const Swiper: React.FC<SwiperProps> = props => {
     const isRect = indicatorMode === 'rect';
     const isDot = indicatorMode === 'dot';
 
-    if (indicatorMode === 'none') return null;
+    if (indicatorMode === 'none') {
+      return null;
+    }
 
     return (
       <View
@@ -138,12 +141,14 @@ const Swiper: React.FC<SwiperProps> = props => {
 
   const onScrollEnd = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     event.persist();
-    if (timer) clearTimeout(timer);
+    if (timer) {
+      clearTimeout(timer);
+    }
     timer = setTimeout(() => {
       const { contentOffset, layoutMeasurement } = event.nativeEvent;
       const { x } = contentOffset;
-      const { width } = layoutMeasurement;
-      const index = Math.round(x / width);
+      const { width: w } = layoutMeasurement;
+      const index = Math.round(x / w);
       onChange && onChange(index);
     }, 20);
   };

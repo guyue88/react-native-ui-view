@@ -1,5 +1,6 @@
-import React from 'react';
-import { StyleSheet, Modal, View, Text, TouchableHighlight } from 'react-native';
+import React, { PropsWithChildren } from 'react';
+import { StyleSheet, Modal, View, Text } from 'react-native';
+import Touchable from '../Touchable';
 import { Theme } from '../Styles/theme';
 
 export type ActionSheetProps = {
@@ -16,7 +17,7 @@ export type ActionSheetProps = {
   onClickItem: (index: number) => void;
 };
 
-const ActionSheet: React.FC<ActionSheetProps> = props => {
+const ActionSheet: React.FC<PropsWithChildren<ActionSheetProps>> = props => {
   const { visible, cancelText = '取消', actions, onClose, onClickItem } = props;
 
   return (
@@ -31,9 +32,8 @@ const ActionSheet: React.FC<ActionSheetProps> = props => {
             fontSize && (style.fontSize = fontSize);
 
             return (
-              <TouchableHighlight
+              <Touchable
                 key={index}
-                activeOpacity={0.6}
                 underlayColor={Theme.fillBody}
                 onPress={() => onClickItem(index)}
                 disabled={disabled}
@@ -49,17 +49,16 @@ const ActionSheet: React.FC<ActionSheetProps> = props => {
                     </View>
                   )}
                 </>
-              </TouchableHighlight>
+              </Touchable>
             );
           })}
-          <TouchableHighlight
-            activeOpacity={0.6}
+          <Touchable
             underlayColor={Theme.fillBody}
             onPress={onClose}
             style={[styles.sheetItem, styles.noBorder, styles.cancel]}
           >
             <Text style={styles.sheetText}>{cancelText}</Text>
-          </TouchableHighlight>
+          </Touchable>
         </View>
       </View>
     </Modal>

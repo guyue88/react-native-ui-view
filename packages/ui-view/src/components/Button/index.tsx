@@ -1,6 +1,7 @@
-import React from 'react';
-import { Text, StyleSheet, StyleProp, ViewStyle, TouchableHighlight } from 'react-native';
+import React, { PropsWithChildren } from 'react';
+import { Text, StyleSheet, StyleProp, ViewStyle } from 'react-native';
 import { Theme } from '../../components/Styles/theme';
+import Touchable from '../Touchable';
 
 export type ButtonProps = {
   style?: StyleProp<ViewStyle>;
@@ -9,7 +10,7 @@ export type ButtonProps = {
   onPress?: () => void;
 };
 
-const Button: React.FC<ButtonProps> = props => {
+const Button: React.FC<PropsWithChildren<ButtonProps>> = props => {
   const { style, type = 'default', disabled = false, onPress, children } = props;
   const themeStyle = {
     default: styles.default,
@@ -20,14 +21,13 @@ const Button: React.FC<ButtonProps> = props => {
   };
 
   return (
-    <TouchableHighlight
+    <Touchable
       style={[styles.container, themeStyle[type], disabled && styles.disabled, style]}
-      activeOpacity={0.6}
       underlayColor={Theme.fillBody}
       onPress={disabled ? undefined : onPress}
     >
       <Text style={[styles.text, type !== 'default' && styles.textWhite]}>{children}</Text>
-    </TouchableHighlight>
+    </Touchable>
   );
 };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { View, StyleSheet, Text, ViewProps } from 'react-native';
 import { Theme } from '../../components/Styles/theme';
 
@@ -7,7 +7,7 @@ export type CellGroupProps = ViewProps & {
   backgroundColor?: string;
 };
 
-const CellGroup: React.FC<CellGroupProps> = props => {
+const CellGroup: React.FC<PropsWithChildren<CellGroupProps>> = props => {
   const { title, backgroundColor = Theme.fillBody, style, children, ...rest } = props;
   return (
     <View>

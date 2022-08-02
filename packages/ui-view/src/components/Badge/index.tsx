@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Theme } from '../Styles/theme';
 
@@ -15,7 +15,7 @@ export type BadgeProps = {
   overflowCount?: number;
 };
 
-const Badge: React.FC<BadgeProps> = props => {
+const Badge: React.FC<PropsWithChildren<BadgeProps>> = props => {
   const { text, size = 'small', corner = false, dot = false, overflowCount = 99 } = props;
 
   const isNumber = !Number.isNaN(text);

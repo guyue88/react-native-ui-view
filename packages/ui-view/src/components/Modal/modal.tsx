@@ -1,5 +1,6 @@
-import React from 'react';
-import { Modal, Pressable, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import React, { PropsWithChildren } from 'react';
+import { Modal, StyleSheet, Text, View, Pressable } from 'react-native';
+import Touchable from '../Touchable';
 import { Theme } from '../Styles/theme';
 
 export type ModalProps = {
@@ -33,7 +34,7 @@ export type ModalProps = {
   onClose?: () => void;
 };
 
-const ModalHost: React.FC<ModalProps> = props => {
+const ModalHost: React.FC<PropsWithChildren<ModalProps>> = props => {
   const {
     title,
     content,
@@ -66,19 +67,15 @@ const ModalHost: React.FC<ModalProps> = props => {
           </View>
           <View style={styles.operation}>
             {showCancel && (
-              <TouchableHighlight underlayColor="#ddd" style={styles.button} onPress={onClose}>
+              <Touchable style={styles.button} onPress={onClose}>
                 <Text style={[styles.cancelText, cancelColor ? { color: cancelColor } : undefined]}>{cancelText}</Text>
-              </TouchableHighlight>
+              </Touchable>
             )}
-            <TouchableHighlight
-              underlayColor="#ddd"
-              style={[styles.button, showCancel && styles.buttonBorder]}
-              onPress={onConfirm}
-            >
+            <Touchable style={[styles.button, showCancel && styles.buttonBorder]} onPress={onConfirm}>
               <Text style={[styles.confirmText, confirmColor ? { color: confirmColor } : undefined]}>
                 {confirmText}
               </Text>
-            </TouchableHighlight>
+            </Touchable>
           </View>
         </Pressable>
       </Pressable>

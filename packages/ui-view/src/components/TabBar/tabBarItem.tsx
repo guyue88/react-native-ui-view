@@ -1,4 +1,4 @@
-import React, { ReactNode, isValidElement, useEffect } from 'react';
+import React, { ReactNode, isValidElement, useEffect, PropsWithChildren } from 'react';
 import {
   StyleSheet,
   View,
@@ -26,29 +26,35 @@ export type TabBarItemProps = {
   badge?: number;
   // 角标是否显示为一个红点
   dot?: boolean;
+  // 异形凸起，只适用于中间的按钮
+  convex?: boolean;
   // 被点击时的回调
   onPress?: () => void;
 
-  // 以下部分由TabBar组件传入
+  // 以下参数可以由Tabbar传入
   // Icon的大小
   iconSize?: number;
   // 选中时的颜色
   activeColor?: string;
   // 未选中时的颜色
   inactiveColor?: string;
+  // y异形按钮的颜色，默认由Tabbar传入
+  convexBackgroundColor?: string;
 };
 
-const TabBarItem: React.FC<TabBarItemProps> = props => {
+const TabBarItem: React.FC<PropsWithChildren<TabBarItemProps>> = props => {
   const {
     title,
     selected = false,
     badge,
+    convex = false,
     dot = false,
     icon,
-    iconSize,
+    iconSize = 20,
     activeColor,
     inactiveColor,
     selectedIcon,
+    convexBackgroundColor,
     onPress = () => 1,
   } = props;
   const renderIcon = selected ? selectedIcon : icon;
@@ -64,15 +70,26 @@ const TabBarItem: React.FC<TabBarItemProps> = props => {
     return () => {};
   }, [selectedIcon, icon]);
 
+  const iconWrapSize = convex ? 56 : iconSize;
+  const iconStyle = [
+    { width: iconWrapSize, height: iconWrapSize },
+    convex && { ...styles.convex, backgroundColor: convexBackgroundColor },
+  ];
+  const iconImageSize = convex ? iconSize * 1.2 : iconSize;
+
   return (
     <TouchableWithoutFeedback onPress={onPress}>
-      <View style={styles.TabBarItem}>
+      <View style={styles.tabBarItem}>
         <View style={styles.wrap}>
-          {isValidElement(renderIcon) ? (
-            <View style={{ width: iconSize, height: iconSize }}>{renderIcon}</View>
-          ) : (
-            <Image source={renderIcon as ImageURISource} style={{ width: iconSize, height: iconSize }} />
-          )}
+          <View style={iconStyle}>
+            {isValidElement(renderIcon) ? (
+              <>{renderIcon}</>
+            ) : (
+              <Image source={renderIcon as ImageURISource} style={{ width: iconImageSize, height: iconImageSize }} />
+            )}
+          </View>
+          {/* 有异形突出时，留一个占位空间 */}
+          {convex && <View style={{ width: iconSize, height: iconSize }} />}
 
           <Text style={[styles.title, { color: currentColor }]}>{title}</Text>
           {badge && <Badge corner text={badge} size="small" dot={dot} />}
@@ -83,7 +100,8 @@ const TabBarItem: React.FC<TabBarItemProps> = props => {
 };
 
 const styles = StyleSheet.create({
-  TabBarItem: {
+  tabBarItem: {
+    position: 'relative',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -92,6 +110,14 @@ const styles = StyleSheet.create({
     position: 'relative',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  convex: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    top: -25,
+    borderRadius: 28,
+    padding: 10,
   },
   title: {
     fontSize: 13,

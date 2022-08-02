@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { View } from 'react-native';
 
 export type SwiperItemProps = {
@@ -8,9 +8,10 @@ export type SwiperItemProps = {
   borderRadius?: number;
 };
 
-const SwiperItem: React.FC<SwiperItemProps> = props => {
+const SwiperItem: React.FC<PropsWithChildren<SwiperItemProps>> = props => {
   const { width, borderRadius = 8, children } = props;
 
+  // eslint-disable-next-line react-native/no-inline-styles
   return <View style={{ width, borderRadius, overflow: 'hidden' }}>{children}</View>;
 };
 

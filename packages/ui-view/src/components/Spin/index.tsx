@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { PropsWithChildren, useEffect, useRef } from 'react';
 import { StyleProp, ViewStyle, Animated, Easing } from 'react-native';
 import { Theme } from '../../components/Styles/theme';
 import Icon from '../Icon';
@@ -10,7 +10,7 @@ export type SpinProps = {
   spinning?: boolean;
 };
 
-const Spin: React.FC<SpinProps> = props => {
+const Spin: React.FC<PropsWithChildren<SpinProps>> = props => {
   const { style, color = Theme.brandPrimary, size = 30, spinning = true } = props;
   const rotateAnim = useRef(new Animated.Value(0)).current;
 

@@ -1,4 +1,5 @@
-import React, { Children, cloneElement } from 'react';
+/* eslint-disable react-native/no-inline-styles */
+import React, { Children, cloneElement, PropsWithChildren } from 'react';
 import { StyleSheet, View, StyleProp, ViewStyle } from 'react-native';
 
 export type TabBarProps = {
@@ -18,7 +19,7 @@ export type TabBarProps = {
   showBorderTop?: boolean;
 };
 
-const TabBar: React.FC<TabBarProps> = props => {
+const TabBar: React.FC<PropsWithChildren<TabBarProps>> = props => {
   const {
     style = {},
     height = 50,
@@ -49,6 +50,7 @@ const TabBar: React.FC<TabBarProps> = props => {
             activeColor,
             inactiveColor,
             iconSize,
+            convexBackgroundColor: backgroundColor,
           }),
         );
       }

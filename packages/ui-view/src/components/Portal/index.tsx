@@ -32,6 +32,7 @@ const PortalHost: React.FC = () => {
       listenerAdd.remove();
       listenerRemove.remove();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const mount = (portalItem: PortalItem) => {
