@@ -31,6 +31,8 @@ export { default as TabBar } from './components/TabBar/tabBar';
 export type { TabBarProps } from './components/TabBar/tabBar';
 export { default as TabBarItem } from './components/TabBar/tabBarItem';
 export type { TabBarItemProps } from './components/TabBar/tabBarItem';
+export { default as Touchable } from './components/Touchable';
+export type { TouchableProps } from './components/Touchable';
 export { default as Toast } from './components/Toast';
 export type { ToastProps } from './components/Toast';
 export { Theme, FONT_WEIGHT } from './components/Styles/theme';

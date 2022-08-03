@@ -71,23 +71,24 @@ const TabBarItem: React.FC<PropsWithChildren<TabBarItemProps>> = props => {
   }, [selectedIcon, icon]);
 
   const iconWrapSize = convex ? 56 : iconSize;
-  const iconStyle = [
-    { width: iconWrapSize, height: iconWrapSize },
-    convex && { ...styles.convex, backgroundColor: convexBackgroundColor },
-  ];
   const iconImageSize = convex ? iconSize * 1.2 : iconSize;
 
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.tabBarItem}>
         <View style={styles.wrap}>
-          <View style={iconStyle}>
-            {isValidElement(renderIcon) ? (
-              <>{renderIcon}</>
-            ) : (
+          {isValidElement(renderIcon) ? (
+            <>{renderIcon}</>
+          ) : (
+            <View
+              style={[
+                { width: iconWrapSize, height: iconWrapSize },
+                convex && { ...styles.convex, backgroundColor: convexBackgroundColor },
+              ]}
+            >
               <Image source={renderIcon as ImageURISource} style={{ width: iconImageSize, height: iconImageSize }} />
-            )}
-          </View>
+            </View>
+          )}
           {/* 有异形突出时，留一个占位空间 */}
           {convex && <View style={{ width: iconSize, height: iconSize }} />}
 
