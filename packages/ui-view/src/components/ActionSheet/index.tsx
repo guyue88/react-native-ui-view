@@ -66,7 +66,7 @@ const ActionSheet: React.FC<PropsWithChildren<ActionSheetProps>> = props => {
                     {showCheckStatus ? (
                       <>
                         <View style={styles.checkWrap}>
-                          {!!showIcon && (
+                          {!!showIcon && icon && (
                             <Image source={icon} style={[styles.icon, { width: iconSize, height: iconSize }]} />
                           )}
                           <Text style={[styles.sheetText, disabled && styles.disabledText, style]}>{name}</Text>
@@ -75,7 +75,7 @@ const ActionSheet: React.FC<PropsWithChildren<ActionSheetProps>> = props => {
                       </>
                     ) : (
                       <>
-                        {!!showIcon && (
+                        {!!showIcon && icon && (
                           <Image source={icon} style={[styles.icon, { width: iconSize, height: iconSize }]} />
                         )}
                         <Text style={[styles.sheetText, disabled && styles.disabledText, style]}>{name}</Text>
