@@ -1,7 +1,8 @@
 import React, { PropsWithChildren } from 'react';
-import { StyleSheet, Modal, View, Text } from 'react-native';
+import { StyleSheet, Modal, View, Text, ImageSourcePropType, Image } from 'react-native';
 import Touchable from '../Touchable';
 import { Theme } from '../Styles/theme';
+import Icon from '../Icon';
 
 export type ActionSheetProps = {
   visible: boolean;
@@ -11,14 +12,33 @@ export type ActionSheetProps = {
     color?: string;
     fontSize?: number;
     disabled?: boolean;
+
+    icon?: ImageSourcePropType;
+    iconSize?: number;
   }[];
+
+  showCheckStatus?: boolean;
+  checkIndex?: number;
+  checkSize?: number;
+  checkColor?: string;
+
   cancelText?: string;
   onClose: () => void;
   onClickItem: (index: number) => void;
 };
 
 const ActionSheet: React.FC<PropsWithChildren<ActionSheetProps>> = props => {
-  const { visible, cancelText = '取消', actions, onClose, onClickItem } = props;
+  const {
+    visible,
+    cancelText = '取消',
+    actions,
+    showCheckStatus = false,
+    checkSize = 24,
+    checkColor = Theme.colorTextParagraph,
+    checkIndex,
+    onClose,
+    onClickItem,
+  } = props;
 
   return (
     <Modal visible={visible} transparent animationType="slide" statusBarTranslucent onRequestClose={onClose}>
@@ -26,7 +46,9 @@ const ActionSheet: React.FC<PropsWithChildren<ActionSheetProps>> = props => {
         <View style={styles.top} />
         <View style={styles.sheet}>
           {actions.map((item, index) => {
-            const { name, subName, color, fontSize, disabled } = item;
+            const { name, icon, iconSize = 24, subName, color, fontSize, disabled } = item;
+
+            const showIcon = !!icon;
             const style: Record<string, string | number> = {};
             color && (style.color = color);
             fontSize && (style.fontSize = fontSize);
@@ -40,11 +62,28 @@ const ActionSheet: React.FC<PropsWithChildren<ActionSheetProps>> = props => {
                 style={[styles.sheetItem, index === 0 && styles.noBorder]}
               >
                 <>
-                  <View>
-                    <Text style={[styles.sheetText, style, disabled && styles.disabledText]}>{name}</Text>
+                  <View style={[styles.main, showCheckStatus && styles.mainInLeft]}>
+                    {showCheckStatus ? (
+                      <>
+                        <View style={styles.checkWrap}>
+                          {!!showIcon && (
+                            <Image source={icon} style={[styles.icon, { width: iconSize, height: iconSize }]} />
+                          )}
+                          <Text style={[styles.sheetText, disabled && styles.disabledText, style]}>{name}</Text>
+                        </View>
+                        {index === checkIndex && <Icon name="check" size={checkSize} color={checkColor} />}
+                      </>
+                    ) : (
+                      <>
+                        {!!showIcon && (
+                          <Image source={icon} style={[styles.icon, { width: iconSize, height: iconSize }]} />
+                        )}
+                        <Text style={[styles.sheetText, disabled && styles.disabledText, style]}>{name}</Text>
+                      </>
+                    )}
                   </View>
                   {!!subName && (
-                    <View style={styles.sub}>
+                    <View style={[styles.sub, showCheckStatus && styles.mainInLeft]}>
                       <Text style={styles.subText}>{subName}</Text>
                     </View>
                   )}
@@ -80,12 +119,11 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   sheetItem: {
-    backgroundColor: Theme.fillBase,
-    paddingVertical: 15,
     justifyContent: 'center',
-    alignItems: 'center',
-    borderTopColor: Theme.borderColor,
     borderTopWidth: 0.5,
+    paddingVertical: 15,
+    backgroundColor: Theme.fillBase,
+    borderTopColor: Theme.borderColor,
   },
   noBorder: {
     borderTopWidth: 0,
@@ -97,8 +135,29 @@ const styles = StyleSheet.create({
   disabledText: {
     color: Theme.colorTextDisabled,
   },
+  main: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 15,
+  },
+  mainInLeft: {
+    justifyContent: 'space-between',
+  },
+  checkWrap: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   sub: {
     marginTop: 4,
+    justifyContent: 'center',
+    paddingHorizontal: 15,
+  },
+  subInLeft: {
+    justifyContent: 'flex-start',
+  },
+  icon: {
+    marginRight: 24,
   },
   subText: {
     fontSize: 12,
@@ -106,6 +165,7 @@ const styles = StyleSheet.create({
   },
   cancel: {
     marginTop: 8,
+    alignItems: 'center',
   },
 });
 export default ActionSheet;
