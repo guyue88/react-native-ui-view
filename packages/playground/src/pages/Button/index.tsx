@@ -12,7 +12,7 @@ const ButtonPage = () => {
     <SafeAreaView style={[styles.container]}>
       <Navbar title="Button 按钮" showBack onBack={() => navigation.goBack()} />
       <View style={styles.page}>
-        <Button text="按钮" type="primary" />
+        <Button type="primary">按钮</Button>
       </View>
     </SafeAreaView>
   );

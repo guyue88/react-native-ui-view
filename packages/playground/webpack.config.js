@@ -3,7 +3,10 @@
 const path = require('path');
 const fromRoot = _ => path.resolve(__dirname, _);
 
-module.exports = {
+const { getWebpackTools } = require('react-native-monorepo-tools');
+const monorepoWebpackTools = getWebpackTools();
+
+const webpackConfig = {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   entry: fromRoot('index.js'),
   output: {
@@ -17,18 +20,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(jsx?|tsx?)$/,
-        use: {
-          loader: 'babel-loader',
-        },
-        include: [
-          fromRoot('index.js'),
-          fromRoot('src'),
-          fromRoot('node_modules/react-native-svg'),
-          fromRoot('node_modules/react-native-ui-view'),
-        ],
-      },
-      {
         test: /\.(gif|jpe?g|png)$/i,
         use: [
           {
@@ -37,13 +28,26 @@ module.exports = {
           },
         ],
       },
+      {
+        // monorepoWepackTools有坑, 必须安排在第二个，且include为空数组
+        test: /\.(jsx?|tsx?)$/,
+        oneOf: [
+          {
+            loader: 'babel-loader',
+            include: [],
+          },
+        ],
+      },
     ],
   },
   resolve: {
-    symlinks: false,
-    alias: {
-      'react-native$': 'react-native-web',
-    },
     extensions: ['.web.ts', '.ts', '.web.tsx', '.tsx', '.web.js', '.js', '.web.jsx', '.jsx'],
   },
 };
+
+monorepoWebpackTools.addNohoistAliases(webpackConfig);
+monorepoWebpackTools.enableWorkspacesResolution(webpackConfig);
+
+console.log('webpack config:', webpackConfig.module.rules[1].oneOf);
+
+module.exports = webpackConfig;
