@@ -1,19 +1,44 @@
 import React, { PropsWithChildren } from 'react';
-import { StyleProp, TouchableHighlight, ViewStyle } from 'react-native';
+import { Modal, Pressable, StatusBar, StyleSheet, View } from 'react-native';
 import { Theme } from '../Styles/theme';
 
-type Props = {
-  style?: StyleProp<ViewStyle>;
-  onPress?: () => void;
+export type PopupProps = {
+  visible: boolean;
+  closeOnClickOverlay?: boolean;
+  barStyle?: 'light-content' | 'dark-content';
+  onClose?: () => void;
 };
 
-const Pressable: React.FC<PropsWithChildren<Props>> = props => {
-  const { style, onPress, children } = props;
+const Popup: React.FC<PropsWithChildren<PopupProps>> = props => {
+  const { onClose, children, visible, closeOnClickOverlay = false, barStyle = 'dark-content' } = props;
   return (
-    <TouchableHighlight underlayColor={Theme.fillTap} activeOpacity={0.6} onPress={onPress} style={style}>
-      {children}
-    </TouchableHighlight>
+    <Modal
+      transparent
+      statusBarTranslucent
+      hardwareAccelerated
+      visible={visible}
+      animationType="slide"
+      onRequestClose={onClose}
+    >
+      <StatusBar barStyle={barStyle} />
+
+      <View style={styles.container}>
+        <Pressable style={styles.mask} onPress={closeOnClickOverlay ? onClose : undefined} />
+        <View style={styles.main}>{children}</View>
+      </View>
+    </Modal>
   );
 };
 
-export default Pressable;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  mask: {
+    flex: 1,
+    backgroundColor: Theme.fillMask,
+  },
+  main: {},
+});
+
+export default Popup;

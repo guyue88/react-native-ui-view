@@ -5,25 +5,39 @@ import { Theme } from '../Styles/theme';
 import Icon from '../Icon';
 
 export type ActionSheetProps = {
+  // 是否可见
   visible: boolean;
+  // 选择项
   actions: {
+    // 标题
     name: string;
+    // 副标题
     subName?: string;
+    // 标题颜色
     color?: string;
+    // 标题size
     fontSize?: number;
+    //  disabled 状态
     disabled?: boolean;
-
+    // 显示图标，在标题前面
     icon?: ImageSourcePropType;
+    // 图标大小
     iconSize?: number;
   }[];
 
+  // 是否显示选择状态
   showCheckStatus?: boolean;
+  // 选中的index项
   checkIndex?: number;
+  // 选中图标的size
   checkSize?: number;
+  // 选中状态下标题颜色
   checkColor?: string;
-
+  // cancel按钮文字
   cancelText?: string;
+  // 关闭回调
   onClose: () => void;
+  // 可选状态下选择项目回调
   onClickItem: (index: number) => void;
 };
 
