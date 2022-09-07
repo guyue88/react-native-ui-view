@@ -24,7 +24,7 @@ const Popup: React.FC<PropsWithChildren<PopupProps>> = props => {
 
       <View style={styles.container}>
         <Pressable style={styles.mask} onPress={closeOnClickOverlay ? onClose : undefined} />
-        <View style={styles.main}>{children}</View>
+        <View style={styles.content}>{children}</View>
       </View>
     </Modal>
   );
@@ -33,12 +33,12 @@ const Popup: React.FC<PropsWithChildren<PopupProps>> = props => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: Theme.fillMask,
   },
   mask: {
     flex: 1,
-    backgroundColor: Theme.fillMask,
   },
-  main: {},
+  content: {},
 });
 
 export default Popup;
