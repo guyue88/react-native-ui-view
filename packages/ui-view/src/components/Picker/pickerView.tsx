@@ -17,6 +17,14 @@ export type PickerViewProps = {
 
 const PickerView: React.FC<PickerViewProps> = props => {
   const { dataSource, selectedIndex, itemHeight, onChange } = props;
+  const [showPickerItem, setShowPickItem] = useState(false);
+
+  // ScrollView 在Modal中会影响Modal的高度计算，先让容器渲染出来，再渲染ScrollView
+  useEffect(() => {
+    setTimeout(() => {
+      setShowPickItem(true);
+    }, 50);
+  }, []);
 
   const height = Math.min(300, WINDOW_HEIGHT / 3);
   const padding = (height - itemHeight) / 2;
@@ -33,21 +41,23 @@ const PickerView: React.FC<PickerViewProps> = props => {
 
   return (
     <View style={[styles.container, { height }]}>
-      {dataSource.map((item, index) => (
-        <View key={index} style={[styles.picker]}>
-          <View style={[styles.highlight, highlightStyle]} />
-          <PickerItem
-            dataSource={item}
-            selectedIndex={selectedIndex[index]}
-            itemHeight={itemHeight}
-            onChange={i => {
-              const data = [...selectedIndex];
-              data[index] = i;
-              onChange && onChange(data);
-            }}
-          />
-        </View>
-      ))}
+      {showPickerItem
+        ? dataSource.map((item, index) => (
+            <View key={index} style={[styles.picker]}>
+              <View style={[styles.highlight, highlightStyle]} />
+              <PickerItem
+                dataSource={item}
+                selectedIndex={selectedIndex[index]}
+                itemHeight={itemHeight}
+                onChange={i => {
+                  const data = [...selectedIndex];
+                  data[index] = i;
+                  onChange && onChange(data);
+                }}
+              />
+            </View>
+          ))
+        : null}
     </View>
   );
 };
