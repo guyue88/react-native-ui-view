@@ -14,8 +14,9 @@ export { default as Navbar } from './components/Navbar';
 export type { NavbarProps } from './components/Navbar';
 export { default as Icon } from './components/Icon';
 export type { IconProps } from './components/Icon';
-export { default as ImageCropper } from './components/ImageCropper';
-export type { ImageCropperProps } from './components/ImageCropper';
+// TODO:报错，不支持React Native Web
+// export { default as ImageCropper } from './components/ImageCropper';
+// export type { ImageCropperProps } from './components/ImageCropper';
 export { default as IndexList } from './components/IndexList';
 export type { IndexListProps } from './components/IndexList';
 export { default as Picker } from './components/Picker';

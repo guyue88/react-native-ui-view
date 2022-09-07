@@ -1,5 +1,30 @@
 {
+	"private": true,
+	"workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/create-react-class",
+      "**/use-latest-callback",
+      "**/react",
+      "**/react-dom",
+      "**/react-native",
+      "**/react-native/**",
+      "**/react-native-svg",
+      "**/react-native-gesture-handler",
+      "**/react-native-reanimated",
+      "**/@react-native-community/image-editor"
+    ]
+  },
+  "scripts": {
+    "dev": "yarn workspace react-native-ui-view-playground dev"
+  },
 	"dependencies": {
-		"@changesets/cli": "^2.22.0"
+		"@changesets/cli": "^2.22.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint": "7.14.0",
+    "@react-native-community/eslint-config": "^2.0.0"
 	}
 }
+	
