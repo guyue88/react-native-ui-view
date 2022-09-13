@@ -1,84 +1,83 @@
-import React, { PropsWithChildren, ReactNode } from 'react';
+import React, { isValidElement, ReactNode } from 'react';
 import { View, StyleSheet, Text, StyleProp, ViewStyle } from 'react-native';
 import { Theme } from '../../components/Styles/theme';
 import Icon from '../Icon';
 import Touchable from '../Touchable';
 
-type WrapProps = {
-  clickable?: boolean;
+export type CellProps = {
+  // 样式
   style?: StyleProp<ViewStyle>;
-  onPress?: () => void;
-};
-
-export type CellProps = WrapProps & {
+  // 标题
   title: string;
-  label?: string; // 副标题
-  value?: string;
+  // 副标题
+  label?: string;
+  // 是否显示顶部边线
   border?: boolean;
+  // 右侧内容是否与左侧内容垂直居中显示，默认true，否则顶部对齐
   centerRightText?: boolean;
-
-  rightIconName?: string;
-  rightIconSize?: number;
-  rightIconColor?: string;
-
+  // 右侧文案
+  rightContent?: string | ReactNode;
+  // 是否显示为链接形式，链接形式会在右侧显示一个箭头
   isLink?: boolean;
+  // 右侧图标名称，默认右箭头
+  rightIconName?: string;
+  // 右侧图标大小，默认24
+  rightIconSize?: number;
+  // 右侧图标颜色，默认#a4a9b0
+  rightIconColor?: string;
+  // 渲染标题左侧图标
   renderLeftIcon?: () => ReactNode;
-};
-
-const WithWrap: React.FC<PropsWithChildren<WrapProps>> = props => {
-  const { children, clickable, style, onPress } = props;
-
-  if (clickable) {
-    return (
-      <Touchable style={style} underlayColor={Theme.fillBody} onPress={onPress}>
-        <>{children}</>
-      </Touchable>
-    );
-  }
-  return <View style={style}>{children}</View>;
+  // 点击回调
+  onPress?: () => void;
 };
 
 const Cell: React.FC<CellProps> = props => {
   const {
     title,
     label,
-    value,
     border = true,
 
-    isLink,
     centerRightText = true,
 
+    rightContent,
+    isLink = false,
     rightIconName = 'right',
     rightIconSize = 24,
-    rightIconColor = Theme.colorTextSecondary,
-    clickable,
+    rightIconColor = Theme.colorTextGray,
+
     style,
     onPress,
     renderLeftIcon,
   } = props;
 
   return (
-    <WithWrap style={[styles.container, border && styles.border, style]} clickable={clickable} onPress={onPress}>
-      <View style={styles.left}>
-        <View style={styles.titleWrap}>
-          {renderLeftIcon ? <View style={styles.iconWrap}>{renderLeftIcon()}</View> : null}
+    <Touchable
+      style={[styles.container, border && styles.border, style]}
+      underlayColor={Theme.fillBody}
+      onPress={onPress}
+    >
+      <>
+        <View style={styles.left}>
+          <View style={styles.titleWrap}>
+            {renderLeftIcon ? <View style={styles.iconWrap}>{renderLeftIcon()}</View> : null}
 
-          <Text style={styles.titleText}>{title}</Text>
-        </View>
-        {!!label && (
-          <View style={styles.titleLabelWrap}>
-            <Text numberOfLines={1} style={styles.titleLabel}>
-              {label}
-            </Text>
+            <Text style={styles.titleText}>{title}</Text>
           </View>
-        )}
-      </View>
-      {/* eslint-disable-next-line react-native/no-inline-styles */}
-      <View style={{ alignSelf: centerRightText ? 'center' : 'flex-start' }}>
-        {value && <Text>{title}</Text>}
-        {isLink && <Icon name={rightIconName} size={rightIconSize} color={rightIconColor} />}
-      </View>
-    </WithWrap>
+          {!!label && (
+            <View style={styles.titleLabelWrap}>
+              <Text numberOfLines={1} style={styles.titleLabel}>
+                {label}
+              </Text>
+            </View>
+          )}
+        </View>
+        {/* eslint-disable-next-line react-native/no-inline-styles */}
+        <View style={[styles.right, { alignSelf: centerRightText ? 'center' : 'flex-start' }]}>
+          {!!rightContent && (isValidElement(rightContent) ? rightContent : <Text>{rightContent}</Text>)}
+          {isLink && <Icon name={rightIconName} size={rightIconSize} color={rightIconColor} />}
+        </View>
+      </>
+    </Touchable>
   );
 };
 
@@ -113,6 +112,10 @@ const styles = StyleSheet.create({
   titleLabel: {
     fontSize: 12,
     color: Theme.colorTextCaption,
+  },
+  right: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 

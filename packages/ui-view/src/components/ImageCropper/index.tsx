@@ -15,7 +15,7 @@ export type ImageCropperProps = {
   // 是否可见
   visible: boolean;
   // 裁剪目标大小
-  destSize: { width: number; height: number };
+  destSize?: { width: number; height: number };
   // 取消文案，默认“取消”
   cancelText?: string;
   // 确认文案，默认“确定”
@@ -29,7 +29,15 @@ export type ImageCropperProps = {
 const { width: WINDOW_WIDTH, height: WINDOW_HEIGHT } = Dimensions.get('window');
 
 const ImageCropper: React.FC<PropsWithChildren<ImageCropperProps>> = props => {
-  const { uri, visible, destSize, cancelText = '取消', okText = '确定', onConfirm, onClose } = props;
+  const {
+    uri,
+    visible,
+    destSize = { width: 500, height: 500 },
+    cancelText = '取消',
+    okText = '确定',
+    onConfirm,
+    onClose,
+  } = props;
   const [imageInfo, setImageInfo] = useState({
     originWidth: 0,
     originHeight: 0,

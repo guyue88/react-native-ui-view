@@ -1,8 +1,9 @@
 import React, { PropsWithChildren } from 'react';
-import { StyleSheet, Modal, View, Text, ImageSourcePropType, Image } from 'react-native';
+import { StyleSheet, View, Text, ImageSourcePropType, Image } from 'react-native';
 import Touchable from '../Touchable';
 import { Theme } from '../Styles/theme';
 import Icon from '../Icon';
+import Popup from '../Popup';
 
 export type ActionSheetProps = {
   // 是否可见
@@ -55,78 +56,68 @@ const ActionSheet: React.FC<PropsWithChildren<ActionSheetProps>> = props => {
   } = props;
 
   return (
-    <Modal visible={visible} transparent animationType="slide" statusBarTranslucent onRequestClose={onClose}>
+    <Popup visible={visible} barStyle="light-content" closeOnClickOverlay={true} onClose={onClose}>
       <View style={styles.container}>
-        <View style={styles.top} />
-        <View style={styles.sheet}>
-          {actions.map((item, index) => {
-            const { name, icon, iconSize = 24, subName, color, fontSize, disabled } = item;
+        {actions.map((item, index) => {
+          const { name, icon, iconSize = 24, subName, color, fontSize, disabled } = item;
 
-            const showIcon = !!icon;
-            const style: Record<string, string | number> = {};
-            color && (style.color = color);
-            fontSize && (style.fontSize = fontSize);
+          const showIcon = !!icon;
+          const style: Record<string, string | number> = {};
+          color && (style.color = color);
+          fontSize && (style.fontSize = fontSize);
 
-            return (
-              <Touchable
-                key={index}
-                underlayColor={Theme.fillBody}
-                onPress={() => onClickItem(index)}
-                disabled={disabled}
-                style={[styles.sheetItem, index === 0 && styles.noBorder]}
-              >
-                <>
-                  <View style={[styles.main, showCheckStatus && styles.mainInLeft]}>
-                    {showCheckStatus ? (
-                      <>
-                        <View style={styles.checkWrap}>
-                          {!!showIcon && icon && (
-                            <Image source={icon} style={[styles.icon, { width: iconSize, height: iconSize }]} />
-                          )}
-                          <Text style={[styles.sheetText, disabled && styles.disabledText, style]}>{name}</Text>
-                        </View>
-                        {index === checkIndex && <Icon name="check" size={checkSize} color={checkColor} />}
-                      </>
-                    ) : (
-                      <>
+          return (
+            <Touchable
+              key={index}
+              underlayColor={Theme.fillBody}
+              onPress={() => onClickItem(index)}
+              disabled={disabled}
+              style={[styles.sheetItem, index === 0 && styles.noBorder]}
+            >
+              <>
+                <View style={[styles.main, showCheckStatus && styles.mainInLeft]}>
+                  {showCheckStatus ? (
+                    <>
+                      <View style={styles.checkWrap}>
                         {!!showIcon && icon && (
                           <Image source={icon} style={[styles.icon, { width: iconSize, height: iconSize }]} />
                         )}
                         <Text style={[styles.sheetText, disabled && styles.disabledText, style]}>{name}</Text>
-                      </>
-                    )}
-                  </View>
-                  {!!subName && (
-                    <View style={[styles.sub, showCheckStatus && styles.mainInLeft]}>
-                      <Text style={styles.subText}>{subName}</Text>
-                    </View>
+                      </View>
+                      {index === checkIndex && <Icon name="check" size={checkSize} color={checkColor} />}
+                    </>
+                  ) : (
+                    <>
+                      {!!showIcon && icon && (
+                        <Image source={icon} style={[styles.icon, { width: iconSize, height: iconSize }]} />
+                      )}
+                      <Text style={[styles.sheetText, disabled && styles.disabledText, style]}>{name}</Text>
+                    </>
                   )}
-                </>
-              </Touchable>
-            );
-          })}
-          <Touchable
-            underlayColor={Theme.fillBody}
-            onPress={onClose}
-            style={[styles.sheetItem, styles.noBorder, styles.cancel]}
-          >
-            <Text style={styles.sheetText}>{cancelText}</Text>
-          </Touchable>
-        </View>
+                </View>
+                {!!subName && (
+                  <View style={[styles.sub, showCheckStatus && styles.mainInLeft]}>
+                    <Text style={styles.subText}>{subName}</Text>
+                  </View>
+                )}
+              </>
+            </Touchable>
+          );
+        })}
+        <Touchable
+          underlayColor={Theme.fillBody}
+          onPress={onClose}
+          style={[styles.sheetItem, styles.noBorder, styles.cancel]}
+        >
+          <Text style={styles.sheetText}>{cancelText}</Text>
+        </Touchable>
       </View>
-    </Modal>
+    </Popup>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: Theme.fillMask,
-  },
-  top: {
-    flex: 1,
-  },
-  sheet: {
     backgroundColor: Theme.fillBody,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,

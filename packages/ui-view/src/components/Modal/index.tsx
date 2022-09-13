@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, ReactNode } from 'react';
 import ModalHost, { ModalProps } from './modal';
 import { portal } from '../Portal';
 
@@ -12,7 +12,7 @@ export default class Modal extends Component<ModalProps> {
    */
   static show(
     title: string,
-    content: string,
+    content: string | ReactNode,
     options: Omit<ModalProps, 'title' | 'content' | 'visible' | 'onConfirm' | 'onClose'> = {},
   ): Promise<{ confirm: boolean }> {
     return new Promise(resolve => {

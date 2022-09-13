@@ -3,7 +3,9 @@ import { View, StyleSheet, Text, ViewProps } from 'react-native';
 import { Theme } from '../../components/Styles/theme';
 
 export type CellGroupProps = ViewProps & {
+  // 标题
   title?: string;
+  // 背景色
   backgroundColor?: string;
 };
 

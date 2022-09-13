@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import React, { isValidElement, PropsWithChildren, ReactNode } from 'react';
 import { Modal, StyleSheet, Text, View, Pressable } from 'react-native';
 import Touchable from '../Touchable';
 import { Theme } from '../Styles/theme';
@@ -7,7 +7,7 @@ export type ModalProps = {
   // 标题
   title: string;
   // 内容
-  content: string;
+  content: string | ReactNode;
   // 对齐方式
   align?: 'center' | 'left' | 'right';
   // 是否显示取消按钮
@@ -63,7 +63,11 @@ const ModalHost: React.FC<PropsWithChildren<ModalProps>> = props => {
             </View>
           )}
           <View style={styles.content}>
-            <Text style={[styles.contentText, { textAlign: align }]}>{content}</Text>
+            {isValidElement(content) ? (
+              content
+            ) : (
+              <Text style={[styles.contentText, { textAlign: align }]}>{content}</Text>
+            )}
           </View>
           <View style={styles.operation}>
             {showCancel && (

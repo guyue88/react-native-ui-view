@@ -5,8 +5,11 @@ import Touchable from '../Touchable';
 
 export type ButtonProps = {
   style?: StyleProp<ViewStyle>;
+  // 样式
   type?: 'default' | 'primary' | 'danger' | 'warning' | 'success';
+  // 是否可点
   disabled?: boolean;
+  // 点击回调
   onPress?: () => void;
 };
 
