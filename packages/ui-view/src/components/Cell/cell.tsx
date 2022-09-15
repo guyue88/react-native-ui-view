@@ -1,5 +1,6 @@
 import React, { isValidElement, ReactNode } from 'react';
 import { View, StyleSheet, Text, StyleProp, ViewStyle } from 'react-native';
+import { IconName } from '../../assets/svg';
 import { Theme } from '../../components/Styles/theme';
 import Icon from '../Icon';
 import Touchable from '../Touchable';
@@ -20,7 +21,7 @@ export type CellProps = {
   // 是否显示为链接形式，链接形式会在右侧显示一个箭头
   isLink?: boolean;
   // 右侧图标名称，默认右箭头
-  rightIconName?: string;
+  rightIconName?: IconName;
   // 右侧图标大小，默认24
   rightIconSize?: number;
   // 右侧图标颜色，默认#a4a9b0

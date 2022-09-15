@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, StatusBarStyle } from 'react-native';
 import Popup from '../Popup';
 import { Theme } from '../Styles/theme';
 import Touchable from '../Touchable';
@@ -9,7 +9,7 @@ export type PickerProps = {
   // 弹层可见
   visible: boolean;
   // 状态栏样式
-  barStyle?: 'light-content' | 'dark-content';
+  barStyle?: StatusBarStyle;
   // 数据源，字符串二维数组
   dataSource: string[][];
   // 选中的数据

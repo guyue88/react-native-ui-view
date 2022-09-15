@@ -15,6 +15,8 @@ export type PickerViewProps = {
   onChange?: (selectedIndex: number[]) => void;
 };
 
+const MAX_SCROLL_HEIGHT = 300;
+
 const PickerView: React.FC<PickerViewProps> = props => {
   const { dataSource, selectedIndex, itemHeight, onChange } = props;
   const [showPickerItem, setShowPickItem] = useState(false);
@@ -26,7 +28,7 @@ const PickerView: React.FC<PickerViewProps> = props => {
     }, 50);
   }, []);
 
-  const height = Math.min(300, WINDOW_HEIGHT / 3);
+  const height = Math.min(MAX_SCROLL_HEIGHT, WINDOW_HEIGHT / 3);
   const padding = (height - itemHeight) / 2;
 
   const highlightStyle = {
@@ -82,8 +84,7 @@ const PickerItem: React.FC<PickerItemProps> = props => {
   const $scroll = useRef<ScrollView | null>(null);
   const isScrolling = useRef(false);
 
-  const minHeight = 300;
-  const height = Math.min(minHeight, WINDOW_HEIGHT / 3);
+  const height = Math.min(MAX_SCROLL_HEIGHT, WINDOW_HEIGHT / 3);
   const padding = (height - itemHeight) / 2;
 
   const onMomentumScrollBegin = () => {

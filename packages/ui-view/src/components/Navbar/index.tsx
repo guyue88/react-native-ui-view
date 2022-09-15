@@ -13,6 +13,7 @@ import {
 import Icon from '../Icon';
 import Touchable from '../Touchable';
 import { Theme, FONT_WEIGHT } from '../Styles/theme';
+import { IconName } from '../../assets/svg';
 
 export type NavbarProps = {
   // 标题
@@ -32,7 +33,7 @@ export type NavbarProps = {
   // 返回按钮Icon的颜色
   backIconColor?: string;
   // 返回按钮Icon的名字
-  backIconName?: string;
+  backIconName?: IconName;
   // 返回按钮的文字，默认“返回”
   backText?: string;
   // 返回按钮文字的样式
