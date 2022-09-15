@@ -1,7 +1,7 @@
 {
   "name": "react-native-ui-view-playground",
   "version": "0.0.2",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "webpack serve",
     "build": "webpack",

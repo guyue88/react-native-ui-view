@@ -6,7 +6,7 @@ const svgFileDir = path.resolve(__dirname, '../../src/assets/svg');
 function readSvgFile(svgFileName) {
   return new Promise((resolve, reject) => {
     fs.readFile(path.join(svgFileDir, svgFileName), 'utf8', (error, svgFile) => {
-      let svgPath = svgFile.replace(/<\?xml.*?\?>|<\!--.*?-->|<!DOCTYPE.*?>/g, '');
+      let svgPath = svgFile.replace(/<\?xml.*?\?>|<!--.*?-->|<!DOCTYPE.*?>/g, '');
       svgPath = svgPath.replace(/[\r\n]*/g, '');
       if (error) {
         return reject(error);
@@ -36,11 +36,14 @@ function readSvgDir() {
 
 readSvgDir()
   .then(data => {
-    const svgFile = `export default {
-  ${data.filter(item => Object.keys(item)[0]).map(item => `'${Object.keys(item)[0]}': \`${Object.values(item)[0]}\``)}
-}\n`;
+    const filterData = data.filter(item => Object.keys(item)[0]);
+    const svgFile = `export type IconName = ${filterData.map(item => `'${Object.keys(item)[0]}'`).join(' | ')}; 
+      const svg: Record<IconName, string> = {
+  ${filterData.map(item => `'${Object.keys(item)[0]}': \`${Object.values(item)[0]}\``).join(',')}
+};
+export default svg;\n`;
 
-    fs.writeFile(path.resolve(svgFileDir, 'index.js'), svgFile, err => {
+    fs.writeFile(path.resolve(svgFileDir, 'index.ts'), svgFile, err => {
       if (err) {
         throw new Error(err);
       }

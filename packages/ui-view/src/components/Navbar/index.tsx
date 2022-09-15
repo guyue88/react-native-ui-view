@@ -10,7 +10,6 @@ import {
   TextStyle,
   LayoutChangeEvent,
 } from 'react-native';
-
 import Icon from '../Icon';
 import Touchable from '../Touchable';
 import { Theme, FONT_WEIGHT } from '../Styles/theme';

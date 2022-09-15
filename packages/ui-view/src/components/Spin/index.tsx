@@ -4,9 +4,13 @@ import { Theme } from '../../components/Styles/theme';
 import Icon from '../Icon';
 
 export type SpinProps = {
+  // 样式
   style?: StyleProp<ViewStyle>;
+  // 颜色
   color?: string;
+  // 大小
   size?: number;
+  // 是否在动画中
   spinning?: boolean;
 };
 
