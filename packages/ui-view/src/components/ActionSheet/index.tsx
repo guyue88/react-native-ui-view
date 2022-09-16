@@ -18,7 +18,7 @@ export type ActionSheetProps = {
     color?: string;
     // 标题size
     fontSize?: number;
-    //  disabled 状态
+    //  是否是 disabled 状态
     disabled?: boolean;
     // 显示图标，在标题前面
     icon?: ImageSourcePropType;
