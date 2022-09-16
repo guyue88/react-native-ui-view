@@ -3,9 +3,9 @@
 ![npm (tag)](https://img.shields.io/npm/v/react-native-ui-view)
 ![npm](https://img.shields.io/npm/dm/react-native-ui-view)
 
-react native 组件库，全面兼容 react native 生态框架，全面的组件和便捷的工具会让您信手拈来，如鱼得水。
+React Native Ui View is a react native component library, which is fully compatible with the react native ecological framework. Comprehensive components and convenient tools will make you feel at ease。
 
-## 组件列表
+## Components List
 
 - [x] ActionSheet
 - [x] Badge
@@ -27,22 +27,28 @@ react native 组件库，全面兼容 react native 生态框架，全面的组�
 - [x] Toast
 - [x] Touchable
 
-## 快速开始
-
-### 安装
+## Installation
 
 ```shell
 # npm i react-native-ui-view --save
 ```
 
-### 使用
+## Usage
 
 ```javascript
 import React from 'react';
 import { Portal } from 'react-native-ui-view';
 const App: React.FC<{}> = () => {
-  // Modal/Toast的函数调用方式需要使用 Portal 包裹整个应用
+  // Portal provides a host for Modal/Toast Component.
   return <Portal>{/* xxx */}</Portal>;
 };
 AppRegistry.registerComponent(appName, () => app);
 ```
+
+## Documentation
+
+- [中文文档](https://guyue88.github.io/react-native-ui-view/)
+
+## License
+
+MIT
