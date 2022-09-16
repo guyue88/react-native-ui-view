@@ -11,7 +11,7 @@ export type BadgeProps = {
   corner?: boolean;
   // 是否显示为一个红点
   dot?: boolean;
-  // 超出这个值显示为99+
+  // 超出这个值显示为${overflowCount}+
   overflowCount?: number;
 };
 
