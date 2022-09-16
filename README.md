@@ -30,7 +30,7 @@ React Native Ui View is a react native component library, which is fully compati
 ## Installation
 
 ```shell
-# npm i react-native-ui-view --save
+npm i react-native-ui-view --save
 ```
 
 ## Usage

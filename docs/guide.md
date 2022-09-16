@@ -3,7 +3,7 @@
 ### 安装
 
 ```shell
-# npm i react-native-ui-view --save
+npm i react-native-ui-view --save
 ```
 
 ### 初始化
