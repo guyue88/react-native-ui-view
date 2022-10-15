@@ -1,7 +1,7 @@
 # React Native Ui View
 
-![npm (tag)](https://img.shields.io/npm/v/react-native-ui-view)
-![npm](https://img.shields.io/npm/dm/react-native-ui-view)
+![npm (tag)](https://img.shields.io/npm/v/react-native-ui-view.svg)
+![npm](https://img.shields.io/npm/dm/react-native-ui-view.svg)
 
 React Native Ui View is a react native component library, which is fully compatible with the react native ecological framework. Comprehensive components and convenient tools will make you feel at ease。
 

@@ -2,7 +2,6 @@
 
 ![npm (tag)](https://img.shields.io/npm/v/react-native-ui-view.svg)
 ![npm](https://img.shields.io/npm/dm/react-native-ui-view.svg)
-![license](https://img.shields.io/github/license/YMFE/react-native-ui-view.svg)
 
 React Native Ui View 是一个 react native 组件库，全面兼容 react native 生态框架，全面的组件和便捷的工具会让您信手拈来，如鱼得水。
 
