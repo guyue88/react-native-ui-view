@@ -1,11 +1,43 @@
+# Icon
+
+基于字体的图标集，包含了大多数常见场景的图标
+
+## 平台差异性说明
+
+| ReactNative | WEB |
+| ----------- | --- |
+| √           | √   |
+
+## 基本使用
+
+```typescript
+import React from 'react';
+import { Icon } from 'react-native-ui-view';
+
+const Demo: React.FC<{}> = () => {
+  return <Icon name="right" />;
+};
+```
+
+## Props
+
+| 参数  | 说明                    | 类型   | 必填 | 默认值 | 可选值 |
+| ----- | ----------------------- | ------ | ---- | ------ | ------ |
+| style | 样式                    | Style  | ×    | -      | -      |
+| name  | icon 名字，见示例图表集 | string | √    | -      | -      |
+| color | 颜色                    | string | ×    | 20     | -      |
+| size  | 大小                    | string | ×    | #666   | -      |
+
+## 事件
+
+| 事件名  | 说明     | 回调参数 |
+| ------- | -------- | -------- |
+| onPress | 点击回调 | -        |
+
+## 图表集
+
 <!-- icon template start -->
 <div style="width: 900px;display: grid;grid-template-columns: repeat(6, 16.67%);grid-auto-rows: 100px;border-left: 1px solid #ccc;border-top: 1px solid #ccc; ">
-  <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/add-bold.svg" width="36" />
-  <div>
-    add-bold
-  </div>
-</div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/add-circle.svg" width="36" />
   <div>
