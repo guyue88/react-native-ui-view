@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 
 const svgFileDir = path.resolve(__dirname, '../packages/ui-view/src/assets/svg');
-const distFile = path.resolve(__dirname, './components.md');
+const distFile = path.resolve(__dirname, './components/Icon.md');
 
 function readSvgDir() {
   return new Promise((resolve, reject) => {
@@ -10,7 +10,7 @@ function readSvgDir() {
       if (error) {
         return reject(error);
       }
-      resolve(svgFiles);
+      resolve(svgFiles.filter(item => !!item && item.indexOf('.svg') !== -1));
     });
   });
 }

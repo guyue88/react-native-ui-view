@@ -27,7 +27,9 @@ function readSvgDir() {
       if (error) {
         return reject(error);
       }
-      Promise.all(svgFiles.map(svgFileName => readSvgFile(svgFileName)))
+      Promise.all(
+        svgFiles.filter(item => !!item && item.indexOf('.svg') !== -1).map(svgFileName => readSvgFile(svgFileName)),
+      )
         .then(data => resolve(data))
         .catch(err => reject(err));
     });
@@ -36,10 +38,9 @@ function readSvgDir() {
 
 readSvgDir()
   .then(data => {
-    const filterData = data.filter(item => Object.keys(item)[0]);
-    const svgFile = `export type IconName = ${filterData.map(item => `'${Object.keys(item)[0]}'`).join(' | ')}; 
+    const svgFile = `export type IconName = ${data.map(item => `'${Object.keys(item)[0]}'`).join(' | ')}; 
       const svg: Record<IconName, string> = {
-  ${filterData.map(item => `'${Object.keys(item)[0]}': \`${Object.values(item)[0]}\``).join(',')}
+  ${data.map(item => `'${Object.keys(item)[0]}': \`${Object.values(item)[0]}\``).join(',')}
 };
 export default svg;\n`;
 
