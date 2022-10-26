@@ -1,6 +1,6 @@
 {
-	"private": true,
-	"workspaces": {
+  "private": true,
+  "workspaces": {
     "packages": [
       "packages/*"
     ],
@@ -18,13 +18,13 @@
     ]
   },
   "scripts": {
-    "dev": "yarn workspace react-native-ui-view-playground dev"
+    "dev": "yarn workspace react-native-ui-view-playground dev",
+    "doc": "docsify serve ./docs  --port 3005"
   },
-	"dependencies": {
-		"@changesets/cli": "^2.22.0",
+  "dependencies": {
+    "@changesets/cli": "^2.22.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint": "7.14.0",
     "@react-native-community/eslint-config": "^2.0.0"
-	}
+  }
 }
-	
