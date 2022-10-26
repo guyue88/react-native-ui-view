@@ -21,11 +21,11 @@ const Demo: React.FC<{}> = () => {
 
 ## Props
 
-| 参数     | 说明       | 类型                                                         | 必填 | 默认值    | 可选值     |
-| -------- | ---------- | ------------------------------------------------------------ | ---- | --------- | ---------- |
-| style    | 样式       | Style                                                        | ×    | -         | true/false |
-| type     | 类型       | 'default' \| 'primary' \| 'danger' \| 'warning' \| 'success' | ×    | 'default' | -          |
-| disabled | 是否可点击 | boolean                                                      | ×    | false     | true/false |
+| 参数     | 说明       | 类型                                               | 必填 | 默认值  |
+| -------- | ---------- | -------------------------------------------------- | ---- | ------- |
+| style    | 样式       | Style                                              | ×    | -       |
+| type     | 类型       | default \| primary \| danger \| warning \| success | ×    | default |
+| disabled | 是否可点击 | boolean                                            | ×    | false   |
 
 ## 事件
 

@@ -10,13 +10,14 @@ npm i react-native-ui-view --save
 
 ```javascript
 import React from 'react';
+import { AppRegistry } from 'react-native';
 import { Portal } from 'react-native-ui-view';
 
 const App: React.FC<{}> = () => {
   // Modal/Toast的函数调用方式需要使用 Portal 包裹整个应用
   return <Portal>{/* xxx */}</Portal>;
 };
-AppRegistry.registerComponent(appName, () => app);
+AppRegistry.registerComponent('appName', () => app);
 ```
 
 ### 使用

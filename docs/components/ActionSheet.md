@@ -38,27 +38,27 @@ const Demo: React.FC<{}> = () => {
 
 ## Props
 
-| 参数            | 说明               | 类型         | 必填 | 默认值  | 可选值     |
-| --------------- | ------------------ | ------------ | ---- | ------- | ---------- |
-| visible         | 是否可见           | boolean      | √    | -       | true/false |
-| actions         | 操作菜单子项       | ActionItem[] | √    | -       | -          |
-| showCheckStatus | 是否显示选择状态   | boolean      | ×    | false   | true/false |
-| checkIndex      | 选中的 index 项    | number       | ×    | -       | -          |
-| checkSize       | 选中图标的 size    | number       | ×    | 24      | -          |
-| checkColor      | 选中状态下标题颜色 | string       | ×    | #333333 | -          |
-| cancelText      | cancel 按钮文字    | string       | ×    | 取消    | -          |
+| 参数            | 说明               | 类型         | 必填 | 默认值  |
+| --------------- | ------------------ | ------------ | ---- | ------- |
+| visible         | 是否可见           | boolean      | √    | -       |
+| actions         | 操作菜单子项       | ActionItem[] | √    | -       |
+| showCheckStatus | 是否显示选择状态   | boolean      | ×    | false   |
+| checkIndex      | 选中的 index 项    | number       | ×    | -       |
+| checkSize       | 选中图标的 size    | number       | ×    | 24      |
+| checkColor      | 选中状态下标题颜色 | string       | ×    | #333333 |
+| cancelText      | cancel 按钮文字    | string       | ×    | 取消    |
 
 ## ActionItem
 
-| 参数     | 说明                 | 类型                | 必填 | 默认值 | 可选值     |
-| -------- | -------------------- | ------------------- | ---- | ------ | ---------- |
-| name     | 标题                 | string              | √    | -      | -          |
-| subName  | 副标题               | string              | ×    | -      | -          |
-| color    | 标题颜色             | string              | ×    | -      | -          |
-| fontSize | 标题 size            | number              | ×    | -      | -          |
-| disabled | 是否是 disabled 状态 | string              | ×    | -      | true/false |
-| icon     | 显示图标，在标题前面 | ImageSourcePropType | ×    | -      | -          |
-| iconSize | 图标大小             | number              | ×    | -      | -          |
+| 参数     | 说明                 | 类型                | 必填 | 默认值 |
+| -------- | -------------------- | ------------------- | ---- | ------ |
+| name     | 标题                 | string              | √    | -      |
+| subName  | 副标题               | string              | ×    | -      |
+| color    | 标题颜色             | string              | ×    | -      |
+| fontSize | 标题 size            | number              | ×    | -      |
+| disabled | 是否是 disabled 状态 | string              | ×    | -      |
+| icon     | 显示图标，在标题前面 | ImageSourcePropType | ×    | -      |
+| iconSize | 图标大小             | number              | ×    | -      |
 
 ## 事件
 

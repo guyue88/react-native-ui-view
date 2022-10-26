@@ -21,10 +21,10 @@ const Demo: React.FC<{}> = () => {
 
 ## Props
 
-| 参数          | 说明                              | 类型               | 必填 | 默认值 | 可选值     |
-| ------------- | --------------------------------- | ------------------ | ---- | ------ | ---------- |
-| text          | 显示的文字                        | string             | √    | -      | true/false |
-| size          | 显示大小                          | 'large' \| 'small' | ×    | small  | large      |
-| corner        | 是否显示在右上角，绝对定位        | boolean            | ×    | false  | true/false |
-| dot           | 是否显示为一个红点                | number             | ×    | false  | true/false |
-| overflowCount | 超出这个值显示为${overflowCount}+ | number             | ×    | 99     | -          |
+| 参数          | 说明                              | 类型           | 必填 | 默认值 |
+| ------------- | --------------------------------- | -------------- | ---- | ------ |
+| text          | 显示的文字                        | string         | √    | -      |
+| size          | 显示大小                          | large \| small | ×    | small  |
+| corner        | 是否显示在右上角，绝对定位        | boolean        | ×    | false  |
+| dot           | 是否显示为一个红点                | number         | ×    | false  |
+| overflowCount | 超出这个值显示为${overflowCount}+ | number         | ×    | 99     |

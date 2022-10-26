@@ -24,16 +24,16 @@ export type NavbarProps = {
   titleBold?: boolean;
   // 标题文字颜色
   titleColor?: string;
-  // 导航栏高度，默认44
+  // 导航栏高度，默认42
   height?: number;
   // 是否显示返回按钮
   showBack?: boolean;
+  // 返回按钮Icon的名字
+  backIconName?: IconName;
   // 返回按钮Icon的大小
   backIconSize?: number;
   // 返回按钮Icon的颜色
   backIconColor?: string;
-  // 返回按钮Icon的名字
-  backIconName?: IconName;
   // 返回按钮的文字，默认“返回”
   backText?: string;
   // 返回按钮文字的样式
@@ -114,6 +114,7 @@ const Navbar: React.FC<PropsWithChildren<NavbarProps>> = props => {
                   onPress={() => {
                     onBack && onBack();
                   }}
+                  hitSlop={15}
                 >
                   <>
                     <Icon name={backIconName} color={backIconColor} size={backIconSize} />

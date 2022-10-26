@@ -4,11 +4,13 @@ import Touchable from '../Touchable';
 import { Theme } from '../Styles/theme';
 
 export type ModalProps = {
+  // 浮窗是否可见
+  visible: boolean;
   // 标题
   title: string;
   // 内容
   content: string | ReactNode;
-  // 对齐方式
+  // 内容对齐方式
   align?: 'center' | 'left' | 'right';
   // 是否显示取消按钮
   showCancel?: boolean;
@@ -24,8 +26,6 @@ export type ModalProps = {
   mask?: boolean;
   // 点击蒙层是否可以关闭
   maskClosable?: boolean;
-  // 浮窗是否可见
-  visible: boolean;
   // 浮窗呈现动画
   animationType?: 'fade' | 'none' | 'slide';
   // 用户点击确认的回调

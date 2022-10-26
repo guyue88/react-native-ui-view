@@ -21,12 +21,12 @@ const Demo: React.FC<{}> = () => {
 
 ## Props
 
-| 参数  | 说明                    | 类型   | 必填 | 默认值 | 可选值 |
-| ----- | ----------------------- | ------ | ---- | ------ | ------ |
-| style | 样式                    | Style  | ×    | -      | -      |
-| name  | icon 名字，见示例图表集 | string | √    | -      | -      |
-| color | 颜色                    | string | ×    | 20     | -      |
-| size  | 大小                    | string | ×    | #666   | -      |
+| 参数  | 说明                    | 类型   | 必填 | 默认值  |
+| ----- | ----------------------- | ------ | ---- | ------- |
+| style | 样式                    | Style  | ×    | -       |
+| name  | icon 名字，见示例图标集 | string | √    | -       |
+| color | 颜色                    | string | ×    | 20      |
+| size  | 大小                    | string | ×    | #666666 |
 
 ## 事件
 
@@ -34,7 +34,7 @@ const Demo: React.FC<{}> = () => {
 | ------- | -------- | -------- |
 | onPress | 点击回调 | -        |
 
-## 图表集
+## 图标集
 
 <!-- icon template start -->
 <div style="width: 900px;display: grid;grid-template-columns: repeat(6, 16.67%);grid-auto-rows: 100px;border-left: 1px solid #ccc;border-top: 1px solid #ccc; ">
