@@ -124,21 +124,21 @@ const List = <T extends {}>(props: ListProps<T>) => {
     }
     const { y } = event.nativeEvent.contentOffset;
     const indexMap = keyIndexMap.current;
-    let stickyIndex = -1;
+    let _stickyIndex = -1;
     let keyIndex = -1;
 
     for (let i = 0; i < indexMap.length; i++) {
       const item = indexMap[i];
       const { offset, index } = item;
       if (offset <= y) {
-        stickyIndex = index;
+        _stickyIndex = index;
         keyIndex = i;
       } else {
         break;
       }
     }
-    if (stickyIndex !== -1) {
-      setStickyIndex(stickyIndex);
+    if (_stickyIndex !== -1) {
+      setStickyIndex(_stickyIndex);
       onKeyIndexChange(keyIndex);
     }
   };
@@ -169,6 +169,7 @@ const List = <T extends {}>(props: ListProps<T>) => {
         })}
       </ScrollView>
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataList, stickyIndex]);
 };
 

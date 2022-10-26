@@ -1,9 +1,19 @@
+# IndexList 索引列表
+
+一般用于类似微信联系人页面的索引列表。
+
+## IndexList
+
+| ReactNative | WEB |
+| ----------- | --- |
+| √           | √   |
+
+## 基本使用
+
+```typescript
 import React from 'react';
 import { StyleSheet, SafeAreaView, View, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { Theme, Navbar, IndexList, Cell } from 'react-native-ui-view';
-import { PageContainer } from '../../core/router';
-import { MODULES } from '../../core/constants';
 
 const getIndexList = () => {
   const list = [];
@@ -72,7 +82,6 @@ const IndexListPage = () => {
 
   return (
     <SafeAreaView style={[styles.container]}>
-      <Navbar title="IndexList 索引列表" showBack onBack={() => navigation.goBack()} />
       <View style={styles.main}>
         <IndexList<DataItem>
           dataList={getItemList()}
@@ -109,5 +118,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
+```
 
-PageContainer(MODULES.INDEX_LIST, IndexListPage);
+## Props
+
+| 参数       | 说明                                                             | 类型                                  | 必填 | 默认值 |
+| ---------- | ---------------------------------------------------------------- | ------------------------------------- | ---- | ------ |
+| dataList   | 左侧数据，二维数组，可以传泛型，一维闪婚徐要跟锚点集合的顺序对应 | T[][]                                 | √    | -      |
+| indexList  | 右侧锚点列表，默认 A-Z 的字母合集                                | string[]                              | ×    | -      |
+| renderItem | 左侧单行数据渲染函数                                             | (item: T, index: number) => ReactNode | √    | -      |

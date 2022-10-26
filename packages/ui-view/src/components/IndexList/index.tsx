@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import Anchor from './anchor';
 import List from './list';
 
 export type IndexListProps<T> = {
+  // 右侧锚点列表
   indexList?: string[];
+  // 左侧数据
   dataList: T[][];
-  renderItem: (item: T, index: number) => JSX.Element;
+  // 左侧数据渲染函数
+  renderItem: (item: T, index: number) => ReactNode;
 };
 
 const getIndexList = () => {
