@@ -4,7 +4,7 @@ import { View } from 'react-native';
 export type SwiperItemProps = {
   // 宽度
   width?: number;
-  // 当前页数
+  // 圆角值
   borderRadius?: number;
 };
 

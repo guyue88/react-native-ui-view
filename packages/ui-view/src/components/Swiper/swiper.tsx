@@ -16,7 +16,7 @@ export type SwiperProps = {
   // 播放间隔
   interval?: number;
   // 播放持续时间
-  duration?: number;
+  // duration?: number;
   // 是否衔接播放
   // circular?: boolean;
   // 圆角值
