@@ -1,9 +1,10 @@
 import React from 'react';
-import { ActivityIndicator, View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { Theme } from '../Styles/theme';
 import { portal } from '../Portal';
 import { sleep } from '../../utils';
 import Icon from '../Icon';
+import Spin from '../Spin';
 
 type ToastType = 'loading' | 'success' | 'fail' | 'info';
 export type ToastProps = {
@@ -20,7 +21,7 @@ const ToastHost: React.FC<ToastProps> = props => {
 
   let icon = null;
   if (type === 'loading') {
-    icon = <ActivityIndicator animating size="large" color="#fff" style={styles.icon} />;
+    icon = <Spin spinning size={30} color="#fff" style={styles.icon} />;
   } else if (type === 'success') {
     icon = <Icon name="check" size={32} color="#fff" />;
   } else if (type === 'fail') {

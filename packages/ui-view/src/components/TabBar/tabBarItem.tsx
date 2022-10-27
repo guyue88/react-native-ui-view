@@ -28,6 +28,8 @@ export type TabBarItemProps = {
   dot?: boolean;
   // 异形凸起，只适用于中间的按钮
   convex?: boolean;
+  // 异形按钮的颜色，只适用于中间的按钮
+  convexBackgroundColor?: string;
   // 被点击时的回调
   onPress?: () => void;
 
@@ -38,8 +40,6 @@ export type TabBarItemProps = {
   activeColor?: string;
   // 未选中时的颜色
   inactiveColor?: string;
-  // y异形按钮的颜色，默认由Tabbar传入
-  convexBackgroundColor?: string;
 };
 
 const TabBarItem: React.FC<PropsWithChildren<TabBarItemProps>> = props => {

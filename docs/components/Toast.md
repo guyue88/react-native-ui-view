@@ -1,6 +1,7 @@
-# Picker 选择器
+# Toast 消息提示
 
-此选择器用于单列，多列，多列联动的选择场景，一般用于城市选择，日期选择。
+Toast 组件主要用于消息通知、加载提示、操作结果提示等醒目提示效果，我们为其提供了多种丰富的 API。
+Toast 不以组件形式使用，主要以 API 调用模式提供
 
 ## 平台差异性说明
 
@@ -12,36 +13,98 @@
 
 ```typescript
 import React from 'react';
-import { Navbar } from 'react-native-ui-view';
+import { Text } from 'react-native';
+import { Toast, Touchable } from 'react-native-ui-view';
 
 const Demo: React.FC<{}> = () => {
-  return <Navbar text={99} size="small" corner={true} dot={false} overflowCount={99} />;
+  const showToast = () => {
+    Toast.show('success', 'Toast 内容');
+  };
+
+  return (
+    <Touchable onPress={showToast}>
+      <Text>Toast</Text>
+    </Touchable>
+  );
 };
 ```
 
-## Props
+# 类型申明
 
-| 参数             | 说明                                 | 类型                  | 必填 | 默认值       |
-| ---------------- | ------------------------------------ | --------------------- | ---- | ------------ |
-| title            | 标题                                 | string                | √    | -            |
-| titleSize        | 标题文字大小                         | number                | ×    | 17           |
-| titleBold        | 标题是否加粗                         | boolean               | ×    | false        |
-| titleColor       | 标题文字颜色                         | string                | ×    | #333333      |
-| height           | 导航栏高度                           | number                | ×    | 42           |
-| showBack         | 是否显示返回按钮                     | number                | ×    | false        |
-| backIconName     | 返回按钮 Icon 的名字，参考 Icon 组件 | string                | ×    | left         |
-| backIconSize     | 返回按钮 Icon 的大小                 | number                | ×    | 22           |
-| backIconColor    | 返回按钮 Icon 的颜色                 | string                | ×    | #333333      |
-| backText         | 返回按钮的文字                       | string                | ×    | 返回         |
-| backTextStyle    | 返回按钮文字的样式                   | TextStyle             | ×    | -            |
-| backgroundColor  | 背景颜色                             | string                | ×    | -            |
-| barStyle         | StatusBar 的 barStyle                | StatusBarStyle        | ×    | dark-content |
-| showBorderBottom | 是否展示底部 border                  | boolean               | ×    | true         |
-| renderLeft       | 自定义左侧内容                       | () => React.ReactNode | ×    | -            |
-| renderRight      | 自定义右侧内容                       | () => React.ReactNode | ×    | -            |
+```typescript
+type ToastType = 'loading' | 'success' | 'fail' | 'info';
+```
 
-## 事件
+## Toast.show(params)
 
-| 事件名 | 说明                 | 回调参数 |
-| ------ | -------------------- | -------- |
-| onBack | 返回按钮被点击的回调 | -        |
+可以使用任意类型的消息提示。
+
+### 参数
+
+| 参数     | 说明                                            | 类型      | 必填 | 默认值 |
+| -------- | ----------------------------------------------- | --------- | ---- | ------ |
+| type     | 类型                                            | ToastType | √    | -      |
+| content  | 消息内容                                        | string    | √    | -      |
+| duration | 展示时间，展示一段时间后，自动隐藏，传 0 不隐藏 | number    | ×    | 3000   |
+| mask     | 是否显示蒙层，防止穿透，蒙层无背景色            | boolean   | ×    | true   |
+
+## Toast.loading(params)
+
+显示一个 loading 类型的消息提示，不自动消失，需要自行控制消息的隐藏。
+
+### 参数
+
+| 参数    | 说明                                 | 类型    | 必填 | 默认值 |
+| ------- | ------------------------------------ | ------- | ---- | ------ |
+| content | 消息内容                             | string  | √    | -      |
+| mask    | 是否显示蒙层，防止穿透，蒙层无背景色 | boolean | ×    | true   |
+
+### 返回值
+
+- Promise<number>，返回一个标记，可以使用 Toast.hideLoading 使标记对应消息隐藏。
+
+## Toast.hideLoading(params)
+
+隐藏一个 loading 类型的消息，需要传入对应标记。
+
+### 参数
+
+| 参数 | 说明     | 类型   | 必填 | 默认值 |
+| ---- | -------- | ------ | ---- | ------ |
+| key  | 消息标记 | number | √    | -      |
+
+## Toast.success(params)
+
+显示一个 success 类型的消息提示，为 Toast.show 的简易模式，推荐使用。
+
+### 参数
+
+| 参数     | 说明                                            | 类型    | 必填 | 默认值 |
+| -------- | ----------------------------------------------- | ------- | ---- | ------ |
+| content  | 消息内容                                        | string  | √    | -      |
+| duration | 展示时间，展示一段时间后，自动隐藏，传 0 不隐藏 | number  | ×    | 3000   |
+| mask     | 是否显示蒙层，防止穿透，蒙层无背景色            | boolean | ×    | true   |
+
+## Toast.fail(params)
+
+显示一个 fail 类型的消息提示，为 Toast.show 的简易模式，推荐使用。
+
+### 参数
+
+| 参数     | 说明                                            | 类型    | 必填 | 默认值 |
+| -------- | ----------------------------------------------- | ------- | ---- | ------ |
+| content  | 消息内容                                        | string  | √    | -      |
+| duration | 展示时间，展示一段时间后，自动隐藏，传 0 不隐藏 | number  | ×    | 3000   |
+| mask     | 是否显示蒙层，防止穿透，蒙层无背景色            | boolean | ×    | true   |
+
+## Toast.info(params)
+
+显示一个 info 类型的消息提示，为 Toast.show 的简易模式，推荐使用。
+
+### 参数
+
+| 参数     | 说明                                            | 类型    | 必填 | 默认值 |
+| -------- | ----------------------------------------------- | ------- | ---- | ------ |
+| content  | 消息内容                                        | string  | √    | -      |
+| duration | 展示时间，展示一段时间后，自动隐藏，传 0 不隐藏 | number  | ×    | 3000   |
+| mask     | 是否显示蒙层，防止穿透，蒙层无背景色            | boolean | ×    | true   |

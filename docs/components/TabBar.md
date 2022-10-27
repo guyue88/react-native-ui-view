@@ -1,6 +1,12 @@
-# Picker 选择器
+# TabBar 底部导航
 
-此选择器用于单列，多列，多列联动的选择场景，一般用于城市选择，日期选择。
+此组件提供了自定义 tabbar 的能力，具有如下特点：
+
+- 图标可以使用字体图标(内置图标和扩展图标)或者图片
+- 可以动态切换菜单的数量以及配置
+- 切换菜单之前，可以进行回调鉴权
+- 可以设置角标或数字化提示
+- 有时候 Modal 可能无法覆盖底部导航栏，可以配合 Portal 将 Modal 显示在底部导航栏上面
 
 ## 平台差异性说明
 
@@ -11,37 +17,107 @@
 ## 基本使用
 
 ```typescript
-import React from 'react';
-import { Navbar } from 'react-native-ui-view';
+import React, { useState } from 'react';
+import { TabBar, TabBarItem } from 'react-native-ui-view';
+
+const Home: React.FC<{}> = () => {
+  return (
+    <View>
+      <Text>Home</Text>
+    </View>
+  );
+};
+
+const Discovery: React.FC<{}> = () => {
+  return (
+    <View>
+      <Text>Discovery</Text>
+    </View>
+  );
+};
+
+const User: React.FC<{}> = () => {
+  return (
+    <View>
+      <Text>User</Text>
+    </View>
+  );
+};
 
 const Demo: React.FC<{}> = () => {
-  return <Navbar text={99} size="small" corner={true} dot={false} overflowCount={99} />;
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const tabList = [
+    {
+      title: '首页',
+      icon: homeIcon,
+      selectedIcon: homeSelectedIcon,
+      content: <Home />,
+    },
+    {
+      title: '发现',
+      icon: DiscoveryIcon,
+      selectedIcon: DiscoverySelectedIcon,
+      content: <Discovery />,
+      messageCount: 1,
+    },
+    {
+      title: '我的',
+      icon: userIcon,
+      selectedIcon: userSelectedIcon,
+      content: <User />,
+      messageCount: 1,
+      isDot: true,
+    },
+  ];
+  return (
+    <TabBar iconSize={24}>
+      {tabList.map((item, index) => (
+        <TabBarItem
+          key={index}
+          title={item.title}
+          icon={item.icon}
+          selectedIcon={item.selectedIcon}
+          selected={index === activeIndex}
+          onPress={() => setActiveIndex(index)}
+          badge={item.messageCount}
+          dot={item.isDot}
+        >
+          {item.content}
+        </TabBarItem>
+      ))}
+    </TabBar>
+  );
 };
 ```
 
-## Props
+## TabBar Props
 
-| 参数             | 说明                                 | 类型                  | 必填 | 默认值       |
-| ---------------- | ------------------------------------ | --------------------- | ---- | ------------ |
-| title            | 标题                                 | string                | √    | -            |
-| titleSize        | 标题文字大小                         | number                | ×    | 17           |
-| titleBold        | 标题是否加粗                         | boolean               | ×    | false        |
-| titleColor       | 标题文字颜色                         | string                | ×    | #333333      |
-| height           | 导航栏高度                           | number                | ×    | 42           |
-| showBack         | 是否显示返回按钮                     | number                | ×    | false        |
-| backIconName     | 返回按钮 Icon 的名字，参考 Icon 组件 | string                | ×    | left         |
-| backIconSize     | 返回按钮 Icon 的大小                 | number                | ×    | 22           |
-| backIconColor    | 返回按钮 Icon 的颜色                 | string                | ×    | #333333      |
-| backText         | 返回按钮的文字                       | string                | ×    | 返回         |
-| backTextStyle    | 返回按钮文字的样式                   | TextStyle             | ×    | -            |
-| backgroundColor  | 背景颜色                             | string                | ×    | -            |
-| barStyle         | StatusBar 的 barStyle                | StatusBarStyle        | ×    | dark-content |
-| showBorderBottom | 是否展示底部 border                  | boolean               | ×    | true         |
-| renderLeft       | 自定义左侧内容                       | () => React.ReactNode | ×    | -            |
-| renderRight      | 自定义右侧内容                       | () => React.ReactNode | ×    | -            |
+| 参数            | 说明                | 类型                 | 必填 | 默认值  |
+| --------------- | ------------------- | -------------------- | ---- | ------- |
+| style           | style               | StyleProp<ViewStyle> | ×    | -       |
+| height          | 高度                | number               | ×    | 50      |
+| iconSize        | Icon 大小           | number               | ×    | 20      |
+| activeColor     | 文字选中时的颜色    | string               | ×    | #5098FF |
+| inactiveColor   | 文字未选中时的颜色  | string               | ×    | #606266 |
+| backgroundColor | 背景颜色            | string               | ×    | #ffffff |
+| showBorderTop   | 是否显示顶部 Border | boolean              | ×    | true    |
+
+## TabBarItem Props
+
+| 参数                  | 说明                               | 类型                                                                  | 必填 | 默认值 |
+| --------------------- | ---------------------------------- | --------------------------------------------------------------------- | ---- | ------ |
+| title                 | 文字                               | string                                                                | ×    | -      |
+| selected              | 是否被选中                         | boolean                                                               | ×    | false  |
+| icon                  | Icon 元素，图片或者一个 ReactNode  | ImageURISource \| ImageURISource[] \| ImageRequireSource \| ReactNode | ×    | 20     |
+| selectedIcon          | Icon 元素，图片或者一个 ReactNode  | ImageURISource \| ImageURISource[] \| ImageRequireSource \| ReactNode | ×    | -      |
+| badge                 | 显示角标，为 0 时不显示            | number                                                                | ×    | -      |
+| dot                   | 角标是否显示为一个红点             | boolean                                                               | ×    | false  |
+| convex                | 异形凸起，只适用于中间的按钮       | boolean                                                               | ×    | false  |
+| convexBackgroundColor | 异形按钮的颜色，只适用于中间的按钮 | string                                                                | ×    | -      |
 
 ## 事件
 
-| 事件名 | 说明                 | 回调参数 |
-| ------ | -------------------- | -------- |
-| onBack | 返回按钮被点击的回调 | -        |
+| 事件名  | 说明                    | 回调参数 |
+| ------- | ----------------------- | -------- |
+| onPress | TabBarItem 被点击的回调 | -        |
