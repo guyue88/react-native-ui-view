@@ -1,5 +1,6 @@
 {
   "private": true,
+  "description": "React Native Ui View is a react native component library, which is fully compatible with the react native ecological framework. Comprehensive components and convenient tools will make you feel at ease。",
   "workspaces": {
     "packages": [
       "packages/*"
