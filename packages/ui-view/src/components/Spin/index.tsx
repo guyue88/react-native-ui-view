@@ -18,6 +18,11 @@ const Spin: React.FC<PropsWithChildren<SpinProps>> = props => {
   const { style, color = Theme.brandPrimary, size = 30, spinning = true } = props;
   const rotateAnim = useRef(new Animated.Value(0)).current;
 
+  useEffect(() => {
+    rotate(spinning);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [spinning]);
+
   const rotate = (run: boolean) => {
     const animation = Animated.timing(rotateAnim, {
       toValue: 1,
@@ -34,11 +39,6 @@ const Spin: React.FC<PropsWithChildren<SpinProps>> = props => {
       loop.stop();
     }
   };
-
-  useEffect(() => {
-    rotate(spinning);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [spinning]);
 
   const spin = rotateAnim.interpolate({
     inputRange: [0, 1],

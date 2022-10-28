@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useMemo } from 'react';
+import React, { useRef, useState, useEffect, useMemo, ReactNode } from 'react';
 import { StyleSheet, View, ScrollView, LayoutChangeEvent, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 import CellGroup from '../Cell/cellGroup';
 
@@ -6,7 +6,7 @@ export type ListProps<T> = {
   indexList: string[];
   dataList: T[][];
   activeStickyIndex: number;
-  renderItem: (item: T, index: number) => JSX.Element;
+  renderItem: (item: T, index: number) => ReactNode;
   onKeyIndexChange: (index: number) => void;
 };
 
@@ -25,7 +25,7 @@ type LayoutMap = {
   height: number;
 };
 
-const List = <T extends {}>(props: ListProps<T>) => {
+function List<T>(props: ListProps<T>) {
   const { indexList, dataList, renderItem, activeStickyIndex, onKeyIndexChange } = props;
 
   const [stickyIndex, setStickyIndex] = useState(-1);
@@ -171,7 +171,7 @@ const List = <T extends {}>(props: ListProps<T>) => {
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataList, stickyIndex]);
-};
+}
 
 const styles = StyleSheet.create({
   content: {

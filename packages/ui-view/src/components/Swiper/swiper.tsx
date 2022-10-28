@@ -29,6 +29,7 @@ export type SwiperProps = {
 
 let timer: NodeJS.Timeout | null = null;
 let autoplayTimer: NodeJS.Timeout | null = null;
+
 const Swiper: React.FC<PropsWithChildren<SwiperProps>> = props => {
   const {
     children,
