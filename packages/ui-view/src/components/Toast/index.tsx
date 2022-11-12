@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Modal } from 'react-native';
 import { Theme } from '../Styles/theme';
 import { portal } from '../Portal';
 import { sleep } from '../../utils';
@@ -29,12 +29,14 @@ const ToastHost: React.FC<ToastProps> = props => {
   }
 
   return (
-    <View style={styles.container} pointerEvents={mask ? undefined : 'box-none'}>
-      <View style={[styles.main, icon !== null ? styles.iconToast : styles.textToast]}>
-        {icon}
-        <Text style={styles.text}>{content}</Text>
+    <Modal statusBarTranslucent transparent visible={true} animationType="none" pointerEvents="box-none">
+      <View style={styles.container} pointerEvents={mask ? undefined : 'box-none'}>
+        <View style={[styles.main, icon !== null ? styles.iconToast : styles.textToast]}>
+          {icon}
+          <Text style={styles.text}>{content}</Text>
+        </View>
       </View>
-    </View>
+    </Modal>
   );
 };
 
@@ -75,8 +77,13 @@ const styles = StyleSheet.create({
 });
 
 export default class Toast {
+  private static TOAST_LIST: number[] = [];
+
   private static async show(type: ToastType, content: string, duration = 3000, mask = true) {
     const key = portal.add(<ToastHost type={type} content={content} mask={mask} />);
+
+    type === 'loading' && this.TOAST_LIST.push(key);
+
     if (duration > 0) {
       await sleep(duration);
       portal.remove(key);
@@ -91,14 +98,16 @@ export default class Toast {
    * @returns
    */
   public static loading(content: string, mask = true) {
-    return this.show('loading', content, 0, mask);
+    this.show('loading', content, 0, mask);
   }
   /**
    *
    * @param key {number} Toast.loading的返回值
    */
-  public static hideLoading(key: number) {
-    portal.remove(key);
+  public static hideLoading() {
+    this.TOAST_LIST.forEach(key => {
+      portal.remove(key);
+    });
   }
   /**
    *

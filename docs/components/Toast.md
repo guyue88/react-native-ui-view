@@ -50,7 +50,7 @@ type ToastType = 'loading' | 'success' | 'fail' | 'info';
 
 ## Toast.loading(params)
 
-显示一个 loading 类型的消息提示，不自动消失，需要自行控制消息的隐藏。
+显示一个 loading 类型的消息提示，不自动消失，需要自行隐藏消息。
 
 ### 参数
 
@@ -59,19 +59,9 @@ type ToastType = 'loading' | 'success' | 'fail' | 'info';
 | content | 消息内容                             | string  | √    | -      |
 | mask    | 是否显示蒙层，防止穿透，蒙层无背景色 | boolean | ×    | true   |
 
-### 返回值
+## Toast.hideLoading()
 
-- Promise<number>，返回一个标记，可以使用 Toast.hideLoading 使标记对应消息隐藏。
-
-## Toast.hideLoading(params)
-
-隐藏一个 loading 类型的消息，需要传入对应标记。
-
-### 参数
-
-| 参数 | 说明     | 类型   | 必填 | 默认值 |
-| ---- | -------- | ------ | ---- | ------ |
-| key  | 消息标记 | number | √    | -      |
+隐藏所有 loading 类型的消息。
 
 ## Toast.success(params)
 

@@ -47,7 +47,7 @@ export const PortalHost: React.FC<Props> = () => {
   return (
     <>
       {portalList.map(item => (
-        <View style={styles.portal} key={item.key} pointerEvents="box-none">
+        <View style={[styles.portal, { zIndex: item.key }]} key={item.key} pointerEvents="box-none">
           {item.elem}
         </View>
       ))}
