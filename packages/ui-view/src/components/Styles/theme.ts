@@ -1,9 +1,7 @@
-const brandPrimary = '#108ee9';
-const brandPrimaryTap = '#1284d6';
+const brandPrimary = '#3c9cff';
+const brandPrimaryTap = '#398ade';
 
 export const Theme = {
-  borderLightColor: '#f1f1f1',
-  borderColor: '#eaeaea',
   // 文字色
   colorTextBase: '#000000',
   colorTextBaseInverse: '#ffffff',
@@ -28,13 +26,19 @@ export const Theme = {
   // 全局/品牌色
   brandPrimary: brandPrimary,
   brandPrimaryTap: brandPrimaryTap,
-  brandSuccess: '#6abf47',
-  brandWarning: '#f4333c',
-  brandError: '#f4333c',
-  brandImportant: '#ff5b05',
-  brandWait: '#108ee9',
+  brandSuccess: '#5ac725',
+  brandSuccessTap: '#53c21d',
+  brandWarning: '#f9ae3d',
+  brandWarningTap: '#f1a532',
+  brandError: '#f56c6c',
+  brandErrorTap: '#e45656',
+  brandInfo: '#909399',
+  brandInfoTap: '#767a82',
+
   // 边框色
   borderColorBase: '#dddddd',
+  borderLightColor: '#f1f1f1',
+  borderColor: '#eaeaea',
   // 字体尺寸
   // ---
   fontSizeIconText: 10,

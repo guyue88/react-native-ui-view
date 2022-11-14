@@ -22,11 +22,18 @@ const Button: React.FC<PropsWithChildren<ButtonProps>> = props => {
     success: styles.success,
     danger: styles.danger,
   };
+  const underlayColor = {
+    default: Theme.fillBody,
+    primary: Theme.brandPrimaryTap,
+    warning: Theme.brandWarningTap,
+    success: Theme.brandSuccessTap,
+    danger: Theme.brandErrorTap,
+  };
 
   return (
     <Touchable
       style={[styles.container, themeStyle[type], disabled && styles.disabled, style]}
-      underlayColor={Theme.fillBody}
+      underlayColor={underlayColor[type]}
       onPress={disabled ? undefined : onPress}
     >
       <Text style={[styles.text, type !== 'default' && styles.textWhite]}>{children}</Text>
