@@ -10,7 +10,7 @@ const removeEventKey = 'REACT_NATIVE_UI_VIEW_REMOVE_PORTAL';
 const eventEmitter = DeviceEventEmitter;
 
 export class PortalGuard {
-  private key = 100;
+  private key = 10000;
 
   add(elem: React.ReactNode) {
     const key = this.key++;

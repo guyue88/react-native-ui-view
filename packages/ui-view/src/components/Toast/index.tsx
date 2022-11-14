@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Modal } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { Theme } from '../Styles/theme';
 import { portal } from '../Portal';
 import { sleep } from '../../utils';
@@ -29,14 +29,12 @@ const ToastHost: React.FC<ToastProps> = props => {
   }
 
   return (
-    <Modal statusBarTranslucent transparent visible={true} animationType="none" pointerEvents="box-none">
-      <View style={styles.container} pointerEvents={mask ? undefined : 'box-none'}>
-        <View style={[styles.main, icon !== null ? styles.iconToast : styles.textToast]}>
-          {icon}
-          <Text style={styles.text}>{content}</Text>
-        </View>
+    <View style={styles.container} pointerEvents={mask ? undefined : 'box-none'}>
+      <View style={[styles.main, icon !== null ? styles.iconToast : styles.textToast]}>
+        {icon}
+        <Text style={styles.text}>{content}</Text>
       </View>
-    </Modal>
+    </View>
   );
 };
 
