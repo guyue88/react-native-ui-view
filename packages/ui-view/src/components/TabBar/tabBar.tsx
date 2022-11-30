@@ -41,8 +41,11 @@ const TabBar: React.FC<PropsWithChildren<TabBarProps>> = props => {
 
     const newChildren: any[] = [];
     Children.map(children, (child: any, idx) => {
-      if (showContent && selectedIndex === idx) {
-        newChildren.push(child.props.children);
+      if (showContent) {
+        // newChildren.push(child.props.children);
+        newChildren.push(
+          <View style={{ flex: 1, display: selectedIndex === idx ? 'flex' : 'none' }}>{child.props.children}</View>,
+        );
       } else {
         newChildren.push(
           cloneElement(child, {
@@ -56,9 +59,9 @@ const TabBar: React.FC<PropsWithChildren<TabBarProps>> = props => {
       }
     });
 
-    if (showContent) {
-      return newChildren.filter((_, i) => i === selectedIndex);
-    }
+    // if (showContent) {
+    //   return newChildren.filter((_, i) => i === selectedIndex);
+    // }
 
     return newChildren;
   };
