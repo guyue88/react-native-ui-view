@@ -44,7 +44,9 @@ const TabBar: React.FC<PropsWithChildren<TabBarProps>> = props => {
       if (showContent) {
         // newChildren.push(child.props.children);
         newChildren.push(
-          <View style={{ flex: 1, display: selectedIndex === idx ? 'flex' : 'none' }}>{child.props.children}</View>,
+          <View key={idx} style={{ flex: 1, display: selectedIndex === idx ? 'flex' : 'none' }}>
+            {child.props.children}
+          </View>,
         );
       } else {
         newChildren.push(

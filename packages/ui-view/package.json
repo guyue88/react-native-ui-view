@@ -1,6 +1,6 @@
 {
   "name": "react-native-ui-view",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "react native ui components kit",
   "keywords": [
     "react native",
@@ -21,6 +21,7 @@
     "prepublishOnly": "yarn build:svg && yarn build"
   },
   "dependencies": {
+    "dayjs": "^1.11.7",
     "xmldom": "^0.6.0"
   },
   "peerDependencies": {

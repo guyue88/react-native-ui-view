@@ -118,8 +118,7 @@ const PickerItem: React.FC<PickerItemProps> = props => {
       y,
       animated: true,
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [itemHeight, selectedIndex]);
 
   return (
     <ScrollView

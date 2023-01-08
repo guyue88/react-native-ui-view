@@ -8,6 +8,8 @@ export { default as Cell } from './components/Cell/cell';
 export type { CellProps } from './components/Cell/cell';
 export { default as CellGroup } from './components/Cell/cellGroup';
 export type { CellGroupProps } from './components/Cell/cellGroup';
+export { default as DatePicker } from './components/Picker/datePicker';
+export type { DatePickerProps } from './components/Picker/datePicker';
 export { default as Modal } from './components/Modal';
 export type { ModalProps } from './components/Modal/modal';
 export { default as Navbar } from './components/Navbar';

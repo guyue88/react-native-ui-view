@@ -6,6 +6,7 @@
   - [Button](components/Button.md 'Button 按钮')
   - [Cell](components/Cell.md 'Cell 单元格')
   - [CellGroup](components/CellGroup.md 'CellGroup 单元格组')
+  - [DatePicker](components/DatePicker.md 'DatePicker 时间选择器')
   - [Icon](components/Icon.md 'Icon 图标')
   - [ImageCropper](components/ImageCropper.md 'ImageCropper 图片裁剪器')
   - [IndexList](components/IndexList.md 'IndexList 索引列表')
