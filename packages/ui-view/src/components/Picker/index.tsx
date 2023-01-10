@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, StatusBarStyle } from 'react-native';
 import Popup from '../Popup';
 import { Theme } from '../Styles/theme';
@@ -62,7 +62,11 @@ const Picker: React.FC<PickerProps> = props => {
     onConfirm,
   } = props;
 
-  const indexList = useRef(selectedIndex);
+  const [indexList, setIndexList] = useState([...selectedIndex]);
+
+  useEffect(() => {
+    setIndexList([...selectedIndex]);
+  }, [selectedIndex]);
 
   return (
     <Popup visible={visible} barStyle={barStyle} closeOnClickOverlay={closeOnClickOverlay} onClose={onClose}>
@@ -75,7 +79,7 @@ const Picker: React.FC<PickerProps> = props => {
             {!!title && <Text style={styles.toolbarText}>{title}</Text>}
             <Touchable
               onPress={() => {
-                onConfirm && onConfirm(indexList.current);
+                onConfirm && onConfirm(indexList);
                 onClose && onClose();
               }}
             >
@@ -87,10 +91,10 @@ const Picker: React.FC<PickerProps> = props => {
         )}
         <PickerView
           dataSource={dataSource}
-          selectedIndex={selectedIndex}
+          selectedIndex={indexList}
           itemHeight={itemHeight}
           onChange={data => {
-            indexList.current = data;
+            setIndexList(data);
             onChange && onChange(data);
           }}
         />

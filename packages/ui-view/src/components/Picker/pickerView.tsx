@@ -118,6 +118,7 @@ const PickerItem: React.FC<PickerItemProps> = props => {
       y,
       animated: true,
     });
+    // 高度或者index变化都需要滚动
   }, [itemHeight, selectedIndex]);
 
   return (

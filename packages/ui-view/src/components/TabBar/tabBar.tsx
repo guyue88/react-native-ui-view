@@ -45,7 +45,9 @@ const TabBar: React.FC<PropsWithChildren<TabBarProps>> = props => {
         // newChildren.push(child.props.children);
         newChildren.push(
           <View key={idx} style={{ flex: 1, display: selectedIndex === idx ? 'flex' : 'none' }}>
-            {child.props.children}
+            {cloneElement(child.props.children, {
+              visible: selectedIndex === idx,
+            })}
           </View>,
         );
       } else {
