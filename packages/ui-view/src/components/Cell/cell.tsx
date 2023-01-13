@@ -1,5 +1,5 @@
 import React, { isValidElement, ReactNode } from 'react';
-import { View, StyleSheet, Text, StyleProp, ViewStyle } from 'react-native';
+import { View, StyleSheet, Text, StyleProp, ViewStyle, TextStyle } from 'react-native';
 import { IconName } from '../../assets/svg';
 import { Theme } from '../../components/Styles/theme';
 import Icon from '../Icon';
@@ -10,6 +10,8 @@ export type CellProps = {
   style?: StyleProp<ViewStyle>;
   // 标题
   title: string;
+  // 标题样式
+  titleStyle?: StyleProp<TextStyle>;
   // 副标题
   label?: string;
   // 是否显示顶部边线
@@ -24,7 +26,7 @@ export type CellProps = {
   rightIconName?: IconName;
   // 右侧图标大小，默认24
   rightIconSize?: number;
-  // 右侧图标颜色，默认#a4a9b0
+  // 右侧图标颜色，默认#7f7f7f
   rightIconColor?: string;
   // 渲染标题左侧图标
   renderLeftIcon?: () => ReactNode;
@@ -35,6 +37,7 @@ export type CellProps = {
 const Cell: React.FC<CellProps> = props => {
   const {
     title,
+    titleStyle = {},
     label,
     border = true,
 
@@ -44,7 +47,7 @@ const Cell: React.FC<CellProps> = props => {
     isLink = false,
     rightIconName = 'right',
     rightIconSize = 24,
-    rightIconColor = Theme.colorTextGray,
+    rightIconColor = '#7f7f7f',
 
     style,
     onPress,
@@ -62,7 +65,7 @@ const Cell: React.FC<CellProps> = props => {
           <View style={styles.titleWrap}>
             {renderLeftIcon ? <View style={styles.iconWrap}>{renderLeftIcon()}</View> : null}
 
-            <Text style={styles.titleText}>{title}</Text>
+            <Text style={[styles.titleText, titleStyle]}>{title}</Text>
           </View>
           {!!label && (
             <View style={styles.titleLabelWrap}>
