@@ -1,5 +1,5 @@
 import React, { isValidElement, ReactNode } from 'react';
-import { View, StyleSheet, Text, StyleProp, ViewStyle, TextStyle } from 'react-native';
+import { View, StyleSheet, Text, StyleProp, ViewStyle, TextStyle, Dimensions } from 'react-native';
 import { IconName } from '../../assets/svg';
 import { Theme } from '../../components/Styles/theme';
 import Icon from '../Icon';
@@ -41,7 +41,7 @@ const Cell: React.FC<CellProps> = props => {
     label,
     border = true,
 
-    centerRightText = true,
+    centerRightText = false,
 
     rightContent,
     isLink = false,
@@ -75,9 +75,17 @@ const Cell: React.FC<CellProps> = props => {
             </View>
           )}
         </View>
-        {/* eslint-disable-next-line react-native/no-inline-styles */}
         <View style={[styles.right, { alignSelf: centerRightText ? 'center' : 'flex-start' }]}>
-          {!!rightContent && (isValidElement(rightContent) ? rightContent : <Text>{rightContent}</Text>)}
+          {!!rightContent &&
+            (isValidElement(rightContent) ? (
+              rightContent
+            ) : (
+              <View style={styles.rightContent}>
+                <Text style={styles.rightContentText} numberOfLines={1} ellipsizeMode="tail">
+                  {rightContent}
+                </Text>
+              </View>
+            ))}
           {isLink && <Icon name={rightIconName} size={rightIconSize} color={rightIconColor} />}
         </View>
       </>
@@ -97,7 +105,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
   },
   left: {
-    flex: 1,
+    flexBasis: '50%',
   },
   titleWrap: {
     flexDirection: 'row',
@@ -118,8 +126,19 @@ const styles = StyleSheet.create({
     color: Theme.colorTextCaption,
   },
   right: {
+    flexBasis: '50%',
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+  rightContent: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  rightContentText: {
+    fontSize: 14,
+    color: Theme.colorTextGray,
   },
 });
 

@@ -38,15 +38,17 @@ const Demo: React.FC<{}> = () => {
 
 ## Props
 
-| 参数            | 说明               | 类型         | 必填 | 默认值  |
-| --------------- | ------------------ | ------------ | ---- | ------- |
-| visible         | 是否可见           | boolean      | √    | -       |
-| actions         | 操作菜单子项       | ActionItem[] | √    | -       |
-| showCheckStatus | 是否显示选择状态   | boolean      | ×    | false   |
-| checkIndex      | 选中的 index 项    | number       | ×    | -       |
-| checkSize       | 选中图标的 size    | number       | ×    | 24      |
-| checkColor      | 选中状态下标题颜色 | string       | ×    | #333333 |
-| cancelText      | cancel 按钮文字    | string       | ×    | 取消    |
+| 参数            | 说明                   | 类型                          | 必填 | 默认值   | 版本   |
+| --------------- | ---------------------- | ----------------------------- | ---- | -------- | ------ |
+| visible         | 是否可见               | boolean                       | √    | -        | -      |
+| actions         | 操作菜单子项           | ActionItem[]                  | √    | -        | -      |
+| iconCircular    | 左侧图标是否显示为圆形 | boolean                       | ×    | false    | v0.1.8 |
+| align           | 内容对齐方式           | 'left' \| 'center' \| 'right' | ×    | 'center' | v0.1.8 |
+| showCheckStatus | 是否显示选择状态       | boolean                       | ×    | false    | -      |
+| checkIndex      | 选中的 index 项        | number                        | ×    | -        | -      |
+| checkSize       | 选中图标的 size        | number                        | ×    | 24       | -      |
+| checkColor      | 选中状态下标题颜色     | string                        | ×    | #333333  | -      |
+| cancelText      | cancel 按钮文字        | string                        | ×    | 取消     | -      |
 
 ## ActionItem
 

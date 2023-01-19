@@ -28,7 +28,7 @@ const Demo: React.FC<{}> = () => {
 | titleStyle      | 标题样式，可以定义颜色大小等                     | StyleProp<TextStyle> | ×    | -       |
 | label           | 副标题，标签                                     | string               | ×    | -       |
 | border          | 是否显示顶部边线                                 | boolean              | ×    | true    |
-| centerRightText | 右侧内容是否与左侧内容垂直居中显示，否则顶部对齐 | boolean              | ×    | true    |
+| centerRightText | 右侧内容是否与左侧内容垂直居中显示，否则顶部对齐 | boolean              | ×    | false    |
 | rightContent    | 右侧文案                                         | string \| ReactNode  | ×    | -       |
 | isLink          | 是否显示为链接形式，链接形式会在右侧显示一个箭头 | boolean              | ×    | true    |
 | rightIconName   | 右侧图标名称，默认右箭头                         | IconName(参考 Icon)  | ×    | right   |

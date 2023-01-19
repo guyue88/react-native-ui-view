@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import { StyleSheet, View, Text, ImageSourcePropType, Image } from 'react-native';
+import { StyleSheet, View, Text, ImageSourcePropType, Image, StyleProp, ViewStyle, TextStyle } from 'react-native';
 import Touchable from '../Touchable';
 import { Theme } from '../Styles/theme';
 import Icon from '../Icon';
@@ -26,6 +26,10 @@ export type ActionSheetProps = {
     iconSize?: number;
   }[];
 
+  // 图标是否显示为圆形的
+  iconCircular?: boolean;
+  // 对齐方式，默认居中对齐
+  align?: 'left' | 'center' | 'right';
   // 是否显示选择状态
   showCheckStatus?: boolean;
   // 选中的index项
@@ -47,13 +51,25 @@ const ActionSheet: React.FC<PropsWithChildren<ActionSheetProps>> = props => {
     visible,
     cancelText = '取消',
     actions,
+    align = 'center',
     showCheckStatus = false,
     checkSize = 24,
-    checkColor = Theme.colorTextParagraph,
+    checkColor = '#7f7f7f',
     checkIndex,
+    iconCircular = false,
     onClose,
     onClickItem,
   } = props;
+
+  const mainStyle: StyleProp<ViewStyle>[] = [];
+
+  if (showCheckStatus) {
+    mainStyle.push(styles.mainBetween);
+  } else if (align === 'left') {
+    mainStyle.push(styles.mainInLeft);
+  } else if (align === 'right') {
+    mainStyle.push(styles.mainInRight);
+  }
 
   return (
     <Popup visible={visible} barStyle="light-content" closeOnClickOverlay={true} onClose={onClose}>
@@ -62,9 +78,27 @@ const ActionSheet: React.FC<PropsWithChildren<ActionSheetProps>> = props => {
           const { name, icon, iconSize = 24, subName, color, fontSize, disabled } = item;
 
           const showIcon = !!icon;
-          const style: Record<string, string | number> = {};
+          const style: StyleProp<TextStyle> = {};
           color && (style.color = color);
           fontSize && (style.fontSize = fontSize);
+
+          const iconAndText = (
+            <>
+              {!!showIcon && icon && (
+                <Image
+                  source={icon}
+                  style={[
+                    styles.icon,
+                    { width: iconSize, height: iconSize },
+                    iconCircular && { borderRadius: iconSize / 2 },
+                  ]}
+                  resizeMethod="scale"
+                  resizeMode="contain"
+                />
+              )}
+              <Text style={[styles.sheetText, disabled && styles.disabledText, style]}>{name}</Text>
+            </>
+          );
 
           return (
             <Touchable
@@ -75,24 +109,14 @@ const ActionSheet: React.FC<PropsWithChildren<ActionSheetProps>> = props => {
               style={[styles.sheetItem, index === 0 && styles.noBorder]}
             >
               <>
-                <View style={[styles.main, showCheckStatus && styles.mainInLeft]}>
+                <View style={[styles.main, ...mainStyle]}>
                   {showCheckStatus ? (
                     <>
-                      <View style={styles.checkWrap}>
-                        {!!showIcon && icon && (
-                          <Image source={icon} style={[styles.icon, { width: iconSize, height: iconSize }]} />
-                        )}
-                        <Text style={[styles.sheetText, disabled && styles.disabledText, style]}>{name}</Text>
-                      </View>
+                      <View style={styles.checkWrap}>{iconAndText}</View>
                       {index === checkIndex && <Icon name="check" size={checkSize} color={checkColor} />}
                     </>
                   ) : (
-                    <>
-                      {!!showIcon && icon && (
-                        <Image source={icon} style={[styles.icon, { width: iconSize, height: iconSize }]} />
-                      )}
-                      <Text style={[styles.sheetText, disabled && styles.disabledText, style]}>{name}</Text>
-                    </>
+                    iconAndText
                   )}
                 </View>
                 {!!subName && (
@@ -147,6 +171,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   mainInLeft: {
+    justifyContent: 'flex-start',
+  },
+  mainInRight: {
+    justifyContent: 'flex-end',
+  },
+  mainBetween: {
     justifyContent: 'space-between',
   },
   checkWrap: {
@@ -162,7 +192,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   icon: {
-    marginRight: 24,
+    marginRight: 18,
+    // borderRadius: 12,
   },
   subText: {
     fontSize: 12,
