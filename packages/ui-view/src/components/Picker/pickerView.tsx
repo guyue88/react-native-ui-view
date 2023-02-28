@@ -129,6 +129,7 @@ const PickerItem: React.FC<PickerItemProps> = props => {
       bounces={false}
       showsVerticalScrollIndicator={false}
       nestedScrollEnabled={true}
+      decelerationRate="normal"
       onMomentumScrollBegin={onMomentumScrollBegin}
       onMomentumScrollEnd={onMomentumScrollEnd}
       onScroll={e => {

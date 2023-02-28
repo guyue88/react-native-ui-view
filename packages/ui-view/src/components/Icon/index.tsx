@@ -1,5 +1,5 @@
-import React, { PropsWithChildren } from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
+import React, { PropsWithChildren, ReactNode } from 'react';
+import { StyleProp, View, ViewStyle } from 'react-native';
 import SvgUri from '../../lib/react-native-svg-uri';
 import svgs, { IconName } from '../../assets/svg';
 import Touchable from '../Touchable';
@@ -24,11 +24,23 @@ const Icon: React.FC<PropsWithChildren<IconProps>> = props => {
   if (!svgXmlData) {
     throw new Error(`No Icon Named ${name} Was Found!`);
   }
-  return (
-    <Touchable onPress={onPress} style={style}>
-      <SvgUri width={size} height={size} svgXmlData={svgXmlData} fill={color} />
-    </Touchable>
-  );
+
+  const sizeStyle = {
+    width: size,
+    height: size,
+  };
+  const wrapper = (elem: ReactNode) => {
+    if (onPress) {
+      return (
+        <Touchable onPress={onPress} style={[sizeStyle, style]}>
+          {elem}
+        </Touchable>
+      );
+    }
+    return <View style={[sizeStyle, style]}>{elem}</View>;
+  };
+
+  return wrapper(<SvgUri width={size} height={size} svgXmlData={svgXmlData} fill={color} />);
 };
 
 export default Icon;
