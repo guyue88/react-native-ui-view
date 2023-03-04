@@ -23,7 +23,7 @@ const ToastHost: React.FC<ToastProps> = props => {
   if (type === 'loading') {
     icon = <Spin spinning size={30} color="#fff" style={styles.icon} />;
   } else if (type === 'success') {
-    icon = <Icon name="check" size={32} color="#fff" />;
+    icon = <Icon name="select" size={32} color="#fff" />;
   } else if (type === 'fail') {
     icon = <Icon name="close-circle" size={32} color="#fff" />;
   }

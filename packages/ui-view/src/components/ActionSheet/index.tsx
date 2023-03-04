@@ -113,7 +113,7 @@ const ActionSheet: React.FC<PropsWithChildren<ActionSheetProps>> = props => {
                   {showCheckStatus ? (
                     <>
                       <View style={styles.checkWrap}>{iconAndText}</View>
-                      {index === checkIndex && <Icon name="check" size={checkSize} color={checkColor} />}
+                      {index === checkIndex && <Icon name="select" size={checkSize} color={checkColor} />}
                     </>
                   ) : (
                     iconAndText
