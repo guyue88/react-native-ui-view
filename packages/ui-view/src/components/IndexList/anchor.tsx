@@ -26,7 +26,6 @@ const Anchor: React.FC<PropsWithChildren<AnchorProps>> = props => {
   useEffect(() => {
     if ($container.current) {
       $container.current.measureInWindow((x, y, w, h) => {
-        // console.log('measure info', y, h);
         // 安卓测量没有包括 StatusBar，修复一下
         let fixHeight = 0;
         if (Platform.OS === 'android') {
@@ -47,7 +46,6 @@ const Anchor: React.FC<PropsWithChildren<AnchorProps>> = props => {
 
   // 获取当前滑动到哪个字母
   const getIndexListIndex = (pageY: number) => {
-    // console.log('position', pageY, listTop.current, listHeight.current, listItemHeight.current);
     if (pageY < listTop.current) {
       return -1;
     }
@@ -58,8 +56,6 @@ const Anchor: React.FC<PropsWithChildren<AnchorProps>> = props => {
   };
 
   const onTouchStart = (event: GestureResponderEvent) => {
-    // console.log('touch start', event.nativeEvent.pageY);
-
     if (!event.nativeEvent.touches.length) return;
     setIsTouching(true);
     const currentIndex = getIndexListIndex(event.nativeEvent.pageY);

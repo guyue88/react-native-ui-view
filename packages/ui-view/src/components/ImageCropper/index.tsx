@@ -3,11 +3,13 @@ import { Image, StyleSheet, View, Dimensions, Pressable, Text, Modal } from 'rea
 import Animated, { useSharedValue, useAnimatedStyle } from 'react-native-reanimated';
 import { Gesture, GestureDetector, gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import ImageEditor from '@react-native-community/image-editor';
+import ImageSize from 'react-native-image-size';
 import { FONT_WEIGHT, Theme } from '../Styles/theme';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import Icon from '../Icon';
 import Spin from '../Spin';
+import Toast from '../Toast';
 
 export type ImageCropperProps = {
   // 需要裁剪的图标地址，仅接受链接地址
@@ -60,39 +62,43 @@ const ImageCropper: React.FC<PropsWithChildren<ImageCropperProps>> = props => {
     (async () => {
       if (visible && uri) {
         setLoading(true);
-        Image.getSize(uri, (width: number, height: number) => {
-          // 宽取 两个中最小的一个，最小不小于0.8屏幕宽
-          const max = Math.max(width, WINDOW_WIDTH);
-          let w = Math.min(WINDOW_WIDTH * 0.8, Math.min(width, WINDOW_WIDTH));
-          const rate = w / max;
+        let { width, height, rotation } = await ImageSize.getSize(uri);
 
-          let h = height * rate;
+        // 安卓上，使用ios的图片，可能会有图片角度问题
+        if (rotation === 90 || rotation === 270) {
+          [width, height] = [height, width];
+        }
+        // 宽取 两个中最小的一个，最小不小于0.8屏幕宽
+        const max = Math.max(width, WINDOW_WIDTH);
+        let w = Math.min(WINDOW_WIDTH * 0.8, Math.min(width, WINDOW_WIDTH));
+        const rate = w / max;
 
-          if (h > WINDOW_HEIGHT) {
-            w = (w * WINDOW_HEIGHT * 0.8) / h;
-            h = WINDOW_HEIGHT * 0.8;
-          }
-          const x = (WINDOW_WIDTH - w) / 2;
-          const y = (WINDOW_HEIGHT - h) / 2;
+        let h = height * rate;
 
-          setImageInfo({
-            originWidth: width,
-            originHeight: height,
-            width: w,
-            height: h,
-            x,
-            y,
-          });
+        if (h > WINDOW_HEIGHT) {
+          w = (w * WINDOW_HEIGHT * 0.8) / h;
+          h = WINDOW_HEIGHT * 0.8;
+        }
+        const x = (WINDOW_WIDTH - w) / 2;
+        const y = (WINDOW_HEIGHT - h) / 2;
 
-          const size = Math.min(w, h);
-          setReactInfo({
-            width: size,
-            height: size,
-            x: (WINDOW_WIDTH - size) / 2,
-            y: (WINDOW_HEIGHT - size) / 2,
-          });
-          setLoading(false);
+        setImageInfo({
+          originWidth: width,
+          originHeight: height,
+          width: w,
+          height: h,
+          x,
+          y,
         });
+
+        const size = Math.min(w, h);
+        setReactInfo({
+          width: size,
+          height: size,
+          x: (WINDOW_WIDTH - size) / 2,
+          y: (WINDOW_HEIGHT - size) / 2,
+        });
+        setLoading(false);
       }
     })();
   }, [uri, visible]);
@@ -176,10 +182,16 @@ const ImageCropper: React.FC<PropsWithChildren<ImageCropperProps>> = props => {
         height: (rectInfo.height * imageInfo.originHeight) / imageInfo.height / scale.value,
       },
       displaySize: destSize,
-    });
-    setLoading(false);
-    onConfirm(url);
-    onClose();
+    })
+      .catch(error => {
+        Toast.info('图片裁剪失败');
+        console.error('图片裁剪失败: ', error);
+      })
+      .finally(() => setLoading(false));
+    if (url) {
+      onConfirm(url);
+      onClose();
+    }
   };
 
   const renderContent = gestureHandlerRootHOC(() => (
