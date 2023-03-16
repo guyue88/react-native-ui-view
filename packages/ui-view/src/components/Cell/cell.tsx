@@ -22,6 +22,8 @@ export type CellProps = {
   rightContent?: string | ReactNode;
   // 是否显示为链接形式，链接形式会在右侧显示一个箭头
   isLink?: boolean;
+  // 渲染右侧箭头图标
+  renderLinkIcon?: () => ReactNode;
   // 右侧图标名称，默认右箭头
   rightIconName?: IconName;
   // 右侧图标大小，默认24
@@ -44,6 +46,7 @@ const Cell: React.FC<CellProps> = props => {
     centerRightText = false,
 
     rightContent,
+    renderLinkIcon,
     isLink = false,
     rightIconName = 'right',
     rightIconSize = 24,
@@ -86,7 +89,12 @@ const Cell: React.FC<CellProps> = props => {
                 </Text>
               </View>
             ))}
-          {isLink && <Icon name={rightIconName} size={rightIconSize} color={rightIconColor} />}
+          {isLink &&
+            (renderLinkIcon ? (
+              renderLinkIcon()
+            ) : (
+              <Icon name={rightIconName} size={rightIconSize} color={rightIconColor} />
+            ))}
         </View>
       </>
     </Touchable>
