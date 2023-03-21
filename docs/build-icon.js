@@ -20,7 +20,7 @@ readSvgDir()
     const list = [];
     data.forEach(item => {
       list.push(`<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/${item}" width="36" />
+  <img src="https://gitee.com/sp-luoqiang/react-native-ui-view/raw/master/packages/ui-view/src/assets/svg/${item}" width="36" />
   <div>
     ${item.split('.')[0]}
   </div>
