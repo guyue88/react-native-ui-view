@@ -87,6 +87,12 @@ const Demo: React.FC<{}> = () => {
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/arrow-down-circle.svg" width="36" />
+  <div>
+    arrow-down-circle
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/arrow-down-filling.svg" width="36" />
   <div>
     arrow-down-filling
@@ -192,12 +198,6 @@ const Demo: React.FC<{}> = () => {
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/bottom.svg" width="36" />
   <div>
     bottom
-  </div>
-</div>
-<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/browse.svg" width="36" />
-  <div>
-    browse
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
@@ -387,36 +387,6 @@ const Demo: React.FC<{}> = () => {
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/direction-down-circle.svg" width="36" />
-  <div>
-    direction-down-circle
-  </div>
-</div>
-<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/direction-down.svg" width="36" />
-  <div>
-    direction-down
-  </div>
-</div>
-<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/direction-left.svg" width="36" />
-  <div>
-    direction-left
-  </div>
-</div>
-<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/direction-right.svg" width="36" />
-  <div>
-    direction-right
-  </div>
-</div>
-<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/direction-up.svg" width="36" />
-  <div>
-    direction-up
-  </div>
-</div>
-<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/discount.svg" width="36" />
   <div>
     discount
@@ -579,12 +549,6 @@ const Demo: React.FC<{}> = () => {
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/filter-fill.svg" width="36" />
-  <div>
-    filter-fill
-  </div>
-</div>
-<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/filter-filling.svg" width="36" />
   <div>
     filter-filling
@@ -612,12 +576,6 @@ const Demo: React.FC<{}> = () => {
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/forward.svg" width="36" />
   <div>
     forward
-  </div>
-</div>
-<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/fullscreen-expand-filling.svg" width="36" />
-  <div>
-    fullscreen-expand-filling
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
@@ -945,12 +903,6 @@ const Demo: React.FC<{}> = () => {
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/prompt-fill.svg" width="36" />
-  <div>
-    prompt-fill
-  </div>
-</div>
-<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/prompt-filling.svg" width="36" />
   <div>
     prompt-filling
@@ -1149,12 +1101,6 @@ const Demo: React.FC<{}> = () => {
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/switch-filling.svg" width="36" />
-  <div>
-    switch-filling
-  </div>
-</div>
-<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/switch.svg" width="36" />
   <div>
     switch
@@ -1197,12 +1143,6 @@ const Demo: React.FC<{}> = () => {
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/to-top.svg" width="36" />
-  <div>
-    to-top
-  </div>
-</div>
-<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/toggle-left.svg" width="36" />
   <div>
     toggle-left
@@ -1212,12 +1152,6 @@ const Demo: React.FC<{}> = () => {
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/toggle-right.svg" width="36" />
   <div>
     toggle-right
-  </div>
-</div>
-<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/top-filling.svg" width="36" />
-  <div>
-    top-filling
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
