@@ -39,9 +39,21 @@ const Demo: React.FC<{}> = () => {
 <!-- icon template start -->
 <div style="width: 900px;display: grid;grid-template-columns: repeat(6, 16.67%);grid-auto-rows: 100px;border-left: 1px solid #ccc;border-top: 1px solid #ccc; ">
   <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/add-circle-fill.svg" width="36" />
+  <div>
+    add-circle-fill
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/add-circle.svg" width="36" />
   <div>
     add-circle
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/add-square.svg" width="36" />
+  <div>
+    add-square
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
@@ -870,30 +882,6 @@ const Demo: React.FC<{}> = () => {
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/play.svg" width="36" />
   <div>
     play
-  </div>
-</div>
-<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/plus-circle-fill.svg" width="36" />
-  <div>
-    plus-circle-fill
-  </div>
-</div>
-<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/plus-circle.svg" width="36" />
-  <div>
-    plus-circle
-  </div>
-</div>
-<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/plus-square.svg" width="36" />
-  <div>
-    plus-square
-  </div>
-</div>
-<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/plus.svg" width="36" />
-  <div>
-    plus
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
