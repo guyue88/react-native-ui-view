@@ -1359,9 +1359,15 @@ const Demo: React.FC<{}> = () => {
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/wechat-fill.svg" width="36" />
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/wechat-circle-fill.svg" width="36" />
   <div>
-    wechat-fill
+    wechat-circle-fill
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/wechat.svg" width="36" />
+  <div>
+    wechat
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
