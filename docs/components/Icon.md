@@ -87,6 +87,42 @@ const Demo: React.FC<{}> = () => {
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/alipay-circle-fill.svg" width="36" />
+  <div>
+    alipay-circle-fill
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/alipay.svg" width="36" />
+  <div>
+    alipay
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/android-fill.svg" width="36" />
+  <div>
+    android-fill
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/android.svg" width="36" />
+  <div>
+    android
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/apple-fill.svg" width="36" />
+  <div>
+    apple-fill
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/apple.svg" width="36" />
+  <div>
+    apple
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/arrow-double-left.svg" width="36" />
   <div>
     arrow-double-left
@@ -399,6 +435,18 @@ const Demo: React.FC<{}> = () => {
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/dingtalk-circle-fill.svg" width="36" />
+  <div>
+    dingtalk-circle-fill
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/dingtalk.svg" width="36" />
+  <div>
+    dingtalk
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/discount.svg" width="36" />
   <div>
     discount
@@ -603,9 +651,27 @@ const Demo: React.FC<{}> = () => {
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/github-fill.svg" width="36" />
+  <div>
+    github-fill
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/good.svg" width="36" />
   <div>
     good
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/google-circle-fill.svg" width="36" />
+  <div>
+    google-circle-fill
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/google.svg" width="36" />
+  <div>
+    google
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
@@ -666,6 +732,12 @@ const Demo: React.FC<{}> = () => {
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/intermediate-filling.svg" width="36" />
   <div>
     intermediate-filling
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/key.svg" width="36" />
+  <div>
+    key
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
@@ -903,6 +975,18 @@ const Demo: React.FC<{}> = () => {
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/qq-circle-fill.svg" width="36" />
+  <div>
+    qq-circle-fill
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/qq.svg" width="36" />
+  <div>
+    qq
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/question-circle-fill.svg" width="36" />
   <div>
     question-circle-fill
@@ -954,6 +1038,12 @@ const Demo: React.FC<{}> = () => {
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/run-up.svg" width="36" />
   <div>
     run-up
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/safetycertificate.svg" width="36" />
+  <div>
+    safetycertificate
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
@@ -1095,6 +1185,18 @@ const Demo: React.FC<{}> = () => {
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/taobao-circle-fill.svg" width="36" />
+  <div>
+    taobao-circle-fill
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/taobao.svg" width="36" />
+  <div>
+    taobao
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/task-filling.svg" width="36" />
   <div>
     task-filling
@@ -1152,6 +1254,18 @@ const Demo: React.FC<{}> = () => {
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/training.svg" width="36" />
   <div>
     training
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/twitter-circle-fill.svg" width="36" />
+  <div>
+    twitter-circle-fill
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/twitter.svg" width="36" />
+  <div>
+    twitter
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
@@ -1251,6 +1365,24 @@ const Demo: React.FC<{}> = () => {
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/weibo-circle-fill.svg" width="36" />
+  <div>
+    weibo-circle-fill
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/weibo.svg" width="36" />
+  <div>
+    weibo
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/wifi.svg" width="36" />
+  <div>
+    wifi
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/work-filling.svg" width="36" />
   <div>
     work-filling
@@ -1260,6 +1392,18 @@ const Demo: React.FC<{}> = () => {
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/work.svg" width="36" />
   <div>
     work
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/zhihu-circle-fill.svg" width="36" />
+  <div>
+    zhihu-circle-fill
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/zhihu.svg" width="36" />
+  <div>
+    zhihu
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
