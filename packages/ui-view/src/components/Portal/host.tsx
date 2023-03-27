@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { DeviceEventEmitter, View, StyleSheet } from 'react-native';
 
 type PortalItem = { elem: React.ReactNode; key: number };
@@ -10,7 +10,7 @@ const removeEventKey = 'REACT_NATIVE_UI_VIEW_REMOVE_PORTAL';
 const eventEmitter = DeviceEventEmitter;
 
 export class PortalGuard {
-  private key = 10000;
+  private key = 100;
 
   add(elem: React.ReactNode) {
     const key = this.key++;
@@ -24,13 +24,17 @@ export class PortalGuard {
 }
 
 export const PortalHost: React.FC<Props> = () => {
+  // 用一个ref记录，防止同一时间触发新增删除导致的错乱问题
+  const $portalList = useRef<PortalItem[]>([]);
   const [portalList, setPortalList] = useState<PortalItem[]>([]);
 
   const mount = (portalItem: PortalItem) => {
-    setPortalList([...portalList, portalItem]);
+    $portalList.current = [...$portalList.current, portalItem];
+    setPortalList($portalList.current);
   };
   const unmount = (key: number) => {
-    setPortalList([...portalList].filter(item => item.key !== key));
+    $portalList.current = $portalList.current.filter(item => item.key !== key);
+    setPortalList($portalList.current);
   };
 
   useEffect(() => {
@@ -41,7 +45,6 @@ export const PortalHost: React.FC<Props> = () => {
       listenerAdd.remove();
       listenerRemove.remove();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
