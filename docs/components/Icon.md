@@ -63,6 +63,18 @@ const Demo: React.FC<{}> = () => {
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/addteam.svg" width="36" />
+  <div>
+    addteam
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/adduser.svg" width="36" />
+  <div>
+    adduser
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/adjust.svg" width="36" />
   <div>
     adjust
@@ -411,9 +423,21 @@ const Demo: React.FC<{}> = () => {
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/dash.svg" width="36" />
+  <div>
+    dash
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/data-view.svg" width="36" />
   <div>
     data-view
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/database.svg" width="36" />
+  <div>
+    database
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
@@ -432,6 +456,18 @@ const Demo: React.FC<{}> = () => {
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/delete.svg" width="36" />
   <div>
     delete
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/deleteuser.svg" width="36" />
+  <div>
+    deleteuser
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/detail-more.svg" width="36" />
+  <div>
+    detail-more
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
@@ -507,9 +543,9 @@ const Demo: React.FC<{}> = () => {
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/elipsis.svg" width="36" />
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/ellipsis.svg" width="36" />
   <div>
-    elipsis
+    ellipsis
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
@@ -798,6 +834,18 @@ const Demo: React.FC<{}> = () => {
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/lock.svg" width="36" />
   <div>
     lock
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/login.svg" width="36" />
+  <div>
+    login
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/logout.svg" width="36" />
+  <div>
+    logout
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
@@ -1095,6 +1143,12 @@ const Demo: React.FC<{}> = () => {
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/sever.svg" width="36" />
+  <div>
+    sever
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/share.svg" width="36" />
   <div>
     share
@@ -1110,6 +1164,12 @@ const Demo: React.FC<{}> = () => {
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/skip.svg" width="36" />
   <div>
     skip
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/small-dash.svg" width="36" />
+  <div>
+    small-dash
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
@@ -1185,6 +1245,18 @@ const Demo: React.FC<{}> = () => {
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/switchuser.svg" width="36" />
+  <div>
+    switchuser
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/sync.svg" width="36" />
+  <div>
+    sync
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/taobao-circle-fill.svg" width="36" />
   <div>
     taobao-circle-fill
@@ -1206,6 +1278,12 @@ const Demo: React.FC<{}> = () => {
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/task.svg" width="36" />
   <div>
     task
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/team.svg" width="36" />
+  <div>
+    team
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
@@ -1257,6 +1335,12 @@ const Demo: React.FC<{}> = () => {
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/transaction.svg" width="36" />
+  <div>
+    transaction
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
   <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/twitter-circle-fill.svg" width="36" />
   <div>
     twitter-circle-fill
@@ -1293,9 +1377,15 @@ const Demo: React.FC<{}> = () => {
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
-  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/user-filling.svg" width="36" />
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/user-circle-filling.svg" width="36" />
   <div>
-    user-filling
+    user-circle-filling
+  </div>
+</div>
+<div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  <img src="https://raw.githubusercontent.com/guyue88/react-native-ui-view/master/packages/ui-view/src/assets/svg/user-circle.svg" width="36" />
+  <div>
+    user-circle
   </div>
 </div>
 <div style="border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;display: flex;flex-direction: column;align-items: center;justify-content: center;">
