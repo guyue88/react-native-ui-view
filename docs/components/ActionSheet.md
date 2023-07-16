@@ -38,29 +38,29 @@ const Demo: React.FC<{}> = () => {
 
 ## Props
 
-| 参数            | 说明                   | 类型                          | 必填 | 默认值   | 版本   |
-| --------------- | ---------------------- | ----------------------------- | ---- | -------- | ------ |
-| visible         | 是否可见               | boolean                       | √    | -        | -      |
-| actions         | 操作菜单子项           | ActionItem[]                  | √    | -        | -      |
-| iconCircular    | 左侧图标是否显示为圆形 | boolean                       | ×    | false    | v0.1.8 |
-| align           | 内容对齐方式           | 'left' \| 'center' \| 'right' | ×    | 'center' | v0.1.8 |
-| showCheckStatus | 是否显示选择状态       | boolean                       | ×    | false    | -      |
-| checkIndex      | 选中的 index 项        | number                        | ×    | -        | -      |
-| checkSize       | 选中图标的 size        | number                        | ×    | 24       | -      |
-| checkColor      | 选中状态下标题颜色     | string                        | ×    | #333333  | -      |
-| cancelText      | cancel 按钮文字        | string                        | ×    | 取消     | -      |
+| 参数            | 说明                                     | 类型                          | 必填 | 默认值   | 版本   |
+| --------------- | ---------------------------------------- | ----------------------------- | ---- | -------- | ------ |
+| visible         | 是否可见                                 | boolean                       | √    | -        | -      |
+| actions         | 操作菜单子项                             | ActionItem[]                  | √    | -        | -      |
+| iconCircular    | 左侧图标是否显示为圆形                   | boolean                       | ×    | false    | v0.1.8 |
+| align           | 内容对齐方式                             | 'left' \| 'center' \| 'right' | ×    | 'center' | v0.1.8 |
+| showCheckStatus | 是否显示选择状态                         | boolean                       | ×    | false    | -      |
+| checkIndex      | 选中的 index 项，仅显示选择状态时可用    | number                        | ×    | -        | -      |
+| checkSize       | 选中图标的 size，仅显示选择状态时可用    | number                        | ×    | 24       | -      |
+| checkColor      | 选中状态下标题颜色，仅显示选择状态时可用 | string                        | ×    | #333333  | -      |
+| cancelText      | cancel 按钮文字                          | string                        | ×    | 取消     | -      |
 
 ## ActionItem
 
-| 参数     | 说明                 | 类型                | 必填 | 默认值 |
-| -------- | -------------------- | ------------------- | ---- | ------ |
-| name     | 标题                 | string              | √    | -      |
-| subName  | 副标题               | string              | ×    | -      |
-| color    | 标题颜色             | string              | ×    | -      |
-| fontSize | 标题 size            | number              | ×    | -      |
-| disabled | 是否是 disabled 状态 | string              | ×    | -      |
-| icon     | 显示图标，在标题前面 | ImageSourcePropType | ×    | -      |
-| iconSize | 图标大小             | number              | ×    | -      |
+| 参数     | 说明                                       | 类型                           | 必填 | 默认值 |
+| -------- | ------------------------------------------ | ------------------------------ | ---- | ------ |
+| name     | 标题                                       | string                         | √    | -      |
+| subName  | 副标题                                     | string                         | ×    | -      |
+| color    | 标题颜色                                   | string                         | ×    | -      |
+| fontSize | 标题 size                                  | number                         | ×    | -      |
+| disabled | 是否是 disabled 状态                       | string                         | ×    | -      |
+| icon     | 显示图标，在标题前面，图片地址会自定义元素 | ImageSourcePropType\|ReactNode | ×    | -      |
+| iconSize | 图标大小                                   | number                         | ×    | -      |
 
 ## 事件
 

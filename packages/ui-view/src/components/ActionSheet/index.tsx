@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, ReactNode, isValidElement } from 'react';
 import { StyleSheet, View, Text, ImageSourcePropType, Image, StyleProp, ViewStyle, TextStyle } from 'react-native';
 import Touchable from '../Touchable';
 import { Theme } from '../Styles/theme';
@@ -21,7 +21,7 @@ export type ActionSheetProps = {
     //  是否是 disabled 状态
     disabled?: boolean;
     // 显示图标，在标题前面
-    icon?: ImageSourcePropType;
+    icon?: ImageSourcePropType | ReactNode;
     // 图标大小
     iconSize?: number;
   }[];
@@ -84,18 +84,21 @@ const ActionSheet: React.FC<PropsWithChildren<ActionSheetProps>> = props => {
 
           const iconAndText = (
             <>
-              {!!showIcon && icon && (
-                <Image
-                  source={icon}
-                  style={[
-                    styles.icon,
-                    { width: iconSize, height: iconSize },
-                    iconCircular && { borderRadius: iconSize / 2 },
-                  ]}
-                  resizeMethod="scale"
-                  resizeMode="contain"
-                />
-              )}
+              {!!showIcon &&
+                (isValidElement(icon) ? (
+                  icon
+                ) : (
+                  <Image
+                    source={icon as ImageSourcePropType}
+                    style={[
+                      styles.icon,
+                      { width: iconSize, height: iconSize },
+                      iconCircular && { borderRadius: iconSize / 2 },
+                    ]}
+                    resizeMethod="scale"
+                    resizeMode="contain"
+                  />
+                ))}
               <Text style={[styles.sheetText, disabled && styles.disabledText, style]}>{name}</Text>
             </>
           );

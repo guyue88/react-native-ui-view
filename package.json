@@ -20,7 +20,7 @@
   },
   "scripts": {
     "dev": "yarn workspace react-native-ui-view-playground dev",
-    "doc": "docsify serve ./docs  --port 3005",
+    "doc": "docsify serve ./docs --port 3005",
     "build:icon-doc": "node docs/build-icon.js"
   },
   "dependencies": {
