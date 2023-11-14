@@ -48,7 +48,7 @@ const ImageCropper: React.FC<PropsWithChildren<ImageCropperProps>> = props => {
     x: 0,
     y: 0,
   });
-  const [rectInfo, setReactInfo] = useState({ width: 0, height: 0, x: 0, y: 0 });
+  const [rectInfo, setRectInfo] = useState({ width: 0, height: 0, x: 0, y: 0 });
   const [loading, setLoading] = useState(false);
 
   const scale = useSharedValue(1);
@@ -57,6 +57,8 @@ const ImageCropper: React.FC<PropsWithChildren<ImageCropperProps>> = props => {
   const positionY = useSharedValue(0);
   const savedPositionX = useSharedValue(0);
   const savedPositionY = useSharedValue(0);
+
+  console.log(111, rectInfo);
 
   useEffect(() => {
     (async () => {
@@ -68,7 +70,7 @@ const ImageCropper: React.FC<PropsWithChildren<ImageCropperProps>> = props => {
         if (rotation === 90 || rotation === 270) {
           [width, height] = [height, width];
         }
-        // 宽取 两个中最小的一个，最小不小于0.8屏幕宽
+        // 宽取两个中最小的一个，最小不小于0.8屏幕宽
         const max = Math.max(width, WINDOW_WIDTH);
         let w = Math.min(WINDOW_WIDTH * 0.8, Math.min(width, WINDOW_WIDTH));
         const rate = w / max;
@@ -91,17 +93,18 @@ const ImageCropper: React.FC<PropsWithChildren<ImageCropperProps>> = props => {
           y,
         });
 
-        const size = Math.min(w, h);
-        setReactInfo({
-          width: size,
-          height: size,
-          x: (WINDOW_WIDTH - size) / 2,
-          y: (WINDOW_HEIGHT - size) / 2,
+        const rw = Math.min(w, h);
+        const rh = (rw * destSize.height) / destSize.width;
+        setRectInfo({
+          width: rw,
+          height: rh,
+          x: (WINDOW_WIDTH - rw) / 2,
+          y: (WINDOW_HEIGHT - rh) / 2,
         });
         setLoading(false);
       }
     })();
-  }, [uri, visible]);
+  }, [destSize.height, destSize.width, uri, visible]);
 
   const pinchGesture = Gesture.Pinch()
     .onUpdate(e => {
@@ -116,6 +119,7 @@ const ImageCropper: React.FC<PropsWithChildren<ImageCropperProps>> = props => {
         savedScale.value = scale.value;
       }
     });
+
   const panGesture = Gesture.Pan()
     .maxPointers(1)
     .onUpdate(e => {
@@ -211,7 +215,12 @@ const ImageCropper: React.FC<PropsWithChildren<ImageCropperProps>> = props => {
             <View
               style={[
                 styles.rect,
-                { width: rectInfo.width, height: rectInfo.height, left: rectInfo.x, top: rectInfo.y },
+                {
+                  width: rectInfo.width,
+                  height: rectInfo.height,
+                  left: rectInfo.x,
+                  top: rectInfo.y,
+                },
               ]}
             />
 

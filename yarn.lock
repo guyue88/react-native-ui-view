@@ -7623,6 +7623,14 @@ react-native-svg@^12.1.1:
     css-select "^5.1.0"
     css-tree "^1.1.3"
 
+react-native-ui-view@^0.1.0:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/react-native-ui-view/-/react-native-ui-view-0.1.9.tgz#f08eb65af7a196739766b7d82a0d9f89d1393c7d"
+  integrity sha512-tipvE0gstphLLwAT5VpgqZ4uwtUpBaonpOzme4l15FCiDc1epPKcZJ1kPPzgHzlYH8liqDTDygjrHuxuYBuyFg==
+  dependencies:
+    dayjs "^1.11.7"
+    xmldom "^0.6.0"
+
 react-native-web@0.17.6:
   version "0.17.6"
   resolved "https://registry.npmmirror.com/react-native-web/-/react-native-web-0.17.6.tgz#67805f7e009691a7f59a8513b451fcf16a6803d6"

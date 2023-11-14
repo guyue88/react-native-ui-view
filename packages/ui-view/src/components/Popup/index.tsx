@@ -1,24 +1,44 @@
-import React, { PropsWithChildren, useEffect, useRef } from 'react';
+import React, { PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { Modal, Pressable, StatusBar, StatusBarStyle, StyleSheet, View, Animated, Dimensions } from 'react-native';
 import { Theme } from '../Styles/theme';
 
 export type PopupProps = {
+  // 是否可见
   visible: boolean;
+  // 点击弹层关闭
   closeOnClickOverlay?: boolean;
+  // statusbar 样式
   barStyle?: StatusBarStyle;
+  // 关闭回调
   onClose?: () => void;
+  // 动画开始回调
+  onAnimationStart?: () => void;
+  // 动画结束回调
+  onAnimationEnd?: () => void;
 };
 
 const { height: WINDOW_HEIGHT } = Dimensions.get('window');
 const SCREEN_HEIGHT = WINDOW_HEIGHT + (StatusBar.currentHeight || 0);
 
 const Popup: React.FC<PropsWithChildren<PopupProps>> = props => {
-  const { onClose, children, visible, closeOnClickOverlay = false, barStyle = 'dark-content' } = props;
+  const {
+    children,
+    visible,
+    closeOnClickOverlay = false,
+    barStyle = 'dark-content',
+    onClose,
+    onAnimationStart,
+    onAnimationEnd,
+  } = props;
+
+  const [innerVisible, setInnerVisible] = useState(false);
 
   const slideAnim = useRef(new Animated.Value(SCREEN_HEIGHT)).current;
 
   useEffect(() => {
     if (visible) {
+      setInnerVisible(true);
+      onAnimationStart?.();
       Animated.timing(slideAnim, {
         toValue: 0,
         duration: 700,
@@ -27,9 +47,12 @@ const Popup: React.FC<PropsWithChildren<PopupProps>> = props => {
     } else {
       Animated.timing(slideAnim, {
         toValue: SCREEN_HEIGHT,
-        duration: 700,
+        duration: 500,
         useNativeDriver: false,
-      }).start();
+      }).start(() => {
+        setInnerVisible(false);
+        onAnimationEnd?.();
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
@@ -39,7 +62,7 @@ const Popup: React.FC<PropsWithChildren<PopupProps>> = props => {
       transparent
       statusBarTranslucent
       hardwareAccelerated
-      visible={visible}
+      visible={innerVisible}
       animationType="fade"
       onRequestClose={onClose}
     >

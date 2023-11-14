@@ -25,7 +25,6 @@ export type ActionSheetProps = {
     // 图标大小
     iconSize?: number;
   }[];
-
   // 图标是否显示为圆形的
   iconCircular?: boolean;
   // 对齐方式，默认居中对齐
