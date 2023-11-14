@@ -58,8 +58,6 @@ const ImageCropper: React.FC<PropsWithChildren<ImageCropperProps>> = props => {
   const savedPositionX = useSharedValue(0);
   const savedPositionY = useSharedValue(0);
 
-  console.log(111, rectInfo);
-
   useEffect(() => {
     (async () => {
       if (visible && uri) {
